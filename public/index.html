@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/Assets/Nikan.svg" />
+    <link rel="stylesheet" href="%PUBLIC_URL%/Styles/style.css"  type = "text/css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app by nikan ostovan"
+    />
+
+    <script async src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="%PUBLIC_URL%/Scripts/main.js" defer></script>
+    <script src="%PUBLIC_URL%/Scripts/animations.js" defer></script>
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Nikan</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <header id = "header">
+      <div class="header">
+        <a href = "%PUBLIC_URL%" class="logo">
+          <img class="logo lightLogo" src="Assets/Header/logoLight.avif" alt="nikan logo">
+          <img class="logo darkLogo" src="Assets/Header/logoDark.avif" alt="nikan logo">
+        </a>
+        <nav class="mainNav">
+            <ul class="navList">
+              <li>
+                <a href = "%PUBLIC_URL%">Home</a>
+              </li>
+              <li>
+                <a href = "%PUBLIC_URL%">About Me</a>
+              </li>
+            </ul>
+        </nav>
+  
+        <div class="contactButtonWraper">
+          <input type="checkbox" class="lightModeToggle" id="checkHeader" onclick="toggleTheme(event)" tabindex="0">
+          <label for="checkHeader" class="darkModeLabel" aria-label="Toggle dark mode" aria-pressed="false" tabindex="0">
+              <img src="Assets/Header/Sun.svg" class=lightToggle alt="sun Icon">
+              <img src="Assets/Header/Moon.png" class=darkToggle alt="moon Icon">
+              <span class="ball"></span>
+          </label>
+  
+          <button class="contactButton" onclick="openContactMe()">Lets Talk</button>
+        </div>
+  
+        <label class="hamburgerNav" tabindex="0" aria-label="hamburger menu" aria-pressed="false">
+          <input type="checkbox" onclick="openSideBar(event)">
+        </label>
+      </div>
+      <!-- <hr class="headerDivider"></hr> -->
+      <aside class="sidebar disabled">
+        <nav class="mobileNav">
+          <ul class="navList">
+            <li>
+              <a href = "">Home</a>
+            </li>
+            <li>
+              <a href = "">About Me</a>
+            </li>
+          </ul>
+        </nav>
+
+        <hr class="navDivider"></hr>
+
+        <div class="contactButtonWraper">
+
+          <input type="checkbox" class="lightModeToggle" id="check" onclick="toggleTheme(event)">
+          <label for="check" class="darkModeLabel" aria-label="Toggle dark mode" aria-pressed="false" tabindex="0">
+            <img src="Assets/Header/Sun.svg" class='lightToggle' alt="sun Icon">
+            <img src="Assets/Header/Moon.png" class='darkToggle' alt="moon Icon">
+            <span class="ball"></span>
+          </label>
+
+          <button class="contactButton" onclick="openContactMe()">Lets Talk</button>
+        </div>
+      </aside>
+    </header>
+
+    <dialog class = "contactMeDialog" id="contactMe" aria-modal="true">
+      <div id="dialogHeader">
+        <a href = "">Nikan.</a>
+        <button id="closeButton" onclick="closeForm()" aria-label="close">X</button>
+      </div>
+      
+
+      <form id="contactMeForm">
+        <div id="inputFields">
+          <label for="Name">
+            Name & Last Name
+            <input name="Name" id="Name" placeholder="John Doe" required>
+          </label>
+          
+          <label for="Email">
+            Email
+            <input type="email" id="Email" placeholder="example@gmail.com" required>
+            <span id="emailSpan">Invalid Email</span>
+          </label>
+          
+          <label for="Message">
+            Message
+            <textarea name="Message" id="Message" required placeholder="Enter your message here..."></textarea>
+          </label>
+        </div>
+        
+        <div id="contactInfo">
+          <h3>How to reach me:</h3>
+          <h4>Email</h4>
+          <p>nikanostovan@gmail.com</p>
+          <h4>Phone Number</h4>
+          <p>(310)-987-2231</p>
+        
+
+          <div id="buttonWrap" class="buttonWrap">
+            <div class="g-recaptcha" data-sitekey="6LcsvdwpAAAAANF3dMzaR0u2rzFaK1cygq_x969E"></div>
+            <button id="formButton" class='contactButton' onclick="submitForm(event)" aria-label="Submit contact info">
+              Lets Talk!
+            </button>
+          </div>
+        </div>
+      </form>
+      
+
+      </div>
+    </dialog>
+    
+
+    <main>
+      <dialog class = "notification" id = "messageSuccessDialog" aria-live="assertive" 
+        role="alertdialog" aria-labelledby="SuccessAlert">
+        <div>
+          <img src="Assets/Main/Dialog/Success.png">
+          <h4 id="SuccessAlert">Message sent!</h4>
+        </div>
+      </dialog>
+
+      <dialog class = "notification" id = "messageFailureDialog" aria-live="assertive" 
+        role="alertdialog" aria-labelledby="FailureAlert">
+        <div>
+          <img src="Assets/Main/Dialog/Failure.png">
+          <h4 id="FailureAlert">Failed! Check logs!</h4>
+        </div>
+      </dialog>
+
+
+
+
+      <section id="introduction">
+
+        <section class="hero">
+          <div class="heroImgWrapper">
+            <img class="heroSVG" src = "%PUBLIC_URL%/Assets/Main/1.svg" alt = "background svg">
+            <img class="heroImg" src = "%PUBLIC_URL%/Assets/Main/hero.png" alt = "nikan's image">
+          </div>
+          <div class="heroText">
+            <h1 id="heroHeader" data-value="Hi! I'm Nikan!!" aria-valuetext="Hi! I'm Nikan!!">s</h1>
+            <p id="heroText">Just a recently graduated student trying his best at web-development and design</p>
+          </div>
+        </section>
+        
+        <h2 id="Skillset">Skillset</h2>
+        <h3 id="SkillsetExplanation">Diverse set of skills usefull for web-development</h3>
+
+        <table>
+          <tbody>
+            <tr>
+              <th>Web Development</th>
+              <td>Working on it</td>
+            </tr>
+            <tr>
+              <th>Web Design using figma</th>
+              <td>also working on it</td>
+            </tr>
+            <tr>
+              <th>Web Design using figma</th>
+              <td>also working on it</td>
+            </tr>
+            <tr>
+              <th>Web Design using figma</th>
+              <td>also working on it</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="root"></section>
+    </main>
+    <footer>
+      <button id="footerButton" onclick="scrollToTop()" aria-label="scroll to top">
+        <img src="%PUBLIC_URL%/Assets/Footer/topArrow.png" alt="top arrow" loading="lazy"/>
+      </button>
+
+        <a href = "%PUBLIC_URL%" class="logo">
+          <img class="logo lightLogo" src="Assets/Header/logoLight.avif" alt="nikan logo">
+          <img class="logo darkLogo" src="Assets/Header/logoDark.avif" alt="nikan logo">
+        </a>
+
+        <ul class="footerLinks">
+          <li>
+            <a href="#introduction">About</a>
+          </li>
+          <li>
+            <a href="">Misson</a>
+          </li>
+          <li>
+            <a href="/Pages/privacy.html" target="_blank">Privacy Policy </a>
+          </li>
+          <li>
+            <a href="/Pages/TOS.html" target="_blank">Terms of Service</a>
+          </li>
+          <li>
+            <a href="#root">Services</a>
+          </li>
+          <li>
+            <a href="#root">Products</a>
+          </li>
+          <li>
+            <a id='contactMeLink' href="#header">Contact Me</a>
+          </li>
+          <li>
+            <a href="%PUBLIC_URL%/Pages/404.html">Hobby Section</a>
+          </li>
+        </ul>
+
+          <ul class="footerIcon">
+            <li>
+              <a href = 'https://www.linkedin.com/in/nikanostovan/' aria-label="linkedin link" target="_blank">
+                <img src='%PUBLIC_URL%/Assets/Footer/linkedin.svg' alt="linkedin logo" loading="lazy"/> 
+              </a>
+            </li>
+
+            <li>
+              <a href = 'https://github.com/niknak1379/' aria-label="github link" target="_blank">
+                <img src='%PUBLIC_URL%/Assets/Footer/github.svg' alt="github logo" loading="lazy"/> 
+              </a>
+            </li>
+
+            <li>
+              <a href = 'https://www.instagram.com/1he.w4rst/' aria-label="instagram link" target="_blank">
+                <img src='%PUBLIC_URL%/Assets/Footer/instagram.svg' alt="instagram logo" loading="lazy"/> 
+              </a>
+            </li>
+          </ul>
+
+        <h4>MADE WITH REACT BY NIKAN</h4>
+        <small>&copy; Copyright 2024, Nikan Ostovan</small>
+    </footer>
+    
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>

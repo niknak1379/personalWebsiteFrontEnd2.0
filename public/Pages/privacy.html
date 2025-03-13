@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="../Assets/Nikan.svg" />
+    <link rel="stylesheet" href="../Styles/style.css"  type = "text/css" />
+    <link rel="stylesheet" href="../Styles/privacy.css"  type = "text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://www.google.com">
+    <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <script async src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="../Scripts/main.js" defer></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer>
+    </script>
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="../manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Nikan. Privacy Policy</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <header id = "header">
+      <div class="header">
+        <a href = "../" class="logo">
+          <img class="logo lightLogo" src="../Assets/Header/logoLight.avif" alt="nikan logo">
+          <img class="logo darkLogo" src="../Assets/Header/logoDark.avif" alt="nikan logo">
+        </a>
+        <nav class="mainNav">
+            <ul class="navList">
+              <li>
+                <a href = "../">Home</a>
+              </li>
+              <li>
+                <a href = "../">About Me</a>
+              </li>
+            </ul>
+        </nav>
+  
+        <div class="contactButtonWraper">
+          <input type="checkbox" class="lightModeToggle" id="checkHeader" onclick="toggleTheme(event)" tabindex="0">
+          <label for="checkHeader" class="darkModeLabel" aria-label="Toggle dark mode" aria-pressed="false" tabindex="0">
+              <img src="../Assets/Header/Sun.svg" class=lightToggle alt="sun Icon">
+              <img src="../Assets/Header/Moon.png" class=darkToggle alt="moon Icon">
+              <span class="ball"></span>
+          </label>
+  
+          <button class="contactButton" onclick="openContactMe()">Lets Talk</button>
+        </div>
+  
+        <label class="hamburgerNav" tabindex="0" aria-label="hamburger menu" aria-pressed="false">
+          <input type="checkbox" onclick="openSideBar(event)">
+        </label>
+      </div>
+      <!-- <hr class="headerDivider"></hr> -->
+      <aside class="sidebar disabled">
+        <nav class="mobileNav">
+          <ul class="navList">
+            <li>
+              <a href = "">Home</a>
+            </li>
+            <li>
+              <a href = "">About Me</a>
+            </li>
+          </ul>
+        </nav>
+
+        <hr class="navDivider"></hr>
+
+        <div class="contactButtonWraper">
+
+          <input type="checkbox" class="lightModeToggle" id="check" onclick="toggleTheme(event)">
+          <label for="check" class="darkModeLabel" aria-label="Toggle dark mode" aria-pressed="false" tabindex="0">
+            <img src="../Assets/Header/Sun.svg" class='lightToggle' alt="sun Icon">
+            <img src="../Assets/Header/Moon.png" class='darkToggle' alt="moon Icon">
+            <span class="ball"></span>
+          </label>
+
+          <button class="contactButton" onclick="openContactMe()">Lets Talk</button>
+        </div>
+      </aside>
+    </header>
+    
+
+    <body>
+        <dialog class = "contactMeDialog" id="contactMe" aria-modal="true">
+            <div id="dialogHeader">
+            <a href = "">Nikan.</a>
+            <button id="closeButton" onclick="closeForm()" aria-label="close">X</button>
+            </div>
+            
+    
+            <form id="contactMeForm">
+            <div id="inputFields">
+                <label for="Name">
+                Name & Last Name
+                <input name="Name" id="Name" placeholder="John Doe" required>
+                </label>
+                
+                <label for="Email">
+                Email
+                <input type="email" id="Email" placeholder="example@gmail.com" required>
+                <span id="emailSpan">Invalid Email</span>
+                </label>
+                
+                <label for="Message">
+                Message
+                <textarea name="Message" id="Message" required placeholder="Enter your message here..."></textarea>
+                </label>
+            </div>
+            
+            <div id="contactInfo">
+                <h3>How to reach me:</h3>
+                <h4>Email</h4>
+                <p>nikanostovan@gmail.com</p>
+                <h4>Phone Number</h4>
+                <p>(310)-987-2231</p>
+            
+    
+                <div id="buttonWrap" class="buttonWrap">
+                <div class="g-recaptcha" data-sitekey="6LcsvdwpAAAAANF3dMzaR0u2rzFaK1cygq_x969E"></div>
+                <button id="formButton" onclick="submitForm(event)">Lets Talk!</button>
+                </div>
+            </div>
+            </form>
+            
+    
+            </div>
+        </dialog>
+        
+        <main>
+            <dialog class = "notification" id = "messageSuccessDialog" aria-live="assertive" 
+                role="alertdialog" aria-labelledby="SuccessAlert">
+                <div>
+                    <img src="../Assets/Main/Dialog/Success.png">
+                    <h4 id="SuccessAlert">Message sent!</h4>
+                </div>
+                </dialog>
+        
+                <dialog class = "notification" id = "messageFailureDialog" aria-live="assertive" 
+                role="alertdialog" aria-labelledby="FailureAlert">
+                <div>
+                    <img src="../Assets/Main/Dialog/Failure.png">
+                    <h4 id="FailureAlert">Failed! Check logs!</h4>
+                </div>
+            </dialog>
+
+
+            <section id="introduction">
+
+              <h1>Privacy Policy for Nikan Ostovan</h1>
+              <p><strong>Effective date:</strong> 02/02/2001</p>
+              <p>This privacy policy ("Policy") describes how Nikan Ostovan ("I", "me", or "my") collects, protects, and uses the personal data you ("Visitor", "you", or "your") may provide on [yourwebsite.com] ("Website" or "Service") and any of its related products and services (collectively, "Services"). This Policy is a legally binding agreement between you and this Website operator. By accessing and using the Website and Services, you acknowledge that you have read, understood, and agree to be bound by the terms of this Policy. If you are entering into this agreement on behalf of a business or other legal entity, you represent that you have the authority to bind such entity to this agreement, in which case the terms "Visitor", "you", or "your" shall refer to such entity. If you do not have such authority, or if you do not agree with the terms of this agreement, you must not accept this agreement and may not access and use the Website and Services.</p>
+
+              <h2>Collection of personal information</h2>
+              <p>You can visit the Website without telling us who you are or revealing any information by which someone could identify you as a specific, identifiable individual. If, however, you wish to use some of the Website's features, or you wish to receive our newsletter or other information, you will be asked to provide certain Personal Information (for example, your name and e-mail address). We receive and store any information you knowingly provide to us when you fill any online forms on the Website. When required, this information may include the following:</p>
+              <ul>
+                  <li>Personal details such as name, country of residence, etc.</li>
+                  <li>Contact information including email address, phone number, etc.</li>
+                  <li>Any other materials you willingly submit to us such as articles, images, feedback, etc.</li>
+              </ul>
+
+              <h2>Use and processing of collected information</h2>
+              <p>Any of the information we collect from you may be used to personalize your experience; improve our Website; improve customer service and respond to queries and emails of our customers; send notification emails such as password reminders, updates, etc; run and operate our Website and Services. Information collected is not shared with or sold to others except to comply with legal requirements, and to protect and defend the rights or property of [Your Full Name].</p>
+
+              <h2>Privacy of children</h2>
+              <p>The Website and Services are not directed to children under the age of 13. I do not knowingly collect personally identifiable information from children under the age of 13. If you are under the age of 13, you must ask your parent or guardian for permission to use this Website.</p>
+
+              <h2>Cookies</h2>
+              <p>The Website uses "cookies" to help personalize your online experience. A cookie is a text file that is placed on your hard disk by a web page server. Cookies cannot be used to run programs or deliver viruses to your computer. Cookies are uniquely assigned to you, and can only be read by a web server in the domain that issued the cookie to you.</p>
+
+              <h2>Changes and amendments</h2>
+              <p>I reserve the right to modify this Policy or its terms related to the Website and Services at any time, effective upon posting of an updated version of this Policy on the Website. When I do, I will revise the updated date at the top of this page. Continued use of the Website and Services after any such changes shall constitute your consent to such changes.</p>
+
+              <h2>Acceptance of this policy</h2>
+              <p>You acknowledge that you have read this Policy and agree to all its terms and conditions. By accessing and using the Website and Services you agree to be bound by this Policy. If you do not agree to abide by the terms of this Policy, you are not authorized to access or use the Website and Services.</p>
+
+              <h2>Contacting me</h2>
+              <p>If you have any questions about this Policy, please contact me at nikanostovan@gmail.com.</p>
+
+              <p>This document was last updated on 06/16/2024.</p>
+            </section>
+            
+        </main>
+   </body>
+
+
+   <footer>
+    <button id="footerButton" onclick="scrollToTop()" aria-label="scroll to top">
+      <img src="../Assets/Footer/topArrow.png" alt="top arrow" loading="lazy"/>
+    </button>
+
+      <a href = "../" class="logo">
+        <img class="logo lightLogo" src="../Assets/Header/logoLight.avif" alt="nikan logo">
+        <img class="logo darkLogo" src="../Assets/Header/logoDark.avif" alt="nikan logo">
+      </a>
+
+      <ul class="footerLinks">
+        <li>
+          <a href="#introduction">About</a>
+        </li>
+        <li>
+          <a href="">Misson</a>
+        </li>
+        <li>
+          <a href="../Pages/privacy.html">Privacy Policy </a>
+        </li>
+        <li>
+          <a href="../Pages/TOS.html">Terms of Service</a>
+        </li>
+        <li>
+          <a href="#root">Services</a>
+        </li>
+        <li>
+          <a href="#root">Products</a>
+        </li>
+        <li>
+          <a id='contactMeLink' href="#header">Contact Me</a>
+        </li>
+        <li>
+          <a href="../Pages/404.html">Hobby Section</a>
+        </li>
+      </ul>
+
+        <ul class="footerIcon">
+          <li>
+            <a href = 'https://www.linkedin.com/in/nikanostovan/' aria-label="linkedin link" target="_blank">
+              <img src='%PUBLIC_URL%/Assets/Footer/linkedin.svg' alt="linkedin logo" loading="lazy"/> 
+            </a>
+          </li>
+
+          <li>
+            <a href = 'https://github.com/niknak1379/' aria-label="github link" target="_blank">
+              <img src='%PUBLIC_URL%/Assets/Footer/github.svg' alt="github logo" loading="lazy"/> 
+            </a>
+          </li>
+
+          <li>
+            <a href = 'https://www.instagram.com/1he.w4rst/' aria-label="instagram link" target="_blank">
+              <img src='%PUBLIC_URL%/Assets/Footer/instagram.svg' alt="instagram logo" loading="lazy"/> 
+            </a>
+          </li>
+        </ul>
+
+      <h4>MADE WITH REACT BY NIKAN</h4>
+      <small>&copy; Copyright 2024, Nikan Ostovan</small>
+  </footer>
+    
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>

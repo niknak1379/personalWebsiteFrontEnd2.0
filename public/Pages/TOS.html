@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="../Assets/Nikan.svg" />
+    <link rel="stylesheet" href="../Styles/style.css"  type = "text/css" />
+    <link rel="stylesheet" href="../Styles/privacy.css"  type = "text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://www.google.com">
+    <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <script async src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="../Scripts/main.js" defer></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer>
+    </script>
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="../manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Nikan</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <header id = "header">
+      <div class="header">
+        <a href = "../" class="logo">
+          <img class="logo lightLogo" src="../Assets/Header/logoLight.avif" alt="nikan logo">
+          <img class="logo darkLogo" src="../Assets/Header/logoDark.avif" alt="nikan logo">
+        </a>
+        <nav class="mainNav">
+            <ul class="navList">
+              <li>
+                <a href = "../">Home</a>
+              </li>
+              <li>
+                <a href = "../">About Me</a>
+              </li>
+            </ul>
+        </nav>
+  
+        <div class="contactButtonWraper">
+          <input type="checkbox" class="lightModeToggle" id="checkHeader" onclick="toggleTheme(event)" tabindex="0">
+          <label for="checkHeader" class="darkModeLabel" aria-label="Toggle dark mode" aria-pressed="false" tabindex="0">
+              <img src="../Assets/Header/Sun.svg" class=lightToggle alt="sun Icon">
+              <img src="../Assets/Header/Moon.png" class=darkToggle alt="moon Icon">
+              <span class="ball"></span>
+          </label>
+  
+          <button class="contactButton" onclick="openContactMe()">Lets Talk</button>
+        </div>
+  
+        <label class="hamburgerNav" tabindex="0" aria-label="hamburger menu" aria-pressed="false">
+          <input type="checkbox" onclick="openSideBar(event)">
+        </label>
+      </div>
+      <!-- <hr class="headerDivider"></hr> -->
+      <aside class="sidebar disabled">
+        <nav class="mobileNav">
+          <ul class="navList">
+            <li>
+              <a href = "">Home</a>
+            </li>
+            <li>
+              <a href = "">About Me</a>
+            </li>
+          </ul>
+        </nav>
+
+        <hr class="navDivider"></hr>
+
+        <div class="contactButtonWraper">
+
+          <input type="checkbox" class="lightModeToggle" id="check" onclick="toggleTheme(event)">
+          <label for="check" class="darkModeLabel" aria-label="Toggle dark mode" aria-pressed="false" tabindex="0">
+            <img src="../Assets/Header/Sun.svg" class='lightToggle' alt="sun Icon">
+            <img src="../Assets/Header/Moon.png" class='darkToggle' alt="moon Icon">
+            <span class="ball"></span>
+          </label>
+
+          <button class="contactButton" onclick="openContactMe()">Lets Talk</button>
+        </div>
+      </aside>
+    </header>
+
+    <body>
+        <dialog class = "contactMeDialog" id="contactMe" aria-modal="true">
+            <div id="dialogHeader">
+            <a href = "">Nikan.</a>
+            <button id="closeButton" onclick="closeForm()" aria-label="close">X</button>
+            </div>
+            
+
+            <form id="contactMeForm">
+            <div id="inputFields">
+                <label for="Name">
+                Name & Last Name
+                <input name="Name" id="Name" placeholder="John Doe" required>
+                </label>
+                
+                <label for="Email">
+                Email
+                <input type="email" id="Email" placeholder="example@gmail.com" required>
+                <span id="emailSpan">Invalid Email</span>
+                </label>
+                
+                <label for="Message">
+                Message
+                <textarea name="Message" id="Message" required placeholder="Enter your message here..."></textarea>
+                </label>
+            </div>
+            
+            <div id="contactInfo">
+                <h3>How to reach me:</h3>
+                <h4>Email</h4>
+                <p>nikanostovan@gmail.com</p>
+                <h4>Phone Number</h4>
+                <p>(310)-987-2231</p>
+            
+
+                <div id="buttonWrap" class="buttonWrap">
+                <div class="g-recaptcha" data-sitekey="6LcsvdwpAAAAANF3dMzaR0u2rzFaK1cygq_x969E"></div>
+                <button id="formButton" onclick="submitForm(event)">Lets Talk!</button>
+                </div>
+            </div>
+            </form>
+            
+
+            </div>
+        </dialog>
+    
+    <main>
+        <dialog class = "notification" id = "messageSuccessDialog" aria-live="assertive" 
+            role="alertdialog" aria-labelledby="SuccessAlert">
+            <div>
+                <img src="../Assets/Main/Dialog/Success.png">
+                <h4 id="SuccessAlert">Message sent!</h4>
+            </div>
+        </dialog>
+    
+        <dialog class = "notification" id = "messageFailureDialog" aria-live="assertive" 
+            role="alertdialog" aria-labelledby="FailureAlert">
+            <div>
+                <img src="../Assets/Main/Dialog/Failure.png">
+                <h4 id="FailureAlert">Failed! Check logs!</h4>
+            </div>
+        </dialog>
+
+        
+            <section id="introduction">
+                <h1>Terms of Service for Nikan's personal website</h1>
+              <p>Last updated: 06/16/2024</p>
+              <p>Welcome to Nikan's personal website! These terms and conditions outline the rules and regulations for the use of Nikans's Website, located at [YourWebsite.com].</p>
+              <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use Nikan's personal website if you do not agree to take all of the terms and conditions stated on this page.</p>
+
+              <h2>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements:</h2>
+              <ul>
+                  <li><strong>"Client", "You" and "Your"</strong> refers to you, the person log on this website and compliant to the Company’s terms and conditions.</li>
+                  <li><strong>"The Company", "Ourselves", "We", "Our" and "Us"</strong>, refers to our Company.</li>
+                  <li><strong>"Party", "Parties", or "Us"</strong>, refers to both the Client and ourselves.</li>
+              </ul>
+
+              <h2>Cookies</h2>
+              <p>We employ the use of cookies. By accessing Nikan's personal website, you agreed to use cookies in agreement with the Nikans's Privacy Policy.</p>
+
+              <h2>License</h2>
+              <p>Unless otherwise stated, Nikans and/or its licensors own the intellectual property rights for all material on [Your Website]. All intellectual property rights are reserved. You may access this from [Your Website] for your own personal use subjected to restrictions set in these terms and conditions.</p>
+
+              <h2>You must not:</h2>
+              <ul>
+                  <li>Republish material from Nikan's personal website</li>
+                  <li>Sell, rent or sub-license material from Nikan's personal website</li>
+                  <li>Reproduce, duplicate or copy material from Nikan's personal website</li>
+                  <li>Redistribute content from Nikan's personal website</li>
+              </ul>
+
+              <h2>User Comments</h2>
+              <p>This Agreement shall begin on the date hereof. Our Terms and Conditions were created with the help of the [Terms and Conditions Generator].</p>
+
+              <p>Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. [Your Company's Name] does not filter, edit, publish or review Comments prior to their presence on the website. Comments do not reflect the views and opinions of [Your Company's Name],its agents and/or affiliates. Comments reflect the views and opinions of the person who post their views and opinions. To the extent permitted by applicable laws, [Your Company's Name] shall not be liable for the Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website.</p>
+
+              <h2>Hyperlinking to our Content</h2>
+              <p>The following organizations may link to our Website without prior written approval:</p>
+              <ul>
+                  <li>Government agencies;</li>
+                  <li>Search engines;</li>
+                  <li>News organizations;</li>
+                  <li>Online directory distributors may link to our Website in the same manner as they hyperlink to the Websites of other listed businesses; and</li>
+                  <li>System wide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site.</li>
+              </ul>
+
+              <h2>Content Liability</h2>
+              <p>We shall not be hold responsible for any content that appears on your Website. You agree to protect and defend us against all claims that is rising on your Website. No link(s) should appear on any Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.</p>
+
+              <h2>Your Privacy</h2>
+              <p>Please read Privacy Policy</p>
+
+              <h2>Reservation of Rights</h2>
+              <p>We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amen these terms and conditions and it’s linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions.</p>
+
+              <h2>Removal of links from our website</h2>
+              <p>If you find any link on our Website that is offensive for any reason, you are free to contact and inform us any moment. We will consider requests to remove links but we are not obligated to or so or to respond to you directly.</p>
+
+              <p>We do not ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we promise to ensure that the website remains available or that the material on the website is kept up to date.</p>
+
+              <h2>Disclaimer</h2>
+              <p>To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website. Nothing in this disclaimer will:</p>
+              <ul>
+                  <li>Limit or exclude our or your liability for death or personal injury;</li>
+                  <li>Limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li>
+                  <li>Limit any of our or your liabilities in any way that is not permitted under applicable law; or</li>
+                  <li>Exclude any of our or your liabilities that may not be excluded under applicable law.</li>
+              </ul>
+              <p>The limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including liabilities arising in contract, in tort and for breach of statutory duty.</p>
+
+              <p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
+            </section>
+            
+
+        </main>
+   </body>
+
+
+   <footer>
+    <button id="footerButton" onclick="scrollToTop()" aria-label="scroll to top">
+      <img src="../Assets/Footer/topArrow.png" alt="top arrow" loading="lazy"/>
+    </button>
+
+      <a href = "../" class="logo">
+        <img class="logo lightLogo" src="../Assets/Header/logoLight.avif" alt="nikan logo">
+        <img class="logo darkLogo" src="../Assets/Header/logoDark.avif" alt="nikan logo">
+      </a>
+
+      <ul class="footerLinks">
+        <li>
+          <a href="#introduction">About</a>
+        </li>
+        <li>
+          <a href="">Misson</a>
+        </li>
+        <li>
+          <a href="../Pages/privacy.html">Privacy Policy </a>
+        </li>
+        <li>
+          <a href="../Pages/TOS.html">Terms of Service</a>
+        </li>
+        <li>
+          <a href="#root">Services</a>
+        </li>
+        <li>
+          <a href="#root">Products</a>
+        </li>
+        <li>
+          <a id='contactMeLink' href="#header">Contact Me</a>
+        </li>
+        <li>
+          <a href="../Pages/404.html">Hobby Section</a>
+        </li>
+      </ul>
+
+        <ul class="footerIcon">
+          <li>
+            <a href = 'https://www.linkedin.com/in/nikanostovan/' aria-label="linkedin link" target="_blank">
+              <img src='%PUBLIC_URL%/Assets/Footer/linkedin.svg' alt="linkedin logo" loading="lazy"/> 
+            </a>
+          </li>
+
+          <li>
+            <a href = 'https://github.com/niknak1379/' aria-label="github link" target="_blank">
+              <img src='%PUBLIC_URL%/Assets/Footer/github.svg' alt="github logo" loading="lazy"/> 
+            </a>
+          </li>
+
+          <li>
+            <a href = 'https://www.instagram.com/1he.w4rst/' aria-label="instagram link" target="_blank">
+              <img src='%PUBLIC_URL%/Assets/Footer/instagram.svg' alt="instagram logo" loading="lazy"/> 
+            </a>
+          </li>
+        </ul>
+
+      <h4>MADE WITH REACT BY NIKAN</h4>
+      <small>&copy; Copyright 2024, Nikan Ostovan</small>
+  </footer>
+    
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>

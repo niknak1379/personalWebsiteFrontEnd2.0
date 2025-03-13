@@ -1,0 +1,315 @@
+
+:root {
+  --primary-card-color: rgb(76, 71, 82); /* black color */
+  --secondary-card-color: #a855f7; /* purple color */
+  --accent-card-color-transparent: rgba(255, 255, 255, 0.33); /* grey color */
+  --primary-color: #18181b; /* black color */
+  --secondary-color: #a855f7; /* purple color */
+  --accent-color: #71797E; /* grey color */
+  --light-accent-color: white; /* light grey color */
+  --lightMode-color: rgba(211, 117, 22, 0.33);
+  --light-mode-card-color: rgb(208, 190, 204);
+  --viewport-width: 0px;
+}
+.App{
+  /* sets the app portion as flex */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.App > * {
+  /* sets spacing for all direct children of the app */
+  margin-top: 10em;
+}
+
+.App h2 {
+
+  /* sets spacing for headers of current and past project section */
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+
+  font-size: 6.75em;
+  text-align: center;
+}
+
+
+
+.Gallery{
+
+  /* sets the container as flex and row and starts the containing 
+  tags from the left of the page */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  max-width: 1400px;
+
+  /*sets margin and padding for the gallery*/
+  width: 100%;
+
+}
+
+
+.Card{
+  /* styling for the project cards */
+  height: 400px;
+  width: 300px;
+
+  /*sets flex and direction*/
+  display: flex;
+  flex-direction: column;
+
+  /*sets background and border coloring*/
+  border-style: solid;
+  border-color: var(--accent-card-color-transparent);
+  border-radius: 5%;
+  background-color: var(--primary-card-color);
+  font-size: 20px;
+
+  /*this is so it doesnt shrink when theres too many cards horizantlally if its a flex container but it isnt right now
+  so probably will delete this*/
+  flex-shrink: 0;
+  /* overflow set to fix the top part of image being round*/
+  overflow: hidden;
+
+  margin-left: 3vw;
+  margin-right: 3vw;
+}
+
+.Card.lightMode{
+  background-color: var(--light-mode-card-color);
+  border-color: var(--primary-color);
+}
+
+.CardTexts{
+  /*sets the flex settings for the texts and tags of the project card*/
+  padding: 3% 5% 3% 5%;
+
+  display:flex;
+  flex-direction: column;
+
+  flex-grow: 1; /*not sure why this line is here rn*/
+}
+
+.Card .ProjectPic{
+
+  /*makes the picture of the project fit the container*/
+  width: 100%;
+  height: 60%;
+  object-fit: fill;
+}
+
+.Card h3{
+  /* sets the project name settings*/
+  font-size: 1em;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.Card p{
+  /*sets project description settings*/
+  font-size: 0.75em;
+  margin-bottom: 0;
+}
+
+ul.Tags{
+  /*sets the display settings for the tags section of the cards*/
+  display: flex;
+  flex-direction: row;
+  font-size: 0.5em;
+  color: white;
+}
+
+ul.Tags h4 {
+  /* sets settings for text inside of tag*/
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  padding:0;
+  margin:0;
+}
+
+ul.Tags li{
+  /* sets background collor and shadows for the tag*/
+  border-radius: 20px;
+  background-color: var(--secondary-card-color);
+  box-shadow: 0px 5px 5px rgb(64, 58, 58);
+
+  /* spacing and padding between tags and borders */
+  margin: 2%;
+  padding: 1% 3% 1% 3%;
+}
+
+.Icons{
+  /* sets settings for the container of link and github icons */
+  display:flex;
+  flex-direction: row;
+  margin-top: auto; /*pushes icons container to the bottom of the card */
+}
+
+.Icons>*:first-child {
+  /* pushes the icons to the right */
+  margin-left: auto;
+}
+
+.Icons img{
+  /* sets the size of the icons */
+  height: 30px;
+}
+
+.leftNavButton, .rightNavButton{
+  /* sets size and coloring for the left and right buttons of the gallery cards */
+  height:50px;
+  width:50px;
+  /* background-color: rgb(185, 183, 185); */
+  border-radius: 50px;
+
+  /* sets the position of the buttons */
+  display: flex;
+  position: absolute;
+  z-index: 2;
+  transform: translateY(450%);
+
+  /* background-color: var(--primary-color); */
+}
+
+@media (max-width: 600px) {
+  .leftNavButton, .rightNavButton{
+    display: none;
+  }
+}
+
+.leftNavButton{
+  /* sets positioning of the button */
+  left: 2%;
+}
+
+.rightNavButton{
+  /* sets positioning of the button */
+  right: 2%;
+}
+
+.leftNavButton:hover, .rightNavButton:hover{
+  cursor: pointer;
+  background-color: rgb(216, 184, 216);
+}
+.leftNavButton.disabled:hover, .rightNavButton.disabled:hover{
+  cursor: default;
+  background-color: rgb(185, 183, 185);
+}
+.disabled{
+  /* sets the coloring and pointer for hover of the butttons*/
+  background-color: rgb(185, 183, 185);
+  cursor: default;
+}
+
+.buttonBackground{
+  /*sets the background image of the button */
+  object-fit: contain;
+  
+  /* fills the button container*/
+  width: 100%;
+  height:100%;
+}
+
+.App hr{
+  /* sets the margins for the line divding the project card */
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+div.CardTexts ul {
+  padding: 0;
+  gap: 2%;
+}
+
+ul.cardList{
+  /*sets grid and overflow settings for the card showcasing list*/
+  display: grid;
+
+  padding: 30px 0 30px 0;
+
+  grid-template-columns:repeat(4, 1fr);
+  overflow-x: auto;
+  width: calc(100vw - var(--viewport-width));
+  scrollbar-width: none;
+  gap: 15px;
+
+  max-width: 1100px;
+  /* border: solid 2px var(--accent-color);
+  border-radius: 3px; */
+}
+
+@media (min-width: 800px) {
+  ul.cardList{
+    border: solid 2px var(--accent-color);
+    border-radius: 3px;
+  }
+}
+
+ul.cardList::-webkit-scrollbar{
+  width: 0px;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+.ScrollBar{
+  /* scroll bar wrapper */
+
+  display: flex;
+  align-items: center;
+
+  height: 24px;
+  width: 100%;
+  max-width: 1100px;
+  margin-inline: auto;
+
+  margin-top: 2em;
+}
+
+.ScrollTrack{
+
+  /* set display settings for the scroll tracker portion */
+  height: 2px;
+  width: 100%;
+  max-width: 1100px;
+  margin-inline: auto;
+
+  border-radius: 4px;
+
+  position: relative;
+  background-color: var(--accent-color);
+}
+@media (max-width: 700px) {
+  .ScrollTrack{
+    height: 4px;
+  }
+}
+.ScrollTrack:hover{
+
+  /* make larger with hover */
+  height: 4px;
+}
+
+.ScrollThumb{
+  /* set display for the thumb of the scroll bar */
+
+  height: 100%;
+  width: 30%;
+
+  background-color: var(--light-accent-color);
+  border-radius: inherit;
+  position: absolute;
+
+  cursor: grab;
+}
+
+.ScrollThumb.lightMode{
+  background-color: var(--light-mode-card-color);
+}
+
+.ScrollThumb:active{
+  /* change size of bar when grabbed */
+  height: 8px;
+  cursor: grabbing;
+}
+

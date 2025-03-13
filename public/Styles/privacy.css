@@ -1,0 +1,20 @@
+section#introduction{
+    margin: 0 5vw 10vh 5vw;
+}
+body{
+    text-align: left;
+}
+main{
+    margin: 5% 10% 0 10%;
+}
+section{
+    display: inline;
+}
+p {
+    margin: 3vh 0 3vh 0;
+    color: var(--accent-color);
+}
+
+ul{
+    padding: 0;
+}

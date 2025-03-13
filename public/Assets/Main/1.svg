@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 364.43 364.43">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: url(#linear-gradient-2);
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11, .cls-12, .cls-13, .cls-14, .cls-15, .cls-16, .cls-17, .cls-18, .cls-19, .cls-20, .cls-21, .cls-22, .cls-23, .cls-24, .cls-25, .cls-26, .cls-27, .cls-28, .cls-29, .cls-30, .cls-31, .cls-32, .cls-33, .cls-34, .cls-35, .cls-36, .cls-37, .cls-38, .cls-39, .cls-40, .cls-41, .cls-42, .cls-43, .cls-44, .cls-45, .cls-46, .cls-47, .cls-48, .cls-49, .cls-50, .cls-51, .cls-52, .cls-53, .cls-54, .cls-55, .cls-56, .cls-57, .cls-58, .cls-59, .cls-60, .cls-61, .cls-62, .cls-63, .cls-64, .cls-65, .cls-66 {
+        fill: none;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke: url(#linear-gradient-49);
+        stroke-width: .24px;
+      }
+
+      .cls-3 {
+        stroke: url(#linear-gradient-3);
+      }
+
+      .cls-4 {
+        stroke: url(#linear-gradient-38);
+        stroke-width: .1px;
+      }
+
+      .cls-5 {
+        stroke: url(#linear-gradient-28);
+      }
+
+      .cls-6 {
+        stroke: url(#linear-gradient-9);
+      }
+
+      .cls-7 {
+        stroke: url(#linear-gradient-59);
+        stroke-width: .56px;
+      }
+
+      .cls-8 {
+        stroke: url(#linear-gradient-22);
+      }
+
+      .cls-9 {
+        stroke: url(#linear-gradient-43);
+        stroke-width: .15px;
+      }
+
+      .cls-10 {
+        stroke: url(#linear-gradient-19);
+      }
+
+      .cls-11 {
+        stroke: url(#linear-gradient-40);
+        stroke-width: .11px;
+      }
+
+      .cls-12 {
+        stroke: url(#linear-gradient-26);
+      }
+
+      .cls-13 {
+        stroke: url(#linear-gradient-52);
+        stroke-width: .31px;
+      }
+
+      .cls-14 {
+        stroke: url(#linear-gradient-51);
+        stroke-width: .29px;
+      }
+
+      .cls-15 {
+        stroke: url(#linear-gradient-4);
+      }
+
+      .cls-16 {
+        stroke: url(#linear-gradient-6);
+      }
+
+      .cls-17 {
+        stroke: url(#linear-gradient-18);
+      }
+
+      .cls-18 {
+        stroke: url(#linear-gradient-65);
+        stroke-width: .92px;
+      }
+
+      .cls-19 {
+        stroke: url(#linear-gradient-36);
+        stroke-width: .08px;
+      }
+
+      .cls-20 {
+        stroke: url(#linear-gradient-39);
+        stroke-width: .11px;
+      }
+
+      .cls-21 {
+        stroke: url(#linear-gradient-64);
+        stroke-width: .85px;
+      }
+
+      .cls-22 {
+        stroke: url(#linear-gradient-13);
+      }
+
+      .cls-23 {
+        stroke: url(#linear-gradient-29);
+      }
+
+      .cls-24 {
+        stroke: url(#linear-gradient-60);
+        stroke-width: .61px;
+      }
+
+      .cls-25 {
+        stroke: url(#linear-gradient-16);
+      }
+
+      .cls-26 {
+        stroke: url(#linear-gradient-17);
+      }
+
+      .cls-27 {
+        stroke: url(#linear-gradient-47);
+        stroke-width: .21px;
+      }
+
+      .cls-28 {
+        stroke: url(#linear-gradient-50);
+        stroke-width: .26px;
+      }
+
+      .cls-29 {
+        stroke: url(#linear-gradient-30);
+      }
+
+      .cls-30 {
+        stroke: url(#linear-gradient-37);
+        stroke-width: .09px;
+      }
+
+      .cls-31 {
+        stroke: url(#linear-gradient-7);
+      }
+
+      .cls-32 {
+        stroke: url(#linear-gradient-21);
+      }
+
+      .cls-33 {
+        stroke: url(#linear-gradient-12);
+      }
+
+      .cls-34 {
+        stroke: url(#linear-gradient-5);
+      }
+
+      .cls-35 {
+        stroke: url(#linear-gradient-44);
+        stroke-width: .16px;
+      }
+
+      .cls-36 {
+        stroke: url(#linear-gradient-66);
+      }
+
+      .cls-37 {
+        stroke: url(#linear-gradient-32);
+      }
+
+      .cls-38 {
+        stroke: url(#linear-gradient-20);
+      }
+
+      .cls-39 {
+        stroke: url(#linear-gradient-58);
+        stroke-width: .51px;
+      }
+
+      .cls-40 {
+        stroke: url(#linear-gradient-61);
+        stroke-width: .66px;
+      }
+
+      .cls-41 {
+        stroke: url(#linear-gradient-24);
+      }
+
+      .cls-42 {
+        stroke: url(#linear-gradient-33);
+      }
+
+      .cls-43 {
+        stroke: url(#linear-gradient-31);
+      }
+
+      .cls-44 {
+        stroke: url(#linear-gradient);
+      }
+
+      .cls-45 {
+        stroke: url(#linear-gradient-25);
+      }
+
+      .cls-46 {
+        stroke: url(#linear-gradient-53);
+        stroke-width: .34px;
+      }
+
+      .cls-47 {
+        stroke: url(#linear-gradient-62);
+        stroke-width: .72px;
+      }
+
+      .cls-48 {
+        stroke: url(#linear-gradient-42);
+        stroke-width: .14px;
+      }
+
+      .cls-49 {
+        stroke: url(#linear-gradient-48);
+        stroke-width: .22px;
+      }
+
+      .cls-50 {
+        stroke: url(#linear-gradient-45);
+        stroke-width: .17px;
+      }
+
+      .cls-51 {
+        stroke: url(#linear-gradient-27);
+      }
+
+      .cls-52 {
+        stroke: url(#linear-gradient-46);
+        stroke-width: .19px;
+      }
+
+      .cls-53 {
+        stroke: url(#linear-gradient-56);
+        stroke-width: .43px;
+      }
+
+      .cls-54 {
+        stroke: url(#linear-gradient-23);
+      }
+
+      .cls-55 {
+        stroke: url(#linear-gradient-14);
+      }
+
+      .cls-56 {
+        stroke: url(#linear-gradient-55);
+        stroke-width: .4px;
+      }
+
+      .cls-57 {
+        stroke: url(#linear-gradient-57);
+        stroke-width: .47px;
+      }
+
+      .cls-58 {
+        stroke: url(#linear-gradient-11);
+      }
+
+      .cls-59 {
+        stroke: url(#linear-gradient-8);
+      }
+
+      .cls-60 {
+        stroke: url(#linear-gradient-63);
+        stroke-width: .78px;
+      }
+
+      .cls-61 {
+        stroke: url(#linear-gradient-10);
+      }
+
+      .cls-62 {
+        stroke: url(#linear-gradient-35);
+        stroke-width: .08px;
+      }
+
+      .cls-63 {
+        stroke: url(#linear-gradient-15);
+      }
+
+      .cls-64 {
+        stroke: url(#linear-gradient-41);
+        stroke-width: .12px;
+      }
+
+      .cls-65 {
+        stroke: url(#linear-gradient-34);
+        stroke-width: .07px;
+      }
+
+      .cls-66 {
+        stroke: url(#linear-gradient-54);
+        stroke-width: .37px;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(169.57 194.85) rotate(-90) scale(.07)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8660a9"/>
+      <stop offset="1" stop-color="#d0becc"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(168.47 195.95) rotate(-90) scale(.08)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-3" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(167.28 197.15) rotate(-90) scale(.08)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-4" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(165.98 198.45) rotate(-90) scale(.09)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-5" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(164.57 199.86) rotate(-90) scale(.1)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-6" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(163.03 201.39) rotate(-90) scale(.11)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-7" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(161.36 203.06) rotate(-90) scale(.11)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-8" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(159.55 204.87) rotate(-90) scale(.12)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-9" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(157.58 206.84) rotate(-90) scale(.14)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-10" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(155.44 208.99) rotate(-90) scale(.15)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-11" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(153.11 211.31) rotate(-90) scale(.16)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-12" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(150.58 213.84) rotate(-90) scale(.17)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-13" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(147.83 216.6) rotate(-90) scale(.19)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-14" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(144.84 219.58) rotate(-90) scale(.21)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-15" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(141.59 222.83) rotate(-90) scale(.22)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-16" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(138.06 138.06) scale(.24)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-17" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(134.22 134.22) scale(.26)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-18" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(130.05 130.05) scale(.29)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-19" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(125.51 125.51) scale(.31)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-20" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(120.58 120.58) scale(.34)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-21" x1="53.37" y1="182.21" y2="182.21" gradientTransform="translate(115.22 115.22) scale(.37)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-22" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(109.39 109.39) scale(.4)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-23" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(103.06 103.06) scale(.43)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-24" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(96.18 96.18) scale(.47)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-25" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(88.7 88.7) scale(.51)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-26" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(80.57 80.57) scale(.56)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-27" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(71.73 71.73) scale(.61)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-28" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(62.12 62.12) scale(.66)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-29" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(51.68 51.68) scale(.72)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-30" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(40.33 40.33) scale(.78)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-31" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(27.99 27.99) scale(.85)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-32" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="translate(14.58 14.58) scale(.92)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-33" x1="53.37" y1="182.21" x2="311.06" y2="182.21" gradientTransform="matrix(1,0,0,1,0,0)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-34" x1=".66" y1="182.21" x2="363.77" y2="182.21" gradientTransform="translate(182.21 200.09) rotate(-135) scale(.07)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-35" x1=".65" y1="182.21" x2="363.77" y2="182.21" gradientTransform="translate(182.21 201.64) rotate(-135) scale(.08)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-36" x1=".65" y1="182.21" x2="363.78" y2="182.21" gradientTransform="translate(182.21 203.33) rotate(-135) scale(.08)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-37" x1=".64" y1="182.21" x2="363.78" y2="182.21" gradientTransform="translate(182.21 205.17) rotate(-135) scale(.09)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-38" x1=".64" y1="182.21" x2="363.79" y2="182.21" gradientTransform="translate(182.21 207.17) rotate(-135) scale(.1)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-39" x1=".63" y1="182.21" x2="363.79" y2="182.21" gradientTransform="translate(182.21 209.34) rotate(-135) scale(.11)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-40" x1=".63" y1="182.21" x2="363.8" y2="182.21" gradientTransform="translate(182.21 211.7) rotate(-135) scale(.11)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-41" x1=".62" y1="182.21" x2="363.81" y2="182.21" gradientTransform="translate(182.21 214.26) rotate(-135) scale(.12)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-42" x1=".61" y1="182.21" x2="363.81" y2="182.21" gradientTransform="translate(182.21 217.05) rotate(-135) scale(.14)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-43" x1=".6" y1="182.21" x2="363.82" y2="182.21" gradientTransform="translate(182.21 220.08) rotate(-135) scale(.15)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-44" x1=".59" y1="182.21" x2="363.83" y2="182.21" gradientTransform="translate(141.06 182.21) rotate(-45) scale(.16)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-45" x1=".58" y1="182.21" x2="363.84" y2="182.21" gradientTransform="translate(137.48 182.21) rotate(-45) scale(.17)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-46" x1=".57" y1="182.21" x2="363.85" y2="182.21" gradientTransform="translate(133.59 182.21) rotate(-45) scale(.19)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-47" x1=".56" y1="182.21" x2="363.86" y2="182.21" gradientTransform="translate(129.36 182.21) rotate(-45) scale(.21)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-48" x1=".55" y1="182.21" x2="363.88" y2="182.21" gradientTransform="translate(124.76 182.21) rotate(-45) scale(.22)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-49" x1=".54" y1="182.21" x2="363.89" y2="182.21" gradientTransform="translate(119.77 182.21) rotate(-45) scale(.24)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-50" x1=".52" y1="182.21" x2="363.9" y2="182.21" gradientTransform="translate(114.34 182.21) rotate(-45) scale(.26)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-51" x1=".5" y1="182.21" x2="363.92" y2="182.21" gradientTransform="translate(108.44 182.21) rotate(-45) scale(.29)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-52" x1=".49" y1="182.21" x2="363.94" y2="182.21" gradientTransform="translate(102.02 182.21) rotate(-45) scale(.31)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-53" x1=".47" y1="182.21" x2="363.96" y2="182.21" gradientTransform="translate(95.05 182.21) rotate(-45) scale(.34)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-54" x1=".45" y1="182.21" x2="363.98" y2="182.21" gradientTransform="translate(87.47 182.21) rotate(-45) scale(.37)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-55" x1=".42" y1="182.21" x2="364" y2="182.21" gradientTransform="translate(79.23 182.21) rotate(-45) scale(.4)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-56" x1=".4" y1="182.21" x2="364.03" y2="182.21" gradientTransform="translate(70.28 182.21) rotate(-45) scale(.43)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-57" x1=".37" y1="182.21" x2="364.05" y2="182.21" gradientTransform="translate(60.54 182.21) rotate(-45) scale(.47)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-58" x1=".34" y1="182.21" x2="364.08" y2="182.21" gradientTransform="translate(49.96 182.21) rotate(-45) scale(.51)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-59" x1=".31" y1="182.21" x2="364.11" y2="182.21" gradientTransform="translate(182.21 38.46) rotate(45) scale(.56)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-60" x1=".28" y1="182.21" x2="364.15" y2="182.21" gradientTransform="translate(182.21 25.96) rotate(45) scale(.61)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-61" x1=".24" y1="182.21" x2="364.18" y2="182.21" gradientTransform="translate(182.21 12.38) rotate(45) scale(.66)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-62" x1=".2" y1="182.21" x2="364.23" y2="182.21" gradientTransform="translate(182.21 -2.39) rotate(45) scale(.72)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-63" x1=".16" y1="182.21" x2="364.27" y2="182.21" gradientTransform="translate(182.21 -18.45) rotate(45) scale(.78)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-64" x1=".11" y1="182.21" x2="364.32" y2="182.21" gradientTransform="translate(182.21 -35.89) rotate(45) scale(.85)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-65" x1=".06" y1="182.21" x2="364.37" y2="182.21" gradientTransform="translate(182.21 -54.86) rotate(45) scale(.92)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-66" x1="0" y1="182.21" x2="364.43" y2="182.21" gradientTransform="translate(182.21 -75.48) rotate(45)" xlink:href="#linear-gradient"/>
+  </defs>
+  <g>
+    <rect class="cls-44" x="173.31" y="173.31" width="17.81" height="17.81" transform="translate(-51.33 291.12) rotate(-70)"/>
+    <rect class="cls-1" x="172.53" y="172.53" width="19.36" height="19.36" transform="translate(-59.93 270.35) rotate(-65)"/>
+    <rect class="cls-3" x="171.69" y="171.69" width="21.04" height="21.04" transform="translate(-66.69 248.91) rotate(-60)"/>
+    <rect class="cls-15" x="170.78" y="170.78" width="22.87" height="22.87" transform="translate(-71.56 226.96) rotate(-55)"/>
+    <rect class="cls-34" x="169.78" y="169.78" width="24.86" height="24.86" transform="translate(-74.49 204.67) rotate(-50)"/>
+    <rect class="cls-16" x="168.7" y="168.7" width="27.02" height="27.02" transform="translate(-75.48 182.21) rotate(-45)"/>
+    <rect class="cls-31" x="167.53" y="167.53" width="29.37" height="29.37" transform="translate(-74.49 159.75) rotate(-40)"/>
+    <rect class="cls-59" x="166.25" y="166.25" width="31.92" height="31.92" transform="translate(-71.56 137.47) rotate(-35)"/>
+    <rect class="cls-6" x="164.86" y="164.86" width="34.7" height="34.7" transform="translate(-66.69 115.52) rotate(-30)"/>
+    <rect class="cls-61" x="163.35" y="163.35" width="37.72" height="37.72" transform="translate(-59.93 94.08) rotate(-25)"/>
+    <rect class="cls-58" x="161.72" y="161.72" width="41" height="41" transform="translate(-51.33 73.31) rotate(-20)"/>
+    <rect class="cls-33" x="159.93" y="159.93" width="44.56" height="44.56" transform="translate(-40.95 53.37) rotate(-15)"/>
+    <rect class="cls-22" x="158" y="158" width="48.44" height="48.44" transform="translate(-28.87 34.41) rotate(-10)"/>
+    <rect class="cls-55" x="155.89" y="155.89" width="52.65" height="52.65" transform="translate(-15.19 16.57) rotate(-5)"/>
+    <rect class="cls-63" x="153.6" y="153.6" width="57.23" height="57.23"/>
+    <rect class="cls-25" x="151.11" y="151.11" width="62.2" height="62.2" transform="translate(-15.19 347.85) rotate(-85)"/>
+    <rect class="cls-26" x="148.41" y="148.41" width="67.61" height="67.61" transform="translate(-28.87 330.02) rotate(-80)"/>
+    <rect class="cls-17" x="145.47" y="145.47" width="73.49" height="73.49" transform="translate(-40.95 311.06) rotate(-75)"/>
+    <rect class="cls-10" x="142.27" y="142.27" width="79.88" height="79.88" transform="translate(-51.33 291.12) rotate(-70)"/>
+    <rect class="cls-38" x="138.8" y="138.8" width="86.83" height="86.83" transform="translate(-59.93 270.35) rotate(-65)"/>
+    <rect class="cls-32" x="135.03" y="135.03" width="94.38" height="94.38" transform="translate(-66.69 248.91) rotate(-60)"/>
+    <rect class="cls-8" x="130.92" y="130.92" width="102.58" height="102.58" transform="translate(-71.56 226.96) rotate(-55)"/>
+    <rect class="cls-54" x="126.46" y="126.46" width="111.5" height="111.5" transform="translate(-74.49 204.67) rotate(-50)"/>
+    <rect class="cls-41" x="121.61" y="121.61" width="121.2" height="121.2" transform="translate(-75.48 182.21) rotate(-45)"/>
+    <rect class="cls-45" x="116.34" y="116.34" width="131.74" height="131.74" transform="translate(-74.49 159.75) rotate(-40)"/>
+    <rect class="cls-12" x="110.62" y="110.62" width="143.19" height="143.19" transform="translate(-71.56 137.47) rotate(-35)"/>
+    <rect class="cls-51" x="104.39" y="104.39" width="155.64" height="155.64" transform="translate(-66.69 115.52) rotate(-30)"/>
+    <rect class="cls-5" x="97.62" y="97.62" width="169.18" height="169.18" transform="translate(-59.93 94.08) rotate(-25)"/>
+    <rect class="cls-23" x="90.27" y="90.27" width="183.89" height="183.89" transform="translate(-51.33 73.31) rotate(-20)"/>
+    <rect class="cls-29" x="82.27" y="82.27" width="199.88" height="199.88" transform="translate(-40.95 53.37) rotate(-15)"/>
+    <rect class="cls-43" x="73.58" y="73.58" width="217.26" height="217.26" transform="translate(-28.87 34.41) rotate(-10)"/>
+    <rect class="cls-37" x="64.14" y="64.14" width="236.15" height="236.15" transform="translate(-15.19 16.57) rotate(-5)"/>
+    <rect class="cls-42" x="53.87" y="53.87" width="256.69" height="256.69"/>
+  </g>
+  <g>
+    <rect class="cls-65" x="173.31" y="173.31" width="17.81" height="17.81" transform="translate(-69.84 235.79) rotate(-57)"/>
+    <rect class="cls-62" x="172.53" y="172.53" width="19.36" height="19.36" transform="translate(-74.06 209.15) rotate(-51)"/>
+    <rect class="cls-19" x="171.69" y="171.69" width="21.04" height="21.04" transform="translate(-75.48 182.21) rotate(-45)"/>
+    <rect class="cls-30" x="170.78" y="170.78" width="22.87" height="22.87" transform="translate(-74.06 155.28) rotate(-39)"/>
+    <rect class="cls-4" x="169.78" y="169.78" width="24.86" height="24.86" transform="translate(-69.84 128.64) rotate(-33)"/>
+    <rect class="cls-20" x="168.7" y="168.7" width="27.02" height="27.02" transform="translate(-62.86 102.58) rotate(-27)"/>
+    <rect class="cls-11" x="167.53" y="167.53" width="29.37" height="29.37" transform="translate(-53.2 77.4) rotate(-21)"/>
+    <rect class="cls-64" x="166.25" y="166.25" width="31.92" height="31.92" transform="translate(-40.95 53.37) rotate(-15)"/>
+    <rect class="cls-48" x="164.86" y="164.86" width="34.7" height="34.7" transform="translate(-26.26 30.75) rotate(-9)"/>
+    <rect class="cls-9" x="163.35" y="163.35" width="37.72" height="37.72" transform="translate(-9.29 9.79) rotate(-3)"/>
+    <rect class="cls-35" x="161.72" y="161.72" width="41" height="41" transform="translate(-9.29 354.64) rotate(-87)"/>
+    <rect class="cls-50" x="159.93" y="159.93" width="44.56" height="44.56" transform="translate(-26.26 333.68) rotate(-81)"/>
+    <rect class="cls-52" x="158" y="158" width="48.44" height="48.44" transform="translate(-40.95 311.06) rotate(-75)"/>
+    <rect class="cls-27" x="155.89" y="155.89" width="52.65" height="52.65" transform="translate(-53.2 287.02) rotate(-69)"/>
+    <rect class="cls-49" x="153.6" y="153.6" width="57.23" height="57.23" transform="translate(-62.86 261.84) rotate(-63)"/>
+    <rect class="cls-2" x="151.11" y="151.11" width="62.2" height="62.2" transform="translate(-69.84 235.79) rotate(-57)"/>
+    <rect class="cls-28" x="148.41" y="148.41" width="67.61" height="67.61" transform="translate(-74.06 209.15) rotate(-51)"/>
+    <rect class="cls-14" x="145.47" y="145.47" width="73.49" height="73.49" transform="translate(-75.48 182.21) rotate(-45)"/>
+    <rect class="cls-13" x="142.27" y="142.27" width="79.88" height="79.88" transform="translate(-74.06 155.28) rotate(-39)"/>
+    <rect class="cls-46" x="138.8" y="138.8" width="86.83" height="86.83" transform="translate(-69.84 128.64) rotate(-33)"/>
+    <rect class="cls-66" x="135.03" y="135.03" width="94.38" height="94.38" transform="translate(-62.86 102.58) rotate(-27)"/>
+    <rect class="cls-56" x="130.92" y="130.92" width="102.58" height="102.58" transform="translate(-53.2 77.4) rotate(-21)"/>
+    <rect class="cls-53" x="126.46" y="126.46" width="111.5" height="111.5" transform="translate(-40.95 53.37) rotate(-15)"/>
+    <rect class="cls-57" x="121.61" y="121.61" width="121.2" height="121.2" transform="translate(-26.26 30.75) rotate(-9)"/>
+    <rect class="cls-39" x="116.34" y="116.34" width="131.74" height="131.74" transform="translate(-9.29 9.79) rotate(-3)"/>
+    <rect class="cls-7" x="110.62" y="110.62" width="143.19" height="143.19" transform="translate(-9.29 354.64) rotate(-87)"/>
+    <rect class="cls-24" x="104.39" y="104.39" width="155.64" height="155.64" transform="translate(-26.26 333.68) rotate(-81)"/>
+    <rect class="cls-40" x="97.62" y="97.62" width="169.18" height="169.18" transform="translate(-40.95 311.06) rotate(-75)"/>
+    <rect class="cls-47" x="90.27" y="90.27" width="183.89" height="183.89" transform="translate(-53.2 287.02) rotate(-69)"/>
+    <rect class="cls-60" x="82.27" y="82.27" width="199.88" height="199.88" transform="translate(-62.86 261.84) rotate(-63)"/>
+    <rect class="cls-21" x="73.58" y="73.58" width="217.26" height="217.26" transform="translate(-69.84 235.79) rotate(-57)"/>
+    <rect class="cls-18" x="64.14" y="64.14" width="236.15" height="236.15" transform="translate(-74.06 209.15) rotate(-51)"/>
+    <rect class="cls-36" x="53.87" y="53.87" width="256.69" height="256.69" transform="translate(-75.48 182.21) rotate(-45)"/>
+  </g>
+</svg>
