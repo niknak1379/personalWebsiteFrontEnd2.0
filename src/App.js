@@ -3,7 +3,7 @@ import ProjectCard  from './ProjectCard';
 import Gallery from './Gallery';
 import fetch from 'node-fetch';
 import { useEffect } from 'react';
-import { use } from 'react';
+import { useState } from 'react';
 
 /**
  * Component Description: Displays the past and current projects on the website
@@ -13,16 +13,36 @@ import { use } from 'react';
  */
 function App() {
   /* const GalleryDetails1 {
-
+  
   } */
+  
+  const [completedProjects, setcompletedProjects] = useState([])
+  const [incompletedProjects, setincompletedProjects] = useState([])
   useEffect(() => {
     async function getData() {
-      let data = await fetch('http://localhost:8080/ /Complete/ /3')
-      let completed = await data.json()
+      let complete_data = (await fetch('http://localhost:8080/ /Complete/ /3'))
+      let comp = await complete_data.json()
+      let incomp_data = (await fetch('http://localhost:8080/ /In Progress/ /3'))
+      let incomp = await incomp_data.json()
+      setcompletedProjects(comp)
+      setincompletedProjects(incomp)
       
     }
     getData()
-  })
+    console.log('sattes', completedProjects, incompletedProjects)
+  },[])
+  /*
+  { 
+    {
+      "name": "nik",
+      "description": "longs d fs sdj ds ",
+      "status": "Complete",
+      "pictureURL": "pic url",
+      "githubURL": "git url",
+      "deploymentURL": "dep url",
+      "tag": "ALL"
+    }
+  */
   const homeLab = {
     ImgUrl : '/Assets/App/Cards/ProjectPics/homelab.avif',
     ProjectName: 'personal home Lab',
@@ -31,9 +51,6 @@ function App() {
     Link: '',
     Github: '',
   };
-  //list of Jsons containing the project informations to be displayed
-  let pastProjs = [homeLab];
-  let currentProjs = [homeLab];
   
   
   return (
@@ -42,13 +59,14 @@ function App() {
       {/* past projects to be displayed */}
       <section id="pastProjects">
         <h2>Past Projects</h2>
-        <Gallery projects = {pastProjs} parent = "past"/>
+        <Gallery projects = {completedProjects} parent = "past"/>
       </section>
 
       {/* current projects to be displayed */}
       <section id="currentProjects">
         <h2>Current Projects</h2>
-        <Gallery projects = {currentProjs} parent = "current"/>
+        
+        <Gallery projects = {incompletedProjects} parent = "current"/>
       </section>
     </div>
   );

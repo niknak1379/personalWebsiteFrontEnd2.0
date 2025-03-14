@@ -19,34 +19,34 @@ export default function ProjectCard(props) {
     return (
         <li className="Card">
 
-            <img className = "ProjectPic" src={process.env.PUBLIC_URL + props.CardData.ImgUrl} 
-                alt = {props.CardData.ProjectName + ' screen shot'}/> 
+            <img className = "ProjectPic" src={props.CardData.pictureURL} 
+                alt = {props.CardData.name + ' screen shot'}/> 
             <div className='CardTexts'>
 
-                <h3>{props.CardData.ProjectName}</h3>
-                <p>{props.CardData.ProjectDes}</p>
+                <h3>{props.CardData.name}</h3>
+                <p>{props.CardData.description}</p>
                 
                 <hr></hr>
 
                 <ul className='Tags'>
 
-                    {props.CardData.Tags.map(item => (
-                            <li key={item}> 
+            
+                            <li> 
                                 <h4>
-                                    {item} 
+                                    no tags for now
                                 </h4>
                             </li>
-                        ))}
+                        ))
                 </ul>
 
                 <ul className='Icons'>
                     <li>
-                        <a href = {props.CardData.Link} aria-label="website link" target="_blank">
+                        <a href = {props.CardData.deploymentURL} aria-label="website link" target="_blank">
                             <img src={process.env.PUBLIC_URL + '/Assets/App/Cards/Icons/link.png'} alt="link icon"/> 
                         </a>
                     </li>    
                     <li>
-                        <a href = {props.CardData.Github} aria-label="github link" target="_blank">
+                        <a href = {props.CardData.githubURL} aria-label="github link" target="_blank">
                             <img src={process.env.PUBLIC_URL + '/Assets/App/Cards/Icons/github.svg'} alt="github icon"/> 
                         </a>
                     </li>

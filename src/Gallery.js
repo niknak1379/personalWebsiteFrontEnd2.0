@@ -238,10 +238,10 @@ export default function Gallery (props) {
 
             <ul className='cardList' onScroll={DisableButtonOnScrollUpdateThumb} ref={listRef}>
                 {projects.map(item => (
-                    <ProjectCard key={item.ProjectName} CardData = {item} />
+                    <ProjectCard key={item.name} CardData = {item} />
                 ))}
             </ul>
-                    
+                 
             <button className='rightNavButton' onClick={ScrollByButton} ref={rightButtonRef} aria-label='scroll right'>
                 <img src={process.env.PUBLIC_URL + '/Assets/App/Gallery/forwardButton.png'} 
                     alt='right Navigation Button' className='buttonBackground'/> 
