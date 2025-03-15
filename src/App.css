@@ -77,7 +77,7 @@
   margin-right: 3vw;
 }
 
-.Card.lightMode{
+body.lightMode .Card{
   background-color: var(--light-mode-card-color);
   border-color: var(--primary-color);
 }
@@ -303,7 +303,7 @@ ul.cardList::-webkit-scrollbar{
   cursor: grab;
 }
 
-.ScrollThumb.lightMode{
+body.lightMode .ScrollThumb{
   background-color: var(--light-mode-card-color);
 }
 

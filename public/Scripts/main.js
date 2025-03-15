@@ -97,7 +97,7 @@ function scrollToTop() {
      *
      * @function
      */
-function openContactMe() {
+/* function openContactMe() {
 
     //add blur to the background
     let main = document.querySelector('main');
@@ -119,7 +119,7 @@ function openContactMe() {
     //a valid input
     let email = document.getElementById("Email");
     email.addEventListener('focusout', changeEmailCSS);
-}
+} */
 
 /**
      * closes the dialog  containing the form and removes the blur from
@@ -297,7 +297,7 @@ function clearInputFields(){
      * 
      * @param (event) - takes in the click event
      */
-function openSideBar(event) {
+/* function openSideBar(event) {
 
     let sidebar = document.querySelector("aside")
     let background = document.querySelector('main');
@@ -350,7 +350,7 @@ function openSideBar(event) {
             openSideBar(e);
         })
     }
-}
+} */
 
 /**
      * changes the css by adding and removing a lightMode class to change
@@ -360,7 +360,7 @@ function openSideBar(event) {
      * 
      * @param (event) - takes in the click event
      */
-function toggleTheme(event) {
+/* function toggleTheme(event) {
 
     let body = document.body;
     let sideBar = document.body.querySelector('aside');
@@ -427,4 +427,4 @@ function toggleTheme(event) {
             dialogInput[j].classList.remove('lightMode');
         }
     }
-}
+} */

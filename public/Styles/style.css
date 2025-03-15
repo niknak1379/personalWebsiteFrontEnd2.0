@@ -49,7 +49,7 @@ header{
     z-index: 999;
     transition: background var(--theme-change-timing) ease-in;
 }
-header.lightMode{
+body.lightMode header{
     background: white;
     box-shadow: 0px 4px 17px 0px darkgrey;
 }
@@ -100,7 +100,7 @@ a.logo img.logo{
     transition: opacity var(--theme-change-timing) ease-in;
 }
 
-a.logo img.logo.lightMode{
+body.lightMode a.logo img.logo{
     opacity: 0;
 }
 nav.mainNav{
@@ -281,13 +281,13 @@ dialog.contactMeDialog{
     padding: 0;
     z-index: 10000;
 }
-dialog.contactMeDialog.lightMode{
+body.lightMode dialog.contactMeDialog{
     background-color: white;
     color: black;
     border-color: black;
 }
 
-dialog.contactMeDialog.lightMode p{
+body.lightMode dialog.contactMeDialog p{
 
     color: var(--accent-color);
 }
@@ -314,7 +314,7 @@ dialog.contactMeDialog #dialogHeader{
 
     display: flex;
 }
-dialog.contactMeDialog #dialogHeader.lightMode{
+body.lightMode dialog.contactMeDialog #dialogHeader{
     border-bottom: solid black;
 }
 
@@ -333,7 +333,7 @@ dialog.contactMeDialog #dialogHeader #closeButton {
     font-weight: bolder;
     cursor:pointer;
 }
-dialog.contactMeDialog #dialogHeader #closeButton.lightMode {
+body.lightMode dialog.contactMeDialog #dialogHeader #closeButton{
     background-color: white;
     /* background-color: white; */
     color: black;
@@ -389,7 +389,7 @@ dialog.contactMeDialog form label input{
     font-family: "Poppins", sans-serif;
     font-size: 16px;
 }
-dialog.contactMeDialog form label input.lightMode{
+body.lightMode dialog.contactMeDialog form label input{
 
     border-bottom: solid black;
     background-color: white;
@@ -418,7 +418,7 @@ dialog.contactMeDialog form label textarea{
     font-size: 16px;
     font-family: "Poppins", sans-serif;
 }
-dialog.contactMeDialog form label textarea.lightMode{
+body.lightMode dialog.contactMeDialog form label textarea{
     /* text area settings */
     border:solid black;
     background-color: white;
@@ -930,15 +930,15 @@ footer ul.footerIcon img{
         transition: translate var(--animation-timing),  background 1s ease;;
         font-size: 1.75em;
     }
-    aside.sidebar.lightMode{
+    body.lightMode aside.sidebar{
         /* translate: -100%; */
         background-color: white;
         border-color: #18181b;
     }
-    label.hamburgerNav.lightMode:has(input:checked)::before{
+    body.lightMode label.hamburgerNav:has(input:checked)::before{
         background-color: var(--lightMode-color);
     }
-    label.hamburgerNav.lightMode:has(input:checked)::after{
+    body.lightMode label.hamburgerNav:has(input:checked)::after{
         background-color: var(--lightMode-color);
     }
     aside.sidebar.disabled{
