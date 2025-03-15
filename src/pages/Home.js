@@ -48,12 +48,12 @@ export default function Home() {
     <div className="Home">
       <section id="introduction">
 
-        <section class="hero">
-          <div class="heroImgWrapper">
-            <img class="heroSVG" src = {process.env.PUBLIC_URL + `/Assets/Main/1.svg`} alt = "background svg"></img>
-            <img class="heroImg" src = {process.env.PUBLIC_URL + '/Assets/Main/hero.png'} alt = "nikan's image"></img>
+        <section className="hero">
+          <div className="heroImgWrapper">
+            <img className="heroSVG" src = {process.env.PUBLIC_URL + `/Assets/Main/1.svg`} alt = "background svg"></img>
+            <img className="heroImg" src = {process.env.PUBLIC_URL + '/Assets/Main/hero.png'} alt = "nikan's image"></img>
           </div>
-          <div class="heroText">
+          <div className="heroText">
             <h1 id="heroHeader" data-value="Hi! I'm Nikan!!" aria-valuetext="Hi! I'm Nikan!!">s</h1>
             <p id="heroText">Just a recently graduated student trying his best at web-development and design</p>
           </div>

@@ -1,6 +1,6 @@
 window.onload = (event) => {
     let contactMeLink = document.getElementById('contactMeLink');
-    contactMeLink.addEventListener('click', openContactMe);
+    //contactMeLink.addEventListener('click', openContactMe);
     if ('serviceWokrer' in navigator) {
          registerServiceWorker();
     }
@@ -127,7 +127,7 @@ function scrollToTop() {
      *
      * @function
      */
-function closeForm() {
+/* function closeForm() {
 
     //remove the blur from background elements
     let main = document.querySelector('main');
@@ -140,7 +140,7 @@ function closeForm() {
     //close the dialog
     let dialog = document.getElementById("contactMe");
     dialog.close();
-}
+} */
 
 /**
      * handles the submit event of the form and make the requests
@@ -149,7 +149,7 @@ function closeForm() {
      * @function
      * @param {event} [event] - takes in the submit event 
      */
-function submitForm(event) {
+/* function submitForm(event) {
     event.preventDefault();
     
     //check email fields for validity and throw alert if not valid
@@ -209,15 +209,15 @@ function submitForm(event) {
     email.removeEventListener('focsout', changeEmailCSS);
     closeForm();
 }
-
-/**
+ */
+/* *
      * shows a success dialog if passed in 1 or a failure dialog
      * if a 0 is passsed in 
      *
      * @function
      * @param {int} [status] - binary wether the message was successful or not
      */
-function handleMessageResultDialog(status) {
+/* function handleMessageResultDialog(status) {
 
     //get the current dialog
     if (status == 1) {
@@ -237,7 +237,7 @@ function handleMessageResultDialog(status) {
         dialog.classList.remove('hiding');
         dialog.close();
     }, 2900);
-}
+} */
 
 
 /**
@@ -246,7 +246,7 @@ function handleMessageResultDialog(status) {
      *
      * @function
      */
-function changeEmailCSS() {
+/* function changeEmailCSS() {
 
     //check the validity of the email
     let emailField= document.getElementById('Email');
@@ -265,7 +265,7 @@ function changeEmailCSS() {
         emailField.classList.remove('invalid');
         document.getElementById('emailSpan').style.display = 'none';
     }
-}
+} */
 
 /**
      * checks wether the email input string passes the regex test
@@ -273,10 +273,10 @@ function changeEmailCSS() {
      * @function
      * @param {string} [email] - takes in email inputed by the user
      */
-function validateEmail(email) {
+/* function validateEmail(email) {
     var re = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/; 
     return re.test(email);
-}
+} */
 
 
 /**
@@ -284,11 +284,11 @@ function validateEmail(email) {
      *
      * @function
      */
-function clearInputFields(){
+/* function clearInputFields(){
     document.getElementById("Name").value = "";
     document.getElementById("Email").value = "";
     document.getElementById("Message").value = "";
-}  
+}   */
 
 /**
      * opens the side bar containing the nav bar in mobile view

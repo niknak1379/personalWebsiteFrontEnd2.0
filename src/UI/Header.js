@@ -1,5 +1,7 @@
 import { use } from "react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import ContactForm from "./ContactForm";
+
 export default function Header(){
     /**
      * open the contactMe dialog and adds blur className to the background 
@@ -8,20 +10,20 @@ export default function Header(){
      *
      * @function
      */
+    const [isContactMeOpen, setContactMe] = useState(false);
     function openContactMe() {
 
         //add blur to the background
-        let main = document.querySelector('main');
+        let main = document.querySelector('.Home');
         let header = document.querySelector('header');
         let footer = document.querySelector('footer');
         console.log(header, footer)
         footer.classList.add('blur');
         main.classList.add('blur');
-        header.classList.add('blur');
+        //header.classList.add('blur');
 
         //show the dialog
-        let dialog = document.getElementById("contactMe");
-        dialog.show();
+        setContactMe(true)
 
         //add the event listerner for submit to the contactme form
         let form = document.getElementById("contactMeForm");
@@ -127,8 +129,8 @@ export default function Header(){
                 </nav>
         
                 <div className="contactButtonWraper">
-                    <input ref={themeBox} type="checkbox" className="lightModeToggle" id="checkHeader" onClick={toggleTheme} tabindex="0"></input>
-                    <label for="checkHeader" className="darkModeLabel" aria-label="Toggle dark mode" aria-pressed="false" tabindex="0">
+                    <input ref={themeBox} type="checkbox" className="lightModeToggle" id="checkHeader" onClick={toggleTheme} tabIndex="0"></input>
+                    <label htmlFor="checkHeader" className="darkModeLabel" aria-label="Toggle dark mode" aria-pressed="false" tabIndex="0">
                         <img src="Assets/Header/Sun.svg" className='lightToggle' alt="sun Icon"></img>
                         <img src="Assets/Header/Moon.png" className='darkToggle' alt="moon Icon"></img>
                         <span className="ball"></span>
@@ -137,7 +139,7 @@ export default function Header(){
                     <button className="contactButton" onClick={openContactMe}>Lets Talk</button>
                 </div>
         
-                <label className="hamburgerNav" tabindex="0" aria-label="hamburger menu" aria-pressed="false">
+                <label className="hamburgerNav" tabIndex="0" aria-label="hamburger menu" aria-pressed="false">
                     <input ref={checkBox} type="checkbox" onClick={openSideBar}></input>
                 </label>
             </div>
@@ -162,7 +164,7 @@ export default function Header(){
             <div className="contactButtonWraper">
 
                 <input ref={themeBoxMobile} type="checkbox" className="lightModeToggle" id="check" onClick={toggleTheme}></input>
-                <label for="check" className="darkModeLabel" aria-label="Toggle dark mode" aria-pressed="false" tabindex="0">
+                <label htmlFor="check" className="darkModeLabel" aria-label="Toggle dark mode" aria-pressed="false" tabIndex="0">
                     <img src="Assets/Header/Sun.svg" className='lightToggle' alt="sun Icon"></img>
                     <img src="Assets/Header/Moon.png" className='darkToggle' alt="moon Icon"></img>
                     <span className="ball"></span>
@@ -171,6 +173,7 @@ export default function Header(){
                 <button className="contactButton" onClick={openContactMe}>Lets Talk</button>
             </div>
         </aside>
+        <ContactForm IsOpen={isContactMeOpen} setisOpen={setContactMe}/>
      </header>
     );
 }
