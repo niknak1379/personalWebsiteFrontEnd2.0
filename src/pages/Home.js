@@ -2,8 +2,9 @@ import '../App.css';
 import ProjectCard  from '../UI/ProjectCard';
 import Gallery from '../UI/Gallery';
 import fetch from 'node-fetch';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import userEvent from '@testing-library/user-event';
+
 
 /**
  * Component Description: Displays the past and current projects on the website
@@ -16,7 +17,21 @@ export default function Home() {
   
   const [completedProjects, setcompletedProjects] = useState([])
   const [incompletedProjects, setincompletedProjects] = useState([])
+  const h1Ref = useRef(null)
   useEffect(() => {
+    //expected data structure from the server side getProjects API
+    /*
+    { 
+      {
+        "name": "nik",
+        "description": "longs d fs sdj ds ",
+        "status": "Complete",
+        "pictureURL": "pic url",
+        "githubURL": "git url",
+        "deploymentURL": "dep url",
+        "tag": "ALL"
+      }
+    */
     async function getData() {
       let complete_data = (await fetch('http://localhost:8080/ /Complete/ /3'))
       let comp = await complete_data.json()
@@ -27,22 +42,77 @@ export default function Home() {
       
     }
     getData()
-    console.log('sattes', completedProjects, incompletedProjects)
+    animate()
   },[])
-  /*
-  { 
-    {
-      "name": "nik",
-      "description": "longs d fs sdj ds ",
-      "status": "Complete",
-      "pictureURL": "pic url",
-      "githubURL": "git url",
-      "deploymentURL": "dep url",
-      "tag": "ALL"
-    }
-  */
 
+  let i = 0;
+  let started = false;
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toLowerCase();
+  let interval = null;
+
+  /*
+  * animates the H1 header tag with a cool typewriter animation
+  */
+  function animate() {
+    let introText = h1Ref.current;
+
+    started = true;
+    introText.innerHTML = 'Hi! I\'m Nikan!!';
+    typingAdvanced(introText);
+    i = 0;
+    window.addEventListener('scroll', () => {
+        if(isInViewport(introText) && !started) {
+            started = true;
+            typingAdvanced(introText);
   
+        }
+        if (!isInViewport(introText)){
+            started = false;
+            i = 0;
+        }
+    })
+  }
+  /*
+  * detects when the h1 tag is in the view port.
+  * used to knowing when to re run the animation
+  */
+  function isInViewport(element) {
+    var rect = element.getBoundingClientRect();
+    var html = document.documentElement;
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || html.clientHeight) &&
+      rect.right <= (window.innerWidth || html.clientWidth)
+    );
+  }
+  /*
+  * the typewriter logic is in here, using intervals.
+  */
+  function typingAdvanced(targetElement) {  
+    let iteration = 0;
+    console.log('hi');
+    clearInterval(interval);
+    
+    interval = setInterval(() => {
+      targetElement.innerText = targetElement.innerText
+        .split("")
+        .map((letter, index) => {
+          if(index < iteration) {
+            return targetElement.dataset.value[index];
+          }
+        
+          return letters[Math.floor(Math.random() * 26)]
+        })
+        .join("");
+      
+      if(iteration >= targetElement.dataset.value.length){ 
+        clearInterval(interval);
+      }
+      
+      iteration += 1/3;
+    }, 30);
+  }
   
   return (
     <div className="Home">
@@ -54,7 +124,7 @@ export default function Home() {
             <img className="heroImg" src = {process.env.PUBLIC_URL + '/Assets/Main/hero.png'} alt = "nikan's image"></img>
           </div>
           <div className="heroText">
-            <h1 id="heroHeader" data-value="Hi! I'm Nikan!!" aria-valuetext="Hi! I'm Nikan!!">s</h1>
+            <h1 ref={h1Ref} id="heroHeader" data-value="Hi! I'm Nikan!!" aria-valuetext="Hi! I'm Nikan!!">s</h1>
             <p id="heroText">Just a recently graduated student trying his best at web-development and design</p>
           </div>
         </section>

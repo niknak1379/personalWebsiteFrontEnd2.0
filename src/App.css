@@ -18,11 +18,6 @@
   overflow: hidden;
 }
 
-.App > * {
-  /* sets spacing for all direct children of the app */
-  margin-top: 10em;
-}
-
 .App h2 {
 
   /* sets spacing for headers of current and past project section */

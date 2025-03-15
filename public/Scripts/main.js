@@ -10,27 +10,22 @@ window.onload = (event) => {
     }, "1000")
     
 
-    let theme = localStorage.getItem('theme');
+    /* let theme = localStorage.getItem('theme');
     console.log(theme);
     let checkBoxList = document.body.querySelectorAll('.lightModeToggle');
     if (theme === 'light') {
         for (let i = 0; i < checkBoxList.length; i++) {
             checkBoxList[i].checked = false;
-            //console.log(checkBoxList[i].checked);
             checkBoxList[i].click();
-            //console.log(checkBoxList[i].checked);
-            //true is meant to switch into light
-            //false is the default for dark.
         }
     }
     if (theme === 'dark') {
         for (let i = 0; i < checkBoxList.length; i++) {
             checkBoxList[i].checked = true;
-            //console.log(checkBoxList[i].checked);
             checkBoxList[i].click();
-            //console.log(checkBoxList[i].checked);
+            
         }
-    }
+    } */
 
     let footerLogoLink = document.querySelector('footer a.logo');
     let footerLogo = document.querySelector('footer img.logo');

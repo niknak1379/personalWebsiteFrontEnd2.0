@@ -212,7 +212,7 @@ export default function ContactForm(props){
                 </div>
                 </div>
             </form>
-            <dialog ref={successDialogRef} class = "notification" id = "messageSuccessDialog" aria-live="assertive" 
+            <dialog ref={successDialogRef} className = "notification" id = "messageSuccessDialog" aria-live="assertive" 
                 role="alertdialog" aria-labelledby="SuccessAlert">
                 <div>
                 <img src="Assets/Main/Dialog/Success.png"></img>
@@ -220,7 +220,7 @@ export default function ContactForm(props){
                 </div>
             </dialog>
 
-            <dialog ref={failureDialogRef} class = "notification" id = "messageFailureDialog" aria-live="assertive" 
+            <dialog ref={failureDialogRef} className = "notification" id = "messageFailureDialog" aria-live="assertive" 
                 role="alertdialog" aria-labelledby="FailureAlert">
                 <div>
                 <img src="Assets/Main/Dialog/Failure.png"></img>

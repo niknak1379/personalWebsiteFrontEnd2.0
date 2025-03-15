@@ -45,6 +45,7 @@ header{
     position: fixed;
     width: 100%;
     top:0;
+    left: 0;
     opacity: 0.95;
     z-index: 999;
     transition: background var(--theme-change-timing) ease-in;
@@ -100,7 +101,7 @@ a.logo img.logo{
     transition: opacity var(--theme-change-timing) ease-in;
 }
 
-body.lightMode a.logo img.logo{
+body.lightMode a.logo img.darkLogo{
     opacity: 0;
 }
 nav.mainNav{
@@ -493,7 +494,7 @@ dialog.notification {
     position:fixed;
     margin-right:5vw;
     margin-top: 0vh;
-    
+    width: 150px;
     z-index: 10;
 }
 
@@ -539,7 +540,7 @@ body{
     margin: 0;
 }
 hr.navDivider, hr.headerDivider{
-    margin: 0;
+    margin: 0 !important;
 }
 
 
@@ -565,7 +566,6 @@ section section.hero{
     /* max-width: 1200px; */ /* for larger displays */
     flex-direction: row-reverse;
     gap: 5%;
-    margin-top: 4em;
     padding: 3em 5% 5em 5%;
     text-align: left;
     /* background-image: url( '../Assets/Main/Background.svg' );
@@ -573,9 +573,7 @@ section section.hero{
     background-position: bottom center, 50%, 50%; */
 }
 
-/* section section.hero div.heroText {
-    max-width: 620px;
-} */
+
 
 #introduction section.hero p {
     /* styles the introduction paragraph */
@@ -793,7 +791,7 @@ footer ul.footerIcon img{
 
 @media (min-width: 1200px){
     footer, div.header, section.hero {
-        max-width: 1100px;
+        max-width: 1200px;
         margin-inline: auto !important;
     }
     section section.hero{
@@ -836,6 +834,9 @@ footer ul.footerIcon img{
 
 
 @media (max-width: 920px){
+    section section.hero{
+        padding-top: 10em;
+    }
     img.heroImg{
         height: 25vw;
     }
@@ -1004,9 +1005,12 @@ footer ul.footerIcon img{
     body{
         font-size: 12px;
     }
-    /* div.heroImgWrapper{
-        width: 650px;
-    } */
+    h1{
+        width: auto;
+    }
+    section.hero p{
+        width:auto;
+    }
     
 
     /* label.hamburgerNav:has(input:checked) */

@@ -1,8 +1,32 @@
 import { use } from "react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import ContactForm from "./ContactForm";
 
 export default function Header(){
+    const [isContactMeOpen, setContactMe] = useState(false);
+    const themeBox = useRef(null)
+    const themeBoxMobile = useRef(null)
+    //To initialize the theme from LocalStorage
+    useEffect(() => {
+        function initTheme(){
+            let theme = localStorage.getItem('theme')
+            if (theme == null) {
+                localStorage.setItem('theme', 'dark')
+                return
+            }
+            
+            console.log(theme)
+            if (theme === 'light'){
+                
+                themeBox.current.checked = true
+                themeBoxMobile.current.checked = true
+                document.body.classList.add('lightMode')
+            }
+
+        }
+        initTheme()
+        console.log('after init', themeBox.current.checked, themeBoxMobile.current.checked)
+    }, [])
     /**
      * open the contactMe dialog and adds blur className to the background 
      * windows and adds the submit handler to the form, and check Email
@@ -10,7 +34,6 @@ export default function Header(){
      *
      * @function
      */
-    const [isContactMeOpen, setContactMe] = useState(false);
     function openContactMe() {
 
         //add blur to the background
@@ -24,15 +47,6 @@ export default function Header(){
 
         //show the dialog
         setContactMe(true)
-
-        //add the event listerner for submit to the contactme form
-        let form = document.getElementById("contactMeForm");
-        //form.addEventListener('submit', submitForm); #TODO
-
-        //adds the event listener to make sure the email is 
-        //a valid input
-        let email = document.getElementById("Email");
-        //email.addEventListener('focusout', changeEmailCSS); #TODO
     }
 
     const checkBox = useRef(null)
@@ -98,17 +112,23 @@ export default function Header(){
      * 
      * @param (event) - takes in the click event
      */
-    const themeBox = useRef(null)
-    const themeBoxMobile = useRef(null)
-    function toggleTheme(event) {
-        if (themeBox.current.checked || themeBoxMobile.current.checked) {
+    function toggleTheme() {
+        console.log('toggling theme', themeBox.current.checked, themeBoxMobile.current.checked, localStorage.getItem('theme'))
+        if (localStorage.getItem('theme') == 'dark') {
             document.body.classList.add('lightMode')
             localStorage.setItem('theme', 'light')
+            //sync both inputs
+            themeBoxMobile.current.checked = true
+            themeBox.current.checked = true
         }
         else{
             document.body.classList.remove('lightMode')
             localStorage.setItem('theme', 'dark')
+            //sync both inputs
+            themeBoxMobile.current.checked = false
+            themeBox.current.checked = false
         }
+        console.log('toggling theme', themeBox.current.checked, themeBoxMobile.current.checked)
     }
     return (
         <header id = "header">
