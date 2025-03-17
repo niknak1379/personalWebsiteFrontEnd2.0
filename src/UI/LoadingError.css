@@ -1,0 +1,10 @@
+.networkError{
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    margin-inline:auto;
+    padding: 2%;
+    border: solid 1px black;
+    border-radius: 8px;
+    width: 200px;
+}

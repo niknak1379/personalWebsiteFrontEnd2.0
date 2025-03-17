@@ -113,9 +113,10 @@ export default function ContactForm(props){
         });
         //let url = 'http://localhost:8000/sendEmail'; //local url
         let url = 'https://personal-website-six-brown-33.vercel.app/sendEmai'; //vercel url
+        setSendingMessage(true)
         try{
             console.log('tyring to fetch')
-            setSendingMessage(true)
+            
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -135,7 +136,6 @@ export default function ContactForm(props){
             setErrorSendingMessage(true)
             handleMessageResultDialog(0, error)
         }
-        
     }
     /**
      * shows a success dialog if passed in 1 or a failure dialog

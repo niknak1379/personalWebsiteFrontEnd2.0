@@ -1,6 +1,7 @@
 import '../App.css';
 import ProjectCard  from '../UI/ProjectCard';
 import Gallery from '../UI/Gallery';
+import LoadingError from '../UI/LoadingError';
 import fetch from 'node-fetch';
 import { useEffect, useState, useRef } from 'react';
 import userEvent from '@testing-library/user-event';
@@ -17,7 +18,10 @@ export default function Home() {
   
   const [completedProjects, setcompletedProjects] = useState([])
   const [incompletedProjects, setincompletedProjects] = useState([])
+  const [gettingProjects, setGettingProjects] = useState(false)
+  const [projectError, setProjectError] = useState(false)
   const h1Ref = useRef(null)
+  let fetchError = null
   useEffect(() => {
     //expected data structure from the server side getProjects API
     /*
@@ -32,16 +36,25 @@ export default function Home() {
         "tag": "ALL"
       }
     */
+    
     async function getData() {
-      let complete_data = (await fetch('http://localhost:8080/ /Complete/ /3'))
-      let comp = await complete_data.json()
-      let incomp_data = (await fetch('http://localhost:8080/ /In Progress/ /3'))
-      let incomp = await incomp_data.json()
-      setcompletedProjects(comp)
-      setincompletedProjects(incomp)
-      
+      try{
+        let complete_data = (await fetch('http://localhost:8080/ /Complete/ /'))
+        let comp = await complete_data.json()
+        let incomp_data = (await fetch('http://localhost:8080/ /In Progress/ /'))
+        let incomp = await incomp_data.json()
+        setcompletedProjects(comp)
+        setincompletedProjects(incomp)
+      }
+      catch(error){
+        setProjectError(true)
+        fetchError = error
+        console.log(error)
+      }
     }
+    setGettingProjects(true)
     getData()
+    setGettingProjects(false)
     animate()
   },[])
 
@@ -113,7 +126,7 @@ export default function Home() {
       iteration += 1/3;
     }, 30);
   }
-  
+
   return (
     <div className="Home">
       <section id="introduction">
@@ -156,14 +169,17 @@ export default function Home() {
       {/* past projects to be displayed */}
       <section id="pastProjects">
         <h2>Past Projects</h2>
-        <Gallery projects = {completedProjects} parent = "past"/>
+        {gettingProjects && <Gallery projects = {[]} isLoading={true} parent = "past"/>}  
+        {!gettingProjects && !projectError && <Gallery projects = {completedProjects} isLoading={false} parent = "past"/>}
+        {projectError && <LoadingError error={fetchError}/>}
       </section>
 
       {/* current projects to be displayed */}
       <section id="currentProjects">
         <h2>Current Projects</h2>
-        
-        <Gallery projects = {incompletedProjects} parent = "current"/>
+        {gettingProjects && <Gallery projects = {[]} isLoading={true} parent = "current"/>}  
+        {!gettingProjects && <Gallery projects = {incompletedProjects} isLoading={false} parent = "current"/>}
+        {projectError && <LoadingError error={fetchError}/>}
       </section>
     </div>
   );

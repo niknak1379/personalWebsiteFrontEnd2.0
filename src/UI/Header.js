@@ -1,6 +1,7 @@
 import { use } from "react";
 import { useRef, useState, useEffect } from "react";
 import ContactForm from "./ContactForm";
+import { Link } from "react-router";
 
 export default function Header(){
     const [isContactMeOpen, setContactMe] = useState(false);
@@ -171,10 +172,10 @@ export default function Header(){
             <nav className="mobileNav">
             <ul className="navList">
                 <li>
-                <a href = "">Home</a>
+                    <Link to="/">Home</Link>
                 </li>
                 <li>
-                <a href = "">About Me</a>
+                    <Link to="/Projects">Projects</Link>
                 </li>
             </ul>
             </nav>

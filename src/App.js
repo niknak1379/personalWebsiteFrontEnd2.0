@@ -1,6 +1,7 @@
 import './App.css';
 import Home from './pages/Home'
 import Header from './UI/Header';
+import Projects from './pages/Projects';
 import { Route, Routes } from 'react-router';
 import { lazy, Suspense } from 'react';
 
@@ -26,6 +27,13 @@ function App() {
                 <Home />
               </div>
               
+             }/>
+             <Route path="/Projects" element={
+                <div>
+                    <Header />
+                    <Projects />
+                </div>
+                
              }/>
              {/* <Route path="/privacy" element={
                 <div>

@@ -1,6 +1,7 @@
 import { click } from '@testing-library/user-event/dist/click';
 import ProjectCard  from './ProjectCard';
 import React, { useState, useRef, useEffect } from 'react';
+import LoadingPlaceHolder from './LoadingPlaceHodler';
 
 
 /**
@@ -46,21 +47,18 @@ export default function Gallery (props) {
          * @function
          */
         function handleMove(e) {
-
+          console.log('should default the cursor')
           isMouseDownRef.current = false;
-          document.body.style.cursor = "";
+          console.log(isMouseDownRef.current)
           document.body.removeEventListener('mousemove', ScrollUsingThumb);
           document.body.removeEventListener('touchmove', ScrollUsingThumb);
+          document.body.style.cursor = "default";
         }
         function changeListWidth(e){
             const scrollbarWidth = window.innerWidth - document.body.clientWidth;
             //console.log(scrollbarWidth, window.innerWidth, document.body.clientWidth);
             document.body.style.setProperty("--scrollbarWidth", `${scrollbarWidth}px`);
         }
-        /* window.onload = (event) => {
-            /* projList.width = screen.width;
-            console.log(window.innerWidth);
-        } */
         document.body.addEventListener('mouseup', handleMove);
         document.body.addEventListener('touchend', handleMove);
         window.addEventListener('load', changeListWidth);
@@ -68,6 +66,7 @@ export default function Gallery (props) {
         
 
         return () => {
+      
             document.body.removeEventListener('mouseup', handleMove);
             document.body.removeEventListener('touchend', handleMove);
             window.removeEventListener('load', changeListWidth);
@@ -91,12 +90,12 @@ export default function Gallery (props) {
         if (isTouchRef.current == true) {
             e = e.touches[0];
         }
-
+      
         isMouseDownRef.current = true;
         startX.current = e.clientX;
         thumbPosiRef.current = thumb.offsetLeft;
 
-        console.log('touch started');
+      
 
         document.body.addEventListener("mousemove", ScrollUsingThumb);
         document.body.addEventListener('touchmove', ScrollUsingThumb, {passive: false});
@@ -111,7 +110,7 @@ export default function Gallery (props) {
      */
     const ScrollUsingThumb = (e) => {
         e.preventDefault();
-        document.body.style.cursor = "grabbing";
+    
 
         //initializes the references
         let thumb = thumbRef.current;
@@ -127,12 +126,15 @@ export default function Gallery (props) {
         
         //max pixels the thumb is able to move
         let maxThumbPosi = slider.getBoundingClientRect().width - thumb.offsetWidth;
+        //console.log(maxThumbPosi)
 
         //max amount the list is able to be scrolled
         let maxScroll = projList.scrollWidth - projList.clientWidth - 10;
 
-        //if mouse down update ethe position of the thumb and the list
+        
+        //if mouse down update the position of the thumb and the list
         if (isMouseDownRef.current) {
+            document.body.style.cursor = "grabbing";
             //pxs the mosue has moved
             let deltaX = e.clientX - startX.current;
 
@@ -142,6 +144,7 @@ export default function Gallery (props) {
 
             //amount the list will scroll
             let scrollPosi = (boundedPosi/maxThumbPosi) * maxScroll;
+            //console.log(scrollPosi, newThumbPosi)
 
             //change positions of thumb and list
             thumb.style.left = `${boundedPosi}px`;
@@ -170,12 +173,13 @@ export default function Gallery (props) {
 
         // max amount the list will scroll
         let maxScroll = projList.scrollWidth - projList.clientWidth - 10;
+        let maxThumbPosi = slider.getBoundingClientRect().width - thumb.offsetWidth;
 
         //distance of list from the left
         let scrollPosi = projList.scrollLeft;
         
         //calculate the position of the thumb based of amount scrolled and update style
-        let thumbPosi = (scrollPosi/maxScroll) * (slider.clientWidth - thumb.offsetWidth);
+        let thumbPosi = Math.min((scrollPosi/maxScroll) * (slider.clientWidth - thumb.offsetWidth), maxThumbPosi);
         thumb.style.left = `${thumbPosi}px`;
         thumb.setAttribute('aria-valuenow', scrollPosi/maxScroll * 100);
 
@@ -227,7 +231,9 @@ export default function Gallery (props) {
 
         e.preventDefault();
     }
-    
+    console.log(props.isLoading)
+
+
 
     return (
         <div className="Gallery">
@@ -237,8 +243,11 @@ export default function Gallery (props) {
             </button>
 
             <ul className='cardList' onScroll={DisableButtonOnScrollUpdateThumb} ref={listRef}>
-                {projects.map(item => (
+                {!props.isLoading && projects.map(item => (
                     <ProjectCard key={item.name} CardData = {item} />
+                ))}
+                {props.isLoading && [0,1,2].map(i => (
+                    <LoadingPlaceHolder key={i}/>
                 ))}
             </ul>
                  

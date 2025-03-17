@@ -1,0 +1,27 @@
+li.skeletonLoading{
+    animation: skeletonLoading 1s linear infinite alternate;
+}
+li.skeletonLoading h3, li.skeletonLoading p{
+    animation: skeletonLoadingText 1s linear infinite alternate;
+    border-radius: 8px;
+    overflow: hidden;
+}
+@keyframes skeletonLoadingText {
+    0%{
+        background-color: gray;
+        color: gray;
+    }
+    100%{
+        background-color: white;
+        color: white;
+    }
+    
+}
+@keyframes skeletonLoading {
+    0%{
+        filter: grayscale(0%);
+    }  
+    100%{
+        filter: grayscale(100%);
+    }  
+}

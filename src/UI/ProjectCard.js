@@ -28,17 +28,6 @@ export default function ProjectCard(props) {
                 
                 <hr></hr>
 
-                <ul className='Tags'>
-
-            
-                            <li> 
-                                <h4>
-                                    no tags for now
-                                </h4>
-                            </li>
-                        ))
-                </ul>
-
                 <ul className='Icons'>
                     <li>
                         <a href = {props.CardData.deploymentURL} aria-label="website link" target="_blank">
