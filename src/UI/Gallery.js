@@ -2,6 +2,7 @@ import { click } from '@testing-library/user-event/dist/click';
 import ProjectCard  from './ProjectCard';
 import React, { useState, useRef, useEffect } from 'react';
 import LoadingPlaceHolder from './LoadingPlaceHodler';
+import LoadingError from './LoadingError';
 
 
 /**
@@ -231,7 +232,6 @@ export default function Gallery (props) {
 
         e.preventDefault();
     }
-    console.log(props.isLoading)
 
 
 
@@ -243,9 +243,10 @@ export default function Gallery (props) {
             </button>
 
             <ul className='cardList' onScroll={DisableButtonOnScrollUpdateThumb} ref={listRef}>
-                {!props.isLoading && projects.map(item => (
+                {!props.isLoading && !props.error && projects.map(item => (
                     <ProjectCard key={item.name} CardData = {item} />
                 ))}
+                {!props.isLoading && props.error && <LoadingError />}
                 {props.isLoading && [0,1,2].map(i => (
                     <LoadingPlaceHolder key={i}/>
                 ))}

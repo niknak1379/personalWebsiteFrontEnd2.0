@@ -21,7 +21,6 @@ export default function Home() {
   const [gettingProjects, setGettingProjects] = useState(false)
   const [projectError, setProjectError] = useState(false)
   const h1Ref = useRef(null)
-  let fetchError = null
   useEffect(() => {
     //expected data structure from the server side getProjects API
     /*
@@ -39,17 +38,15 @@ export default function Home() {
     
     async function getData() {
       try{
-        let complete_data = (await fetch('http://localhost:8080/ /Complete/ /'))
+        let complete_data = (await fetch('http://localhost:8080/ /Complete/ /4'))
         let comp = await complete_data.json()
-        let incomp_data = (await fetch('http://localhost:8080/ /In Progress/ /'))
+        let incomp_data = (await fetch('http://localhost:8080/ /In Progress/ /4'))
         let incomp = await incomp_data.json()
         setcompletedProjects(comp)
         setincompletedProjects(incomp)
       }
       catch(error){
         setProjectError(true)
-        fetchError = error
-        console.log(error)
       }
     }
     setGettingProjects(true)
@@ -169,17 +166,16 @@ export default function Home() {
       {/* past projects to be displayed */}
       <section id="pastProjects">
         <h2>Past Projects</h2>
-        {gettingProjects && <Gallery projects = {[]} isLoading={true} parent = "past"/>}  
-        {!gettingProjects && !projectError && <Gallery projects = {completedProjects} isLoading={false} parent = "past"/>}
-        {projectError && <LoadingError error={fetchError}/>}
+        {console.log(projectError, 'proj error')}
+        {gettingProjects && <Gallery projects = {[]} isLoading={true} error={projectError} parent = "past"/>}  
+        {!gettingProjects && <Gallery projects = {completedProjects} error={projectError} isLoading={false} parent = "past"/>}
       </section>
 
       {/* current projects to be displayed */}
       <section id="currentProjects">
         <h2>Current Projects</h2>
-        {gettingProjects && <Gallery projects = {[]} isLoading={true} parent = "current"/>}  
-        {!gettingProjects && <Gallery projects = {incompletedProjects} isLoading={false} parent = "current"/>}
-        {projectError && <LoadingError error={fetchError}/>}
+        {gettingProjects && <Gallery projects = {[]} isLoading={true} error={projectError} parent = "current"/>}  
+        {!gettingProjects && <Gallery projects = {incompletedProjects} error={projectError} isLoading={false} parent = "current"/>}
       </section>
     </div>
   );

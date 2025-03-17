@@ -1,10 +1,90 @@
+:root {
+    --primary-card-color: rgb(76, 71, 82); /* black color */
+    --secondary-card-color: #a855f7; /* purple color */
+    --accent-card-color-transparent: rgba(255, 255, 255, 0.33); /* grey color */
+    --primary-color: #18181b; /* black color */
+    --secondary-color: #a855f7; /* purple color */
+    --accent-color: #71797E; /* grey color */
+    --light-accent-color: white; /* light grey color */
+    --lightMode-color: rgba(211, 117, 22, 0.33);
+    --light-mode-card-color: rgb(208, 190, 204);
+    --viewport-width: 0px;
+  }
 .networkError{
-    background-color: aqua;
+    background-color: var(--primary-card-color);
     display: flex;
     flex-direction: column;
     margin-inline:auto;
-    padding: 2%;
-    border: solid 1px black;
-    border-radius: 8px;
-    width: 200px;
+    padding: 5%;
+    
+    width: 300px;
+    height: 400px;
+    /*sets background and border coloring*/
+    border-style: solid;
+    border-color: var(--accent-card-color-transparent);
+    border-radius: 5%;
+    background-color: var(--primary-card-color);
+    font-size: 20px;
+
+    /*this is so it doesnt shrink when theres too many cards horizantlally if its a flex container but it isnt right now
+    so probably will delete this*/
+    flex-shrink: 0;
+    /* overflow set to fix the top part of image being round*/
+    overflow: hidden;
+
+    margin-left: 3vw;
+    margin-right: 3vw;
+
+}
+body.lightMode .networkError{
+    background-color: var(--light-mode-card-color);
+    border-color: var(--primary-color);
+}
+.errorWrapper > img{
+    max-width: 100px;
+    margin-inline: auto;
+    margin-bottom: 2em;
+    background-color: var(--light-mode-card-color);
+    padding: 3em;
+    border-radius: 25%;
+}
+.networkError p{
+    margin-inline: auto;
+
+}
+.errorWrapper{
+    margin:auto 0 auto 0;
+    display: flex;
+    flex-direction: column;
+    padding-inline: 1em;
+    font-size: smaller;
+    gap: 1em;
+}
+.refreshButton{
+    background-color: var(--secondary-card-color);
+    color: white;
+    font-family: "Playfair Display", serif;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    margin-inline: auto;
+    display: flex;
+    text-align: center;
+    padding: 0.5em 1em 0.5em 1em;
+    transition: all 0.3s ease;
+}
+.refreshButton img{
+    width: 30px;
+    height:30px;
+    margin-bottom: 0!important;
+    margin-left: 1em;
+}
+.refreshButton span{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.refreshButton:hover{
+    background-color: var(--light-mode-card-color);
+    scale: 1.1;
+    cursor:pointer;
 }
