@@ -39,7 +39,7 @@ export default function ContactForm(props){
     function closeForm() {
 
         //remove the blur from background elements
-        let main = document.querySelector('.Home');
+        let main = document.querySelector('header + *');
         let header = document.querySelector('header');
         let footer = document.querySelector('footer');
         footer.classList.remove('blur');

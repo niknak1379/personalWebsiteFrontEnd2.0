@@ -38,7 +38,7 @@ export default function Header(){
     function openContactMe() {
 
         //add blur to the background
-        let main = document.querySelector('.Home');
+        let main = document.querySelector('header + *');
         let header = document.querySelector('header');
         let footer = document.querySelector('footer');
         console.log(header, footer)
@@ -140,12 +140,12 @@ export default function Header(){
                 </a>
                 <nav className="mainNav">
                     <ul className="navList">
-                    <li>
-                        <a href = "%PUBLIC_URL%">Home</a>
-                    </li>
-                    <li>
-                        <a href = "%PUBLIC_URL%">About Me</a>
-                    </li>
+                        <li>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/Projects">Projects</Link>
+                        </li>
                     </ul>
                 </nav>
         

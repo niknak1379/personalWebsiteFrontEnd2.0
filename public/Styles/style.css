@@ -24,7 +24,10 @@ body {
     font-family: "Playfair Display", serif; /*idk if this is working or not*/
     transition: background var(--theme-change-timing) ease, color var(--theme-change-timing) ease;;
     /* overflow-x: hidden; */
+    max-width: 1200px;
+    margin-inline: auto;
 }
+
 
 body.lightMode {
     background: white;
@@ -536,9 +539,6 @@ dialog.notification.hiding {
     }
 }
 
-body{
-    margin: 0;
-}
 hr.navDivider, hr.headerDivider{
     margin: 0 !important;
 }

@@ -1,0 +1,156 @@
+:root {
+    --primary-card-color: rgb(76, 71, 82); /* black color */
+    --secondary-card-color: #a855f7; /* purple color */
+    --accent-card-color-transparent: rgba(255, 255, 255, 0.33); /* grey color */
+    --primary-color: #18181b; /* black color */
+    --secondary-color: #a855f7; /* purple color */
+    --accent-color: #71797E; /* grey color */
+    --light-accent-color: white; /* light grey color */
+    --lightMode-color: rgba(211, 117, 22, 0.33);
+    --light-mode-card-color: rgb(208, 190, 204);
+    --viewport-width: 0px;
+  }
+.Home1{
+    display: flex;
+    flex-direction: row;
+    margin-top: 5em;
+    gap: 2em;
+    width: 100%;
+    overflow: visible;
+}
+
+div.Home1 div.projectSidebar{
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    background-color: var(--light-mode-card-color);
+    border-radius: 20px;
+    border: 2px solid var(--accent-color);
+    width: 15%;
+    height: 100vh;
+    position: sticky;
+    top: 100px;
+}
+
+div.Home1 form#searchQuery{
+    display: flex;
+    flex-direction: column;
+}
+
+div.projectSidebar ul{
+    padding: 0;
+    margin-block: 0;
+}
+
+/* calc size is a new feature that does not have poroper support
+revisit in a few months */
+div.projectSidebar .status.unhidden, div.projectSidebar .tags.unhidden{
+    display:block;
+    height: auto;
+    /* height: calc-size(auto, size);
+    transition: display, height;
+    transition-behavior: allow-discrete;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.5s; */
+}
+@starting-style {
+    div.projectSidebar .status.unhidden, div.projectSidebar .tags.unhidden{
+        height:0px;
+    }
+}
+div.projectSidebar .status.hidden, div.projectSidebar .tags.hidden{
+    display:none;
+    /* height: 0px;
+    transition: display, height;
+    transition-duration: 0.5s;
+    transition-behavior: allow-discrete; */
+}
+
+
+
+div.Home1 div.projectSidebarError{
+    color: black;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    padding: 2em;
+    font-size: larger;
+}
+
+
+div.projectSidebar div.sidebarLoading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+    text-align: center;
+    vertical-align: middle;
+    margin:auto 0 auto 0;
+}
+div.projectSidebar div.sidebarLoading > span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0.25em;
+    gap:0.25em;
+    height: 100%;
+}
+div.projectSidebar div.sidebarLoading > span::after,
+div.projectSidebar div.sidebarLoading span span,
+div.projectSidebar div.sidebarLoading > span::before{
+    content: '';
+    display: inline-block;
+    font-weight: bolder;
+    font-size:larger;
+    height: 10px;
+    width: 10px;
+    border-radius: 100%;
+    background-color: var(--primary-color);
+    animation: sidebarLoadingDots 1s ease-in-out infinite alternate;
+}
+div.projectSidebar div.sidebarLoading > span::before{
+    animation-delay: 0.1s;
+}
+div.projectSidebar div.sidebarLoading > span::after{
+    animation-delay: -0.1s;
+}
+
+
+@keyframes sidebarLoadingDots {
+    0%{
+        transform: translate(0, 8px);
+    }
+    33%{
+        transform: translate(0, 0px);
+        background-color: var(--secondary-card-color);
+    }
+    66%{
+        transform: translate(0, 8px);
+    }
+    100%{
+        transform: translate(0, 0px);
+        background-color: var(--accent-color);
+    }
+}
+
+
+div.projectSidebarError > img{
+    width: 150px;
+}
+
+div.Home1 div.Projects{
+    /* height: 1100px; */
+    display: flex;
+    flex-direction: column;
+}
+
+div.Projects ul.projectList{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
+    padding: 0;
+}
+ul.projectList li.Card{
+    margin:0 !important;
+}

@@ -15,7 +15,7 @@
   /* sets the app portion as flex */
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  /* overflow: hidden; */
   width: 100%;
 }
 

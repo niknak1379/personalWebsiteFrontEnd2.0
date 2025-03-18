@@ -17,8 +17,10 @@ window.onload = (event) => {
 
     let heroImgWrapper = document.querySelector('div.heroImgWrapper');
     let heroSVG = document.querySelector('img.heroSVG');
-
-    heroImgWrapper.style.width = `${heroSVG.clientWidth}` + 'px';
+    if(heroImgWrapper != null){
+      heroImgWrapper.style.width = `${heroSVG.clientWidth}` + 'px';
+    }
+    
 };
 
 window.addEventListener('resize' ,() => {
@@ -30,7 +32,9 @@ window.addEventListener('resize' ,() => {
     let heroImgWrapper = document.querySelector('div.heroImgWrapper');
     let heroSVG = document.querySelector('img.heroSVG');
 
-    heroImgWrapper.style.width = `${heroSVG.clientWidth}` + 'px';
+    if(heroImgWrapper != null){
+      heroImgWrapper.style.width = `${heroSVG.clientWidth}` + 'px';
+    }
 })
 
 const registerServiceWorker = async () => {
