@@ -67,7 +67,7 @@ export default function Projects(){
         return (
 
             <li key={item.tag}>
-                <input id={item.tag} name={item.tag} type='checkbox'></input>
+                <input id={item.tag} name={'tag-'+ item.tag} type='checkbox'></input>
                 <label htmlFor={item.tag}> {item.tag} ({item.Frequency})</label>
             </li>
         )
@@ -75,7 +75,7 @@ export default function Projects(){
     const listStatus = statusArr.map(item => {
         return (
             <li key={item.status}>
-                <input id={item.status} name={item.status} type='checkbox'></input>
+                <input id={item.status} name={'status-' + item.status} type='checkbox'></input>
                 <label htmlFor={item.status}> {item.status} ({item.Frequency})</label>
             </li>
         )
@@ -85,10 +85,50 @@ export default function Projects(){
         setIsLoading(true)
         try{
             let data = new FormData(formRef.current)
-            console.log(data)
-            /* let data = await fetch('http://localhost:8080/ / / /10')
-            let projects = await data.json() */
-            setProjArr([])
+            let baseURL = 'http://localhost:8080'
+            let searchQuery = ''
+            let tagQuery = [] //serverside if passed empty Defaults to ALL
+            let statusQuery = [] //if empty serverside Defaults to ALL
+            let numberRequested = 10 //number of entries requeseted, default to 10
+            
+            //process form data
+            for (let x of data.entries()) {
+                if (x[0].includes("status")){
+                    statusQuery.push(x[0].replace('status-', ''))
+                }
+                else if(x[0].includes("tag")){
+                    tagQuery.push(x[0].replace('tag-', ''))
+                }
+                else if(x[0] === "searchBar"){
+                    if (x[1] == ''){
+                        searchQuery = " "
+                    }
+                    else{
+                        searchQuery = x[1]
+                    }
+                }
+            }
+            //post process data
+            if (!tagQuery.length) {
+                tagQuery = " "
+                console.log('tag', tagQuery)
+            }
+            else{
+                tagQuery = tagQuery.join('-')
+            }
+            if (!statusQuery.length){
+                statusQuery = " "
+            }
+            else{
+                statusQuery = statusQuery.join('-')
+            }
+            console.log(tagQuery, statusQuery)
+            let url = [baseURL, searchQuery, statusQuery, tagQuery, numberRequested].join('/')
+            console.log(url)
+            let fetchData = await fetch(url)
+            let projects = await fetchData.json()
+            console.log(projects)
+            setProjArr(projects)
         }
         catch(error){
             setProjError(true)
@@ -200,11 +240,15 @@ export default function Projects(){
                                 <ProjectCard CardData={item} key={item.name}/>
                             )
                         })}
-                        {projectArr.map(item => {
+                        {(projectArr.length != 0) && projectArr.map(item => {
                             return (
                                 <ProjectCard CardData={item} key={item.name}/>
                             )
                         })}
+                        {
+                            (projectArr.length == 0) &&
+                            <span>No entries found!</span>
+                        }
                     </ul>
                 }
                 
