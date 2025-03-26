@@ -10,8 +10,9 @@ export default function ContactForm(props){
     const buttonRef = useRef(null)
     const successDialogRef = useRef(null)
     const failureDialogRef = useRef(null)
-    const [sendingMessage, setSendingMessage] = useState(false)
+    const [sendingMessage, setSendingMessage] = useState(null)
     const [errorSendingMessage, setErrorSendingMessage] = useState(false)
+    const abortControllerRef = useRef(null)
     useEffect(() => {
         if (props.IsOpen){
             dialog.current.show()
@@ -19,16 +20,7 @@ export default function ContactForm(props){
         else{
             dialog.current.close()
         }
-        if (sendingMessage){
-            buttonRef.current.innerText = "Sending Message..."
-        }
-        else{
-            buttonRef.current.innerText = "Message Sent :)"
-        }
-        if (errorSendingMessage) {
-            buttonRef.current.innerText = "Message Failed :("
-        }
-    }, [props.IsOpen, sendingMessage, errorSendingMessage])
+    }, [props.IsOpen])
 
     /**
      * closes the dialog  containing the form and removes the blur from
@@ -113,6 +105,10 @@ export default function ContactForm(props){
         });
         //let url = 'http://localhost:8000/sendEmail'; //local url
         let url = 'https://personal-website-six-brown-33.vercel.app/sendEmai'; //vercel url
+
+        abortControllerRef.current?.abort()
+        abortControllerRef.curret = new AbortController()
+
         setSendingMessage(true)
         try{
             console.log('tyring to fetch')
@@ -130,11 +126,18 @@ export default function ContactForm(props){
             setSendingMessage(false)
             setErrorSendingMessage(false)
             handleMessageResultDialog(1, null)
-            console.log(response, response.ok)
+            buttonRef.current.innerText = 'Message Sent!'
         }
         catch(error){
+            if(error.name === "AbortError"){
+                console.log('too many reqeust, please wait')
+                return
+            }
             setErrorSendingMessage(true)
             handleMessageResultDialog(0, error)
+        }
+        finally{
+            setSendingMessage(false)
         }
     }
     /**
@@ -207,7 +210,17 @@ export default function ContactForm(props){
                     <button ref={buttonRef} id="formButton" className='contactButton' onClick={(e) => {
                         e.preventDefault()
                         submitForm()}} aria-label="Submit contact info">
-                    Lets Talk!
+                    {(sendingMessage == null) && <span>Lets Talk!</span>
+                    }
+                    {sendingMessage &&
+                        <div className='sidebarLoading'>
+                            Loading <span><span></span></span>
+                        </div>}
+                    {errorSendingMessage &&
+                        <span>
+                            Error!!
+                            <img className='formRetry' alt="retry icon" src={process.env.PUBLIC_URL + './Assets/App/Cards/refreshIcon.svg'}></img>
+                        </span>}
                     </button>
                 </div>
                 </div>

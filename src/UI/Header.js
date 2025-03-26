@@ -165,7 +165,7 @@ export default function Header(){
                 </label>
             </div>
 
-        <hr className="headerDivider"></hr>
+        {/* <hr className="headerDivider"></hr> */}
 
 
         <aside className="sidebar disabled">

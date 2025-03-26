@@ -23,18 +23,67 @@ div.Home1 div.projectSidebar{
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
-    background-color: var(--light-mode-card-color);
+    background-color: var(--primary-card-color);
+    color: white;
     border-radius: 20px;
-    border: 2px solid var(--accent-color);
+    border: 3px solid var(--accent-card-color-transparent);
     width: 15%;
     height: 100vh;
     position: sticky;
     top: 100px;
 }
+body.lightMode div.projectSidebar{
+    background-color: var(--light-mode-card-color);
+    border-color: black;
+    color: black;
+}
 
 div.Home1 form#searchQuery{
     display: flex;
     flex-direction: column;
+    gap: 1em;
+    margin: 0.5em;
+}
+
+div.Home1 form#searchQuery button{
+    background-color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 0.95em;
+    border: none;
+    cursor:pointer;
+    border-radius: 5px;
+    padding: 0.25em 0.5em 0.25em 0.5em;
+    box-shadow: 0px 5px 5px rgb(64, 58, 58);
+}
+button.expandButton img{
+    height: 13px;
+    margin-left: auto;
+    filter: invert();
+}
+
+div.Home1 form#searchQuery button.expandButton:has(+ fieldset.hidden) img{
+    transition: transform;
+    transition-duration: 0.3s;
+}
+div.Home1 form#searchQuery button.expandButton:has( + fieldset.unhidden) img{
+    transition: transform;
+    transition-duration: 0.3s;
+    transform: rotate(180deg);
+}
+div.Home1 form#searchQuery input[name='searchBar'] {
+    border: solid;
+    border-radius: 5px;
+    border-color: var(--accent-card-color-transparent);
+}
+body.lightMode form#searchQuery input[name='searchBar'] {
+    border-color: black;
+}
+div.Home1 form#searchQuery fieldset{
+    border: solid;
+    border-radius: 10px;
+    border-color:inherit;
 }
 
 div.projectSidebar ul{
@@ -95,9 +144,9 @@ div.projectSidebar div.sidebarLoading > span{
     gap:0.25em;
     height: 100%;
 }
-div.projectSidebar div.sidebarLoading > span::after,
-div.projectSidebar div.sidebarLoading span span,
-div.projectSidebar div.sidebarLoading > span::before{
+div.sidebarLoading > span::after,
+div.sidebarLoading span span,
+div.sidebarLoading > span::before{
     content: '';
     display: inline-block;
     font-weight: bolder;
@@ -108,10 +157,10 @@ div.projectSidebar div.sidebarLoading > span::before{
     background-color: var(--primary-color);
     animation: sidebarLoadingDots 1s ease-in-out infinite alternate;
 }
-div.projectSidebar div.sidebarLoading > span::before{
+div.sidebarLoading > span::before{
     animation-delay: 0.1s;
 }
-div.projectSidebar div.sidebarLoading > span::after{
+div.sidebarLoading > span::after{
     animation-delay: -0.1s;
 }
 

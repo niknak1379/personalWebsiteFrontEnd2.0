@@ -55,6 +55,7 @@ header{
 }
 body.lightMode header{
     background: white;
+    /* border: black 1px solid; */
     box-shadow: 0px 4px 17px 0px darkgrey;
 }
 div.header {
@@ -165,7 +166,9 @@ div.header > div {
     font-family: "Playfair Display", serif; 
     background-color: var(--secondary-color);
     color:white;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
     /*pushes it to the right edge of the div container*/
     /* margin-left:auto; */
     
@@ -182,7 +185,18 @@ dialog.contactMeDialog .contactButton:hover{
     transform: scale(1.1);
     transform-origin:center;
 }
-
+.contactButton span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+img.formRetry{
+    width: 1.1em;
+    height: 100%;
+    filter:invert();
+    margin-left: 1em;
+    margin-bottom: 0!important;
+}
 
 /* 
 
@@ -542,7 +556,12 @@ dialog.notification.hiding {
 hr.navDivider, hr.headerDivider{
     margin: 0 !important;
 }
-
+header{
+    border-bottom: 2px solid white;
+}
+body.lightMode header{
+    border-color: black;
+}
 
 
 /* 

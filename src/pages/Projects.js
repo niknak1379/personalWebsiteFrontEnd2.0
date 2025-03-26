@@ -17,6 +17,7 @@ export default function Projects(){
     const tagsDropDownRef = useRef(null)
     const statusDropDownRef = useRef(null)
     const formRef = useRef(null)
+    const abortControllerRef = useRef(null)
     useEffect(() => {
         async function fetchTags(){
             setSideBarLoading(true)
@@ -82,6 +83,9 @@ export default function Projects(){
     })
 
     async function fetchSearchQuery(){
+        //check for duplicate requests
+        abortControllerRef.current?.abort()
+        abortControllerRef.current = new AbortController()
         setIsLoading(true)
         try{
             let data = new FormData(formRef.current)
@@ -90,6 +94,7 @@ export default function Projects(){
             let tagQuery = [] //serverside if passed empty Defaults to ALL
             let statusQuery = [] //if empty serverside Defaults to ALL
             let numberRequested = 10 //number of entries requeseted, default to 10
+            
             
             //process form data
             for (let x of data.entries()) {
@@ -125,12 +130,17 @@ export default function Projects(){
             console.log(tagQuery, statusQuery)
             let url = [baseURL, searchQuery, statusQuery, tagQuery, numberRequested].join('/')
             console.log(url)
-            let fetchData = await fetch(url)
+            let fetchData = await fetch(url, {signal: abortControllerRef?.current.signal})
             let projects = await fetchData.json()
             console.log(projects)
             setProjArr(projects)
         }
         catch(error){
+            if(error.name === "AbortError"){
+                console.log('too many reqeuests at once, request aborted')
+                console.log(error)
+                return
+            }
             setProjError(true)
         }
         finally{
@@ -146,7 +156,7 @@ export default function Projects(){
                     {!sideBarLaoding && <form ref={formRef} id='searchQuery'>
                         <label htmlFor='searchBar'>Search:</label>
                         <input name='searchBar'></input>
-                        <button onClick={(e) =>{
+                        <button className='expandButton' onClick={(e) =>{
                             e.preventDefault()
                             if (tagsDropDownRef.current.classList.contains('hidden')){
                                 tagsDropDownRef.current.classList.remove('hidden')
@@ -156,19 +166,19 @@ export default function Projects(){
                                 tagsDropDownRef.current.classList.add('hidden')
                                 tagsDropDownRef.current.classList.remove('unhidden')
                             }
-                        }}>Tags
-
+                        }}>
+                            Tags
+                            <img alt='down icon' src={process.env.PUBLIC_URL + './Assets/App/Cards/down.svg'}></img>
                         </button>
 
-                            <fieldset ref={tagsDropDownRef} className='tags hidden'>
-                                <legend>Project Tags</legend>
-                                <ul >
-                                <li></li>
+                        <fieldset ref={tagsDropDownRef} className='tags hidden'>
+                            <legend>Project Tags</legend>
+                            <ul>
                                 {listTags}
                             </ul>
-                            </fieldset>
+                        </fieldset>
                             
-                        <button onClick={(e) =>{
+                        <button className='expandButton' onClick={(e) =>{
                             e.preventDefault()
                             if (statusDropDownRef.current.classList.contains('hidden')){
                                 statusDropDownRef.current.classList.remove('hidden')
@@ -178,7 +188,10 @@ export default function Projects(){
                                 statusDropDownRef.current.classList.add('hidden')
                                 statusDropDownRef.current.classList.remove('unhidden')
                             }
-                        }}>status</button>
+                        }}>
+                            Status
+                            <img alt='down icon' src={process.env.PUBLIC_URL + './Assets/App/Cards/down.svg'}></img>
+                            </button>
                         <fieldset ref={statusDropDownRef} className='status hidden'>
                             <legend>Project Status</legend>
                             <ul>
@@ -190,7 +203,7 @@ export default function Projects(){
                             e.preventDefault()
                             fetchSearchQuery()
                             }}>
-                            Search</button>
+                            Continue</button>
                     </form>}
                     {sideBarLaoding &&
                         <div className='sidebarLoading'>
