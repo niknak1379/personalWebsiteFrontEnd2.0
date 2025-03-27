@@ -125,7 +125,7 @@ export default function Home() {
   }
 
   return (
-    <div className="Home">
+    <div className="Home Background">
       <section id="introduction">
 
         <section className="hero">

@@ -61,9 +61,9 @@ export default function Header(){
     function openSideBar() {
 
         let sidebar = document.querySelector("aside")
-        let background = document.querySelector('.Home');
+        let background = document.querySelector('.Background');
         let footer = document.querySelector('footer');
-        console.log('initial', checkBox.current.checked, background)
+        //console.log('initial', checkBox.current.checked, background)
         //if hamburger menu pressed open side bar
         if (checkBox.current.checked == true) {
             //enable the sidebar
@@ -80,11 +80,11 @@ export default function Header(){
             //add click listener to the background to close the menu
             background.addEventListener('click', () => {
                 checkBox.current.checked = false;
-                console.log('from listener to close on menu', checkBox.current.checked)
+                //console.log('from listener to close on menu', checkBox.current.checked)
                 openSideBar();
             })
             footer.addEventListener('click', () => {
-                console.log('from listener to close on footer', checkBox.current.checked)
+                //console.log('from listener to close on footer', checkBox.current.checked)
                 checkBox.current.checked = false;
                 openSideBar();
             })
@@ -114,7 +114,7 @@ export default function Header(){
      * @param (event) - takes in the click event
      */
     function toggleTheme() {
-        console.log('toggling theme', themeBox.current.checked, themeBoxMobile.current.checked, localStorage.getItem('theme'))
+        //console.log('toggling theme', themeBox.current.checked, themeBoxMobile.current.checked, localStorage.getItem('theme'))
         if (localStorage.getItem('theme') == 'dark') {
             document.body.classList.add('lightMode')
             localStorage.setItem('theme', 'light')
@@ -129,7 +129,7 @@ export default function Header(){
             themeBoxMobile.current.checked = false
             themeBox.current.checked = false
         }
-        console.log('toggling theme', themeBox.current.checked, themeBoxMobile.current.checked)
+        //console.log('toggling theme', themeBox.current.checked, themeBoxMobile.current.checked)
     }
     return (
         <header id = "header">

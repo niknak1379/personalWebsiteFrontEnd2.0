@@ -1,3 +1,5 @@
+import { useState } from "react";
+import ProjectDetailPage from "../pages/ProjectDetailPage";
 /**
  * Component Description: displays the details and images of the project
  *
@@ -16,14 +18,20 @@
  */
 
 export default function ProjectCard(props) {
+    const [projecdtDetailPageModal, setProjectDetailPage] = useState(false)
     return (
         <li className="Card">
-
+            {projecdtDetailPageModal && <ProjectDetailPage DialogStatus={projecdtDetailPageModal}
+            DialogStatusFunc={setProjectDetailPage} CardData={props.CardData}/>}
             <img className = "ProjectPic" src={props.CardData.pictureURL} 
                 alt = {props.CardData.name + ' screen shot'}/> 
             <div className='CardTexts'>
 
-                <h3>{props.CardData.name}</h3>
+                <h3 onClick={() => {
+                    if(!projecdtDetailPageModal) {
+                        setProjectDetailPage(true)
+                    }
+                }}>{props.CardData.name}</h3>
                 <p>{props.CardData.description}</p>
                 
                 <hr></hr>

@@ -149,7 +149,7 @@ export default function Projects(){
     }
 
     return (
-        <div className="Home1">
+        <div className="Home1 Background">
 
             {!error &&
                 <div className='projectSidebar'>

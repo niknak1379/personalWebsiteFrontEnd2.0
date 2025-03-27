@@ -46,16 +46,18 @@
 
 }
 
-
-.Card{
-  /* styling for the project cards */
+.Gallery .Card{
   height: 400px;
   width: 300px;
+}
+.Card{
+  /* styling for the project cards */
+  flex-basis: 300px;
 
   /*sets flex and direction*/
   display: flex;
   flex-direction: column;
-
+  
   /*sets background and border coloring*/
   border-style: solid;
   border-color: var(--accent-card-color-transparent);
@@ -65,7 +67,8 @@
 
   /*this is so it doesnt shrink when theres too many cards horizantlally if its a flex container but it isnt right now
   so probably will delete this*/
-  flex-shrink: 0;
+  flex-shrink: 1;
+  flex-grow: 0;
   /* overflow set to fix the top part of image being round*/
   overflow: hidden;
 
@@ -101,6 +104,10 @@ body.lightMode .Card{
   font-size: 1em;
   margin-bottom: 0;
   margin-top: 0;
+}
+.Card h3:hover{
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .Card p{
@@ -220,7 +227,7 @@ div.CardTexts ul {
 ul.cardList{
   /*sets grid and overflow settings for the card showcasing list*/
   display: grid;
-
+  
   padding: 30px 0 30px 0;
 
   grid-template-columns:repeat(4, 1fr);

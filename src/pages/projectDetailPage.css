@@ -1,0 +1,19 @@
+dialog.projectDetailPage{
+    height: 90%;
+    width: 90%;
+}
+div.dialogWrapper{
+    height: 100%;
+}
+div.imgCarousel{
+    position: relative;
+    height: 50%;
+}
+div.imgCarousel img{
+    position: absolute;
+    height: 100%;
+}
+
+dialog.projectDetailPage h2{
+    font-size: medium;
+}

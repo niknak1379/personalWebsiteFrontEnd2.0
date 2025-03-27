@@ -13,21 +13,37 @@
 .Home1{
     display: flex;
     flex-direction: row;
+    flex-wrap: nowrap;
     margin-top: 5em;
-    gap: 2em;
-    width: 100%;
+    margin-inline: 1em;
+    gap: 1em;
+    width: auto;
     overflow: visible;
+}
+@media(max-width: 725px){
+    .Home1{
+        flex-direction: column;
+    }
+    .Home1 div.projectSidebar{
+        position: static !important;
+        height: auto !important;
+        width: 50%;
+        padding: 1em;
+        margin-inline: auto;
+    }
+    .Home1 h1{
+        margin-inline: auto;
+    }
 }
 
 div.Home1 div.projectSidebar{
     display: flex;
     flex-direction: column;
-    flex-shrink: 0;
+    flex: 0 0 100px;
     background-color: var(--primary-card-color);
     color: white;
     border-radius: 20px;
     border: 3px solid var(--accent-card-color-transparent);
-    width: 15%;
     height: 100vh;
     position: sticky;
     top: 100px;
@@ -199,6 +215,7 @@ div.Projects ul.projectList{
     flex-wrap: wrap;
     gap: 1em;
     padding: 0;
+    justify-content:space-around;
 }
 ul.projectList li.Card{
     margin:0 !important;
