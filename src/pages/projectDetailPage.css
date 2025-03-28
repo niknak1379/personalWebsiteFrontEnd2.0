@@ -1,19 +1,262 @@
+:root {
+    --primary-card-color: rgb(76, 71, 82); /* black color */
+    --secondary-card-color: #a855f7; /* purple color */
+    --accent-card-color-transparent: rgba(255, 255, 255, 0.33); /* grey color */
+    --primary-color: #18181b; /* black color */
+    --secondary-color: #a855f7; /* purple color */
+    --accent-color: #71797E; /* grey color */
+    --light-accent-color: white; /* light grey color */
+    --lightMode-color: rgba(211, 117, 22, 0.33);
+    --light-mode-card-color: rgb(208, 190, 204);
+    --viewport-width: 0px;
+  }
 dialog.projectDetailPage{
-    height: 90%;
+/*     height: 90vh; */
     width: 90%;
+    max-width: 1100px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid white;
+    color: white;
+    border-radius: 10px;
+    background-color: var(--primary-card-color);
+}
+dialog.projectDetailPage::backdrop{
+    backdrop-filter: blur(10px);
+    
+}
+body.lightMode dialog.projectDetailPage{
+    border-color: black;
+    background-color: var(--light-mode-card-color);
+    color: black;
+}
+div.projectButtonWrapper{
+    display: flex;
+    flex-direction: row;
+    height: 2em;
+    line-height: 2em;
+    flex-shrink: 0;
+    width: 100%;
+    border-bottom: 4px solid;
+}
+div.projectButtonWrapper button{
+    margin-left: auto;
+    margin-right: 1em;
+    padding-left: 1em;
+    padding-right: 0;
+    border: none;
+    border-left: 4px solid;
+    background-color: inherit;
+    font-weight: bolder;
+    font-size: large;
+    color: inherit;
+    cursor: pointer;
+}
+div.projectButtonWrapper span{
+    margin-left: 1em;
 }
 div.dialogWrapper{
-    height: 100%;
+    height: calc(100% - 5em);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1em;
+    gap:1em;
+}
+@media (max-width: 850px) {
+    div.dialogWrapper{
+        flex-direction: column;
+        align-items: center;
+    }
+    div.imgCarousel{
+        width: 100% !important;
+    }
+    div.textDetails{
+        min-width: calc(100% - 2em) !important;
+    }
+    ul.linksList{
+        font-size: small;
+    }
+    ul.tagsList{
+        gap: 0.1em !important;
+    }
 }
 div.imgCarousel{
+    display: flex;
+    flex-direction: column;
     position: relative;
-    height: 50%;
+    min-height: 50%;
+    width: 50%;
+    border: 4px solid;
+    border-radius: 10px;
+    overflow: hidden;
 }
-div.imgCarousel img{
+div.imgCarousel >img:first-child{
+    position:  relative !important;
+}
+div.imgCarousel > img{
     position: absolute;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    top: 0;
+    left: 0;
+    height: 80%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+div.imgCarousel > img.visible{
+    transition: opacity 0.3s;
+    opacity: 1;
+}
+div.imgCarousel ul.imgPreview{
+    overflow-x: scroll;
+    overflow-y:hidden;
+    display: flex;
+    flex-direction: row;
+    height: 20%;
+    width: 100%;
+    border-top: 2px solid;
+    padding-left: 0;
+}
+div.imgCarousel ul.imgPreview li{
+    flex: 0 0 25%;
+    border-right: 2px solid;
+}
+div.imgCarousel ul.imgPreview li:last-child{
+    border-right: none;
+}
+div.imgCarousel ul.imgPreview img{
     height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+div.imgCarousel ul.imgPreview img:hover{
+    transition: transform 0.3s;
+    transform: scale(1.1)
+}
+div.imgCarousel ul.imgPreview li:first-child img{
+    border-bottom-left-radius: 8px;
+}
+div.imgCarousel ul.imgPreview li:last-child img{
+    border-bottom-right-radius: 8px;
 }
 
-dialog.projectDetailPage h2{
+div.textDetails {
+    max-width: 50%;
+    border: 4px solid;
+    border-radius: 10px;
+    background-color: var(--light-mode-card-color);
+    color: black;
+    border-color: white;
+    min-height: 100%;
+    padding: 1em;
+}
+body.lightMode div.textDetails{
+    color: white;
+    background-color: var(--primary-card-color);
+    border-color: black;
+}
+div.textDetails h1{
+    margin: 0;
+}
+div.textDetails span{
+    display: flex;
+}
+div.textDetails h2{
     font-size: medium;
+    padding: 0.25em;
+    height: 1.25em;
+    line-height: 1.25em;
+    flex-grow: 0;
+    margin-right: auto;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: white;
+    background-color: var(--secondary-color);
+}
+body.lightMode div.textDetails h2{
+    border-color: white;
+}
+div.textDetails p{
+    font-size: medium;
+    margin: 0;
+}
+div.tagAndLinkWrapper{
+    background-color: var(--light-mode-card-color);
+    border: solid 4px white;
+    color: black;
+    border-radius: 10px;
+    padding: 1em;
+    margin: 1em;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1em;
+}
+body.lightMode div.tagAndLinkWrapper{
+    color: white;
+    border-color: black;
+    background-color: var(--primary-card-color);
+}
+div.tagAndLinkWrapper ul{
+    padding: 0;
+}
+div.tagAndLinkWrapper ul.tagsList{
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 0;
+    gap: 1em;
+    flex-wrap: wrap;
+}
+div.tagAndLinkWrapper ul.tagsList li{
+    font-size: medium;
+    padding: 0.25em;
+    border: 1px solid black;
+    height: 1.25em;
+    line-height: 1.25em;
+    margin-right: auto;
+    border-radius: 10px;
+    color: white;
+    background-color: var(--secondary-color);
+}
+body.lightMode div.tagAndLinkWrapper ul.tagsList li{
+    border-color: white;
+}
+
+div.tagAndLinkWrapper ul.linksList{
+    background-color: var(--primary-card-color);
+    border: solid 4px white;
+    border-radius: 10px;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap:0.25em;
+    color: white;
+}
+body.lightMode div.tagAndLinkWrapper ul.linksList{
+    background-color: var(--light-mode-card-color);
+    border-color: black;
+    color: black;
+}
+div.tagAndLinkWrapper ul.linksList li{
+    display: flex;
+    height: calc(34px + 0.4em);
+    line-height: calc(34px + 0.4em)
+}
+div.tagAndLinkWrapper ul.linksList img{
+    height: 30px;
+    width: 30px;
+    background-color: var(--primary-color);
+    border: solid 2px white;
+    border-radius: 30px;
+    padding: 0.2em;
+    color: black;
+}
+ul.linksList a{
+    margin-left: auto;
 }

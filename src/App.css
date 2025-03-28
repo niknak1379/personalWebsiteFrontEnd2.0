@@ -19,7 +19,7 @@
   width: 100%;
 }
 
-.App h2 {
+.App .Home h2 {
 
   /* sets spacing for headers of current and past project section */
   margin-top: 3rem;
