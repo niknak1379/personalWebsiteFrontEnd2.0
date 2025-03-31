@@ -14,7 +14,9 @@ export default function ContactForm(props){
     const [errorSendingMessage, setErrorSendingMessage] = useState(false)
     const abortControllerRef = useRef(null)
     useEffect(() => {
+        console.log(props.IsOpen)
         if (props.IsOpen){
+            console.log('is open')
             dialog.current.show()
         }
         else{

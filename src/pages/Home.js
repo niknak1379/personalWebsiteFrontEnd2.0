@@ -166,7 +166,6 @@ export default function Home() {
       {/* past projects to be displayed */}
       <section id="pastProjects">
         <h2>Past Projects</h2>
-        {console.log(projectError, 'proj error')}
         {gettingProjects && <Gallery projects = {[]} isLoading={true} error={projectError} parent = "past"/>}  
         {!gettingProjects && <Gallery projects = {completedProjects} error={projectError} isLoading={false} parent = "past"/>}
       </section>

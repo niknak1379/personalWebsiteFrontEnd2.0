@@ -1,4 +1,6 @@
 li.skeletonLoading{
+    height: 400px;
+    width: 300px;
     animation: skeletonLoading 1s linear infinite alternate;
 }
 li.skeletonLoading h3, li.skeletonLoading p{

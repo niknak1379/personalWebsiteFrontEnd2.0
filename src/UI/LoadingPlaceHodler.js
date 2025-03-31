@@ -4,12 +4,13 @@ export default function LoadingPlaceHolder(){
     return (
         <li className="Card skeletonLoading">
 
-            <img className = "ProjectPic" src={process.env.PUBLIC_URL + 'Assets/App/Cards/ProjectPics/placeholder.avif'} 
+            <img className = "ProjectPicLoader" src={process.env.PUBLIC_URL + 'Assets/App/Cards/ProjectPics/placeholder.avif'} 
                 alt = 'Place holder picture'/> 
             <div className='CardTexts'>
 
                 <h3>placeholder</h3>
-                <p>place holder<br></br>hh</p>
+                <p>place holder<br></br>hh<br></br>hh
+                <br></br>hh</p>
                 
                 <hr></hr>
 

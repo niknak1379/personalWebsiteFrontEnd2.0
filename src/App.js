@@ -4,6 +4,7 @@ import Header from './UI/Header';
 import Projects from './pages/Projects';
 import { Route, Routes } from 'react-router';
 import { lazy, Suspense } from 'react';
+import Footer from './UI/Footer';
 
 /**
  * Component Description: Displays the past and current projects on the website
@@ -25,13 +26,15 @@ function App() {
               <div>
                 <Header />
                 <Home />
+                <Footer />
               </div>
               
              }/>
              <Route path="/Projects" element={
                 <div>
-                    <Header />
-                    <Projects />
+                  <Header />
+                  <Projects />
+                  <Footer />
                 </div>
                 
              }/>

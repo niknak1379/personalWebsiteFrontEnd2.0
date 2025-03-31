@@ -9,7 +9,7 @@ window.onload = (event) => {
         document.documentElement.style.setProperty('--theme-change-timing', '0.5s');
     }, "1000")
     
-
+/* 
     let footerLogoLink = document.querySelector('footer a.logo');
     let footerLogo = document.querySelector('footer img.logo');
 
@@ -19,10 +19,10 @@ window.onload = (event) => {
     let heroSVG = document.querySelector('img.heroSVG');
     if(heroImgWrapper != null){
       heroImgWrapper.style.width = `${heroSVG.clientWidth}` + 'px';
-    }
+    } */
     
 };
-
+/* 
 window.addEventListener('resize' ,() => {
     let footerLogoLink = document.querySelector('footer a.logo');
     let footerLogo = document.querySelector('footer img.logo');
@@ -36,11 +36,11 @@ window.addEventListener('resize' ,() => {
       heroImgWrapper.style.width = `${heroSVG.clientWidth}` + 'px';
     }
 })
-
+ */
 const registerServiceWorker = async () => {
     if ("serviceWorker" in navigator) {
       try {
-        const registration = await navigator.serviceWorker.register("./serviceWorker.js", {
+        const registration = await navigator.serviceWorker.register(process.env.PUBLIC_URL + "/Scripts/serviceWorker.js", {
           scope: "/",
         });
         if (registration.installing) {
@@ -60,14 +60,4 @@ const registerServiceWorker = async () => {
   
 
 
-/**
-     * Scrolls the viewpoit to the top of the screen after triggered
-     *
-     * @function
-     */
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-}
+

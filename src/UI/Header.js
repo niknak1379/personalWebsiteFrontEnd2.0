@@ -134,7 +134,7 @@ export default function Header(){
     return (
         <header id = "header">
             <div className="header">
-                <a href = "%PUBLIC_URL%" className="logo">
+                <a href = {process.env.PUBLIC_URL} className="logo">
                     <img className="logo lightLogo" src="Assets/Header/logoLight.avif" alt="nikan logo"></img>
                     <img className="logo darkLogo" src="Assets/Header/logoDark.avif" alt="nikan logo"></img>
                 </a>

@@ -97,8 +97,8 @@ div.imgCarousel >img:first-child{
 }
 div.imgCarousel > img{
     position: absolute;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    /* border-top-left-radius: 8px;
+    border-top-right-radius: 8px; */
     top: 0;
     left: 0;
     height: 80%;
@@ -137,12 +137,12 @@ div.imgCarousel ul.imgPreview img:hover{
     transition: transform 0.3s;
     transform: scale(1.1)
 }
-div.imgCarousel ul.imgPreview li:first-child img{
+/* div.imgCarousel ul.imgPreview li:first-child img{
     border-bottom-left-radius: 8px;
 }
 div.imgCarousel ul.imgPreview li:last-child img{
     border-bottom-right-radius: 8px;
-}
+} */
 
 div.textDetails {
     max-width: 50%;
@@ -166,7 +166,7 @@ div.textDetails span{
     display: flex;
 }
 div.textDetails h2{
-    font-size: medium;
+    font-size: medium !important;
     padding: 0.25em;
     height: 1.25em;
     line-height: 1.25em;

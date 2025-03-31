@@ -74,6 +74,7 @@
 
   margin-left: 3vw;
   margin-right: 3vw;
+  position: relative;
 }
 
 body.lightMode .Card{
@@ -91,8 +92,18 @@ body.lightMode .Card{
   flex-grow: 1; /*not sure why this line is here rn*/
 }
 
-.Card .ProjectPic{
+.Card .ProjectPicLoader{
+  position: relative;
+  /*makes the picture of the project fit the container*/
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+  animation: skeletonLoading 1s linear infinite alternate;
+  /*animation defined in LoadingPlaceHolder.css*/
+}
 
+.Card .ProjectPic{
+  position: absolute;
   /*makes the picture of the project fit the container*/
   width: 100%;
   height: 50%;

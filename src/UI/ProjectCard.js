@@ -23,6 +23,8 @@ export default function ProjectCard(props) {
         <li className="Card">
             {projecdtDetailPageModal && <ProjectDetailPage DialogStatus={projecdtDetailPageModal}
             DialogStatusFunc={setProjectDetailPage} CardData={props.CardData}/>}
+            <img className = "ProjectPicLoader" src={process.env.PUBLIC_URL + 'Assets/App/Cards/ProjectPics/placeholder.avif'} 
+                alt = 'Place holder picture'/> 
             <img className = "ProjectPic" src={props.CardData.pictureURL} 
                 alt = {props.CardData.name + ' screen shot'}/> 
             <div className='CardTexts'>
