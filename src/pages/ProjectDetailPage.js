@@ -61,7 +61,73 @@ export default function ProjectDetailPage(props){
                 </button>
             </div>
             
-            {isLoading && <span>Loading...</span>}
+            {isLoading && 
+            <div className="dialogWrapper placeHolder">
+                <div className="imgCarousel">
+                    <img ref={pictureRef0} className='visible'alt='project image 1' src={process.env.PUBLIC_URL + 'Assets/App/Cards/ProjectPics/placeholder.avif'}></img>
+                    <img ref={pictureRef3} className="" alt='project image 4' src={process.env.PUBLIC_URL + 'Assets/App/Cards/ProjectPics/placeholder.avif'}></img>
+                    <ul className="imgPreview">
+                        <li>
+                            <img onClick={() => (updateCarousel(0))} className="carousel" alt='project image 1' src={process.env.PUBLIC_URL + 'Assets/App/Cards/ProjectPics/placeholder.avif'}></img>
+                        </li>
+                        <li>
+                            <img onClick={() => (updateCarousel(1))} className="carousel" alt='project image 2' src={process.env.PUBLIC_URL + 'Assets/App/Cards/ProjectPics/placeholder.avif'}></img>
+                        </li>
+                        <li>
+                            <img onClick={() => (updateCarousel(2))} className="carousel" alt='project image 3' src={process.env.PUBLIC_URL + 'Assets/App/Cards/ProjectPics/placeholder.avif'}></img>
+                        </li>
+                        <li>
+                            <img onClick={() => (updateCarousel(3))} className="carousel" alt='project image 4' src={process.env.PUBLIC_URL + 'Assets/App/Cards/ProjectPics/placeholder.avif'}></img>
+                        </li>
+                    </ul>
+                </div>
+                <div className="textDetails">
+                    <h1>{props.CardData.name}</h1>
+                    <span><h2>{props.CardData.status}</h2></span>
+                    <p className="projDetailLoading">
+                        sss<br></br><br></br><br></br><br></br>
+                    </p>
+                </div>
+            </div>
+            }
+            {isLoading &&
+                <div className="tagAndLinkWrapper">
+                <span>Project Tags:</span>
+                    <ul className="tagsList">
+                        <li>
+                            <div className='sidebarLoading'>
+                                Loading <span><span></span></span>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                    <span>Additional Links:</span>
+                    <ul className="linksList">
+                        <li>
+                            Deployment URL: <a target='_blank' href=''>
+                            
+                                <div className='sidebarLoading'>
+                                    <span><span></span></span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            Repository: <a target='_blank' href=''>
+                                <div className='sidebarLoading'>
+                                    <span><span></span></span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            Notes and Documentation: &nbsp; &nbsp; <a target='_blank' href=''>
+                                <div className='sidebarLoading'>
+                                    <span><span></span></span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            }
             {!isLoading && !error && (projData != null) &&
             <div className="dialogWrapper">
                 <div className="imgCarousel">

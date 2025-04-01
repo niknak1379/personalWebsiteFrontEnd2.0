@@ -243,16 +243,6 @@ export default function Projects(){
                 {
                    !isLoading && !projError &&
                    <ul className='projectList'>
-                        {projectArr.map(item => {
-                            return (
-                                <ProjectCard CardData={item} key={item.name}/>
-                            )
-                        })}
-                        {projectArr.map(item => {
-                            return (
-                                <ProjectCard CardData={item} key={item.name}/>
-                            )
-                        })}
                         {(projectArr.length != 0) && projectArr.map(item => {
                             return (
                                 <ProjectCard CardData={item} key={item.name}/>

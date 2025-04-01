@@ -260,3 +260,12 @@ div.tagAndLinkWrapper ul.linksList img{
 ul.linksList a{
     margin-left: auto;
 }
+
+div.dialogWrapper.placeHolder p{
+    animation: skeletonLoadingText 1s linear infinite alternate;
+    border-radius: 8px;
+    overflow: hidden;
+}
+div.dialogWrapper.placeHolder div.imgCarousel img{
+    animation: skeletonLoading 1s linear infinite alternate;
+}
