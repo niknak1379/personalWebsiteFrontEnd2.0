@@ -5,6 +5,9 @@ import Projects from './pages/Projects';
 import { Route, Routes } from 'react-router';
 import { lazy, Suspense } from 'react';
 import Footer from './UI/Footer';
+import Login from './pages/login';
+import { AuthProvider } from './context/authProvider';
+import EditPage from './pages/editProjectsPage';
 
 /**
  * Component Description: Displays the past and current projects on the website
@@ -15,44 +18,20 @@ import Footer from './UI/Footer';
 function App() {
 
   
- 
+  
   
   
   return (
     <div className="App">
     <Suspense fallback={<div className="container">Loading...</div>}>
+        <Header />
           <Routes>
-             <Route path="/" element={
-              <div>
-                <Header />
-                <Home />
-                <Footer />
-              </div>
-              
-             }/>
-             <Route path="/Projects" element={
-                <div>
-                  <Header />
-                  <Projects />
-                  <Footer />
-                </div>
-                
-             }/>
-             {/* <Route path="/privacy" element={
-                <div>
-                  <Header links = {['Home']}/>
-                  <Privacy/>
-                </div>
-             
-             }/>
-             <Route path='/terms' element={
-                <div>
-                    <Header links = {['Home']}/>
-                    <Terms/>
-                  </div>
-              
-             }/> */}
+             <Route path="/" element={<Home />}/>
+             <Route path="/Projects" element={<Projects />}/>
+             <Route path="/Login" element={<Login />}/>
+             <Route path='/edit' element={<EditPage />}/>
           </Routes>
+          <Footer />
        </Suspense>
     </div>
   );

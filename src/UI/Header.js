@@ -146,6 +146,9 @@ export default function Header(){
                         <li>
                             <Link to="/Projects">Projects</Link>
                         </li>
+                        <li>
+                            <Link to="/Login">Login</Link>
+                        </li>
                     </ul>
                 </nav>
         
@@ -176,6 +179,9 @@ export default function Header(){
                 </li>
                 <li>
                     <Link to="/Projects">Projects</Link>
+                </li>
+                <li>
+                    <Link to="/Login">Login</Link>
                 </li>
             </ul>
             </nav>
