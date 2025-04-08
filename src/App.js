@@ -6,8 +6,10 @@ import { Route, Routes } from 'react-router';
 import { lazy, Suspense } from 'react';
 import Footer from './UI/Footer';
 import Login from './pages/login';
-import { AuthProvider } from './context/authProvider';
+import { AuthProvider } from './Context/authProvider';
 import EditPage from './pages/editProjectsPage';
+import PersistLogin from './Hooks/persistLoginHook';
+import RequireAuth from './Hooks/requireAuth';
 
 /**
  * Component Description: Displays the past and current projects on the website
@@ -25,13 +27,18 @@ function App() {
     <div className="App">
     <Suspense fallback={<div className="container">Loading...</div>}>
         <Header />
-          <Routes>
+         <Routes>
              <Route path="/" element={<Home />}/>
              <Route path="/Projects" element={<Projects />}/>
              <Route path="/Login" element={<Login />}/>
-             <Route path='/edit' element={<EditPage />}/>
-          </Routes>
-          <Footer />
+
+            <Route element={<PersistLogin />}>
+               <Route element={<RequireAuth />}>
+                  <Route path='/edit' element={<EditPage />}/>
+               </Route>
+            </Route>
+         </Routes>
+         <Footer />
        </Suspense>
     </div>
   );

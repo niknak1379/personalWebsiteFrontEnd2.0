@@ -1,23 +1,24 @@
-import { useLayoutEffect, useRef, useState, useContext } from "react"
-import authConext from "../context/authProvider"
+import { useLayoutEffect, useRef, useState, useContext, useEffect } from "react"
+import authConext from "../Context/authProvider"
 import './login.css'
-import axios from '../API/axios'
+import { Link, useNavigate, useLocation } from "react-router"
+import useInterceptorHook from "../Hooks/axiosPrivateInterceptorHook"
 export default function Login() {
     
-    
+    const axios = useInterceptorHook()
     const loginRef = useRef(null)
-    const {accessToken, setToken} = useContext(authConext)
+    const {accessToken, setToken, trust, setTrust} = useContext(authConext)
+    const location = useLocation()
+    const navigate = useNavigate()
     var refreshCount = 0;
     
-    useLayoutEffect(() => {
+    /*useLayoutEffect(() => {
         const authInterceptor =  axios.interceptors.request.use((config) =>{
-            console.log('hi from layoug')
-            
             config.headers.Authorization = 
                 !config.retry && accessToken
                 ? `Bearer ${accessToken}`
                 : config.headers.Authorization
-            console.log(config)
+                console.log('interceptor called', config)
             refreshCount = 0
             return config
         })
@@ -50,34 +51,8 @@ export default function Login() {
             axios.interceptors.request.eject(authInterceptor)
             axios.interceptors.response.eject(refreshInterceptor)
         })
-    },[accessToken])
-    
-    /* useLayoutEffect(() => {
-        console.log('uselayoutrunning')
-        const refreshInterceptor = axios.interceptors.response.use((response) => {
-            console.log('response middle')
-            return response
-        },
-        async (error) => {
-            console.log(error.response.status)
-            if (error.response.status == 401){
-                console.log('error being called')
-                try{
-                    let newToken = await axios.post('http://localhost:8080/refresh')
-                    console.log(newToken.data.accessToken, 'called from axios')
-                    setToken(newToken.data.accessToken)
-                }
-                catch(e){
-                    console.log(e, 'refreshtoken error')
-                    setToken(null)
-                }
-            }
-            return 'hi';
-        })
-        return(
-            axios.interceptors.response.eject(refreshInterceptor)
-        )
-    }, []) */
+    },[accessToken])*/
+
     async function handleSubmit(){
         let url = 'http://localhost:8080/login'
         let formData = new FormData(loginRef.current)
@@ -95,44 +70,70 @@ export default function Login() {
                 })
             })
             let token = await data.json()
+            if (token.accessToken == null) throw new Error('no token recieved')
             console.log(token.accessToken)
             setToken(token.accessToken)
+            let from = location.state?.from?.pathname || '/'
+            console.log('navigated from and going back to',from)
+            navigate(from, {replace : true})
         }
         catch(e){
             console.log(e)
         }
     }
-    async function axiosTest() {
+    async function logout() {
         console.log(accessToken)
+        try{
+            let logout = await axios.post('http://localhost:8080/logout')
+            console.log('loggingout', logout.data)
+            setToken(null)
+        }
+        catch(e){
+            console.log(e)
+        }
+    }
+    async function auth() {
+        console.log(accessToken)
+        // uncomment next line to test response interceptor
         setToken(1)
         try{
-            let h = await axios.get('http://localhost:8080/auth')
-            console.log('status sent back', h)
-           /* let h = await fetch('http://localhost:8080/refresh',{
-            method: "POST",
-            credentials: "include"})
-            let data = await h.json()
-            console.log(data) */
+            let logout = await axios.get('http://localhost:8080/auth')
+            console.log('auth', logout.data)
         }
         catch(e){
             console.log(e)
         }
     }
+    function toggleTrust(){
+        setTrust(prev => !prev)
+    }
+    useEffect(()=>
+        localStorage.setItem('trust', trust)
+    , [trust])
+
     return(
         <form className='loginForm' ref={loginRef}>
             <label htmlFor="email">email</label>
-            <input name="email" value={'nikan'}></input>
+            <input id="email" name="email" value={'nikan'}></input>
             <label htmlFor="password">pass</label>
-            <input name="password" value={'78M56Soo!'}></input>
+            <input id="password" name="password" value={'78M56Soo!'}></input>
+            <label htmlFor="trust">Trust this computer</label>
+            <input type="checkbox" name="trust" id="trust" onChange={toggleTrust} checked={trust}/>
             <button type="submit" onClick={(e) => {
                 e.preventDefault()
                 handleSubmit()
             }}>submit</button>
             <button onClick={(e) => {
                 e.preventDefault()
-                axiosTest()}}>
-                axios
+                logout()}}>
+                logout
             </button>
+            <button onClick={(e) => {
+                e.preventDefault()
+                auth()}}>
+                auth
+            </button>
+            <Link to='/edit'>edit</Link>
         </form>
     )
 }
