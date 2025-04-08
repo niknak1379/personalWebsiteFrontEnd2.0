@@ -28,11 +28,10 @@ function App() {
     <Suspense fallback={<div className="container">Loading...</div>}>
         <Header />
          <Routes>
-             <Route path="/" element={<Home />}/>
-             <Route path="/Projects" element={<Projects />}/>
-             <Route path="/Login" element={<Login />}/>
-
             <Route element={<PersistLogin />}>
+               <Route path="/" element={<Home />}/>
+               <Route path="/Projects" element={<Projects />}/>
+               <Route path="/Login" element={<Login />}/>
                <Route element={<RequireAuth />}>
                   <Route path='/edit' element={<EditPage />}/>
                </Route>

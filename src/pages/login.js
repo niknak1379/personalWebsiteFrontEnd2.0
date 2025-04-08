@@ -110,7 +110,9 @@ export default function Login() {
     useEffect(()=>
         localStorage.setItem('trust', trust)
     , [trust])
-
+    async function signinwithgoogle() {
+        window.open("http://localhost:8080/auth/google", "_self");
+    }
     return(
         <form className='loginForm' ref={loginRef}>
             <label htmlFor="email">email</label>
@@ -132,6 +134,12 @@ export default function Login() {
                 e.preventDefault()
                 auth()}}>
                 auth
+            </button>
+            <button onClick={(e) => {
+                e.preventDefault()
+                signinwithgoogle()
+            }}>
+                signin wiht google
             </button>
             <Link to='/edit'>edit</Link>
         </form>

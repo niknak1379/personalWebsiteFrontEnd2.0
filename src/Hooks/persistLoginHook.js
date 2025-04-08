@@ -19,13 +19,13 @@ export default function PersistLogin() {
             }
             catch(error) {
                 console.log('failed to automatically refresh token', error)
-                navigate('/login', { state: { from: location }, replace: true})
+                if(refreshToken != null) navigate('/login', { state: { from: location }, replace: true})
             }
             finally{
                 setLoading(false)
             }
         }
-        if (accessToken == null && mounted) refreshToken(); else setLoading(false)
+        if (mounted) refreshToken(); else setLoading(false)
         return () => mounted = false;
     }, [])
     useLayoutEffect(() =>
