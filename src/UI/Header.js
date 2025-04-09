@@ -1,12 +1,16 @@
-import { use } from "react";
+import { use, useContext } from "react";
 import { useRef, useState, useEffect } from "react";
 import ContactForm from "./ContactForm";
 import { Link } from "react-router";
+import AuthConext from "../Context/authProvider";
+import useInterceptorHook from "../Hooks/axiosPrivateInterceptorHook"
 
 export default function Header(){
     const [isContactMeOpen, setContactMe] = useState(false);
     const themeBox = useRef(null)
     const themeBoxMobile = useRef(null)
+    const {accessToken, setToken, baseURL} = useContext(AuthConext)
+    const axios = useInterceptorHook()
     //To initialize the theme from LocalStorage
     useEffect(() => {
         function initTheme(){
@@ -131,6 +135,17 @@ export default function Header(){
         }
         //console.log('toggling theme', themeBox.current.checked, themeBoxMobile.current.checked)
     }
+    async function logout(){
+            console.log(accessToken)
+            try{
+                let logout = await axios.post(baseURL + '/logout')
+                console.log('loggingout', logout.data)
+                setToken(null)
+            }
+            catch(e){
+                console.log(e)
+            }
+    }
     return (
         <header id = "header">
             <div className="header">
@@ -146,9 +161,19 @@ export default function Header(){
                         <li>
                             <Link to="/Projects">Projects</Link>
                         </li>
+                        { !accessToken &&
                         <li>
                             <Link to="/Login">Login</Link>
                         </li>
+                        }
+                        { accessToken &&
+                        <li>
+                            <button className='logoutButton'onClick={(e) => {
+                                e.preventDefault()
+                                logout()
+                            }}>Logout</button>
+                        </li>
+                        }
                     </ul>
                 </nav>
         
@@ -180,9 +205,12 @@ export default function Header(){
                 <li>
                     <Link to="/Projects">Projects</Link>
                 </li>
+                { !accessToken &&
                 <li>
                     <Link to="/Login">Login</Link>
                 </li>
+                }
+                
             </ul>
             </nav>
 
@@ -196,7 +224,14 @@ export default function Header(){
                     <img src="Assets/Header/Moon.png" className='darkToggle' alt="moon Icon"></img>
                     <span className="ball"></span>
                 </label>
-
+                { accessToken &&
+                
+                    <button className="logoutButton" onClick={(e) => {
+                        e.preventDefault()
+                        logout()
+                    }}>Logout</button>
+               
+                }
                 <button className="contactButton" onClick={openContactMe}>Lets Talk</button>
             </div>
         </aside>

@@ -113,6 +113,9 @@ body.lightMode a.logo img.darkLogo{
 }
 nav.mainNav{
     margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -128,6 +131,7 @@ nav.mainNav ul.navList {
     display: flex;
     flex-direction: row;
     padding: 0;
+    margin: 0;
     gap: 1em;
 }
 
@@ -143,7 +147,17 @@ nav.mainNav ul.navList a:hover{
     transform: scale(2);
     transform-origin: center;
 }
-
+button.logoutButton{
+    font-size: 1em;
+    font-weight:normal;
+    font-family: "Playfair Display", serif; 
+    background-color: inherit;
+    
+    color:inherit;
+    
+    cursor:pointer;
+    border-style: none;
+}
 
 
 label.hamburgerNav{

@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ProjectDetailPage from "../pages/ProjectDetailPage";
+import AuthConext from "../Context/authProvider";
+
 /**
  * Component Description: displays the details and images of the project
  *
@@ -19,8 +21,11 @@ import ProjectDetailPage from "../pages/ProjectDetailPage";
 
 export default function ProjectCard(props) {
     const [projecdtDetailPageModal, setProjectDetailPage] = useState(false)
+    const {accessToken} = useContext(AuthConext)
     return (
         <li className="Card">
+            {accessToken && <img alt='edit button' className="deleteButton" src={process.env.PUBLIC_URL + 'Assets/App/Cards/edit.svg'}/>}
+            {accessToken && <img alt='delete button' className="editButton" src={process.env.PUBLIC_URL + 'Assets/App/Cards/delete.svg'}/>}
             {projecdtDetailPageModal && <ProjectDetailPage DialogStatus={projecdtDetailPageModal}
             DialogStatusFunc={setProjectDetailPage} CardData={props.CardData}/>}
             <img className = "ProjectPicLoader" src={process.env.PUBLIC_URL + 'Assets/App/Cards/ProjectPics/placeholder.avif'} 

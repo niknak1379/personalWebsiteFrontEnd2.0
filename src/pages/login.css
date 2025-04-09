@@ -1,3 +1,80 @@
+:root {
+    --primary-card-color: rgb(76, 71, 82); /* black color */
+    --secondary-card-color: #a855f7; /* purple color */
+    --accent-card-color-transparent: rgba(255, 255, 255, 0.33); /* grey color */
+    --primary-color: #18181b; /* black color */
+    --secondary-color: #a855f7; /* purple color */
+    --accent-color: #71797E; /* grey color */
+    --light-accent-color: white; /* light grey color */
+    --lightMode-color: rgba(211, 117, 22, 0.33);
+    --light-mode-card-color: rgb(208, 190, 204);
+    --viewport-width: 0px;
+}
 form.loginForm{
     margin-top: 10em;
+    margin-inline: auto;
+    background-color: var(--primary-card-color);
+    border: 4px solid white;
+    border-radius: 10px;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    padding: 1em;
+    max-width: 600px;
+    min-width: 350px;
+
+}
+body.lightMode form.loginForm{
+    margin-top: 10em;
+    background-color: var(--light-mode-card-color);
+    border-color: black !important;
+    color: black;
+}
+form.loginForm label:not(:has( > input[type="checkbox"])){
+    font-size: 1.4em;
+}
+form.loginForm label:has( > input[type="checkbox"]){
+    font-size: 0.9em;
+}
+form.loginForm input:not([type="checkbox"]){
+    background-color: var(--light-mode-card-color);
+    color: black;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 0.5em;
+    font-size: 1.1em;
+}
+body.lightMode form.loginForm input:not([type="checkbox"]){
+    background-color: var(--primary-card-color);
+    color: white;
+    border-color: black !important;
+}
+
+button.loginButton, button.googleLoginButton{
+    background-color: var(--secondary-card-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+
+    font-weight: bolder;
+    cursor: pointer;
+
+    max-width: 200px;
+    min-width: 200px;
+    height: 3em;
+
+    display: flex;
+    gap: 1em;
+    
+    margin-inline: auto;
+    align-items: center;
+    justify-content: center;
+}
+button.googleLoginButton img{
+    width: 30px;
+    background-color: white;
+    border-radius: 999px;
 }

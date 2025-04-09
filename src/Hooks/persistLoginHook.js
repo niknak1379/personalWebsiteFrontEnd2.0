@@ -5,7 +5,7 @@ import AuthConext from "../Context/authProvider";
 import LoadingPlaceHolder from "../UI/LoadingPlaceHodler";
 
 export default function PersistLogin() {
-    const {accessToken, setToken, trust} = useContext(AuthConext)
+    const {accessToken, setToken, trust, baseURL} = useContext(AuthConext)
     const [isLoading, setLoading] = useState(true)
     const location = useLocation()
     const navigate = useNavigate()
@@ -13,7 +13,7 @@ export default function PersistLogin() {
         let mounted = true;
         async function refreshToken(){
             try{
-                let data = await instance.post('http://localhost:8080/refresh')
+                let data = await instance.post(baseURL + '/refresh')
                 console.log('refresh being called from persist', data.data.accessToken)
                 setToken(data.data.accessToken)
             }
@@ -25,23 +25,26 @@ export default function PersistLogin() {
                 setLoading(false)
             }
         }
-        if (mounted) refreshToken(); else setLoading(false)
+        if (mounted && trust) refreshToken(); else setLoading(false)
         return () => mounted = false;
     }, [])
     useLayoutEffect(() =>
     {
-        console.log('from persist',accessToken, isLoading, location)
+        console.log('from persist',accessToken, isLoading, location.pathname, trust)
     }, [isLoading])
     return(
         <>
-            {!trust && 
-                <Outlet />
-            }
-            {(!isLoading) &&
+
+            {
+                !trust && 
                 <Outlet />
             }
             {
-                isLoading &&
+                trust && (!isLoading) &&
+                <Outlet />
+            }
+            {
+                trust && isLoading &&
                 <LoadingPlaceHolder />
             }
         </>

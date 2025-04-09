@@ -31,10 +31,12 @@ function App() {
             <Route element={<PersistLogin />}>
                <Route path="/" element={<Home />}/>
                <Route path="/Projects" element={<Projects />}/>
-               <Route path="/Login" element={<Login />}/>
-               <Route element={<RequireAuth />}>
-                  <Route path='/edit' element={<EditPage />}/>
-               </Route>
+
+               
+                  <Route path="/Login" element={<Login />}/>
+                  <Route element={<RequireAuth />}>
+                     <Route path='/edit' element={<EditPage />}/>
+                  </Route>
             </Route>
          </Routes>
          <Footer />
