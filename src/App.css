@@ -76,10 +76,126 @@
   margin-right: 3vw;
   position: relative;
 }
+.Card img.deleteButton, img.editButton{
+  display: none;
+}
+.Card:hover img.deleteButton, .Card:hover img.editButton{
+  display: block;
+  position: absolute;
+  width: 30px;
+  top: 4px;
+  z-index: 3;
+
+  cursor: pointer;
+
+  background-color: var(--light-mode-card-color);
+  border-radius: 10px;
+  padding: 5px;
+}
+body.lightMode .Card:hover img.deleteButton, 
+body.lightMode .Card:hover img.editButton{
+  background-color: var(--lightMode-color);
+}
+.Card:hover img.deleteButton{
+  right: 4px;
+}
+.Card:hover img.editButton{
+  left: 4px;
+}
+
+.Card:has( > button.newCardButton) {
+  height: 400px;
+  justify-content: center;
+  align-items: center;
+}
+.Card button.newCardButton{
+  height: 90%;
+  width: 90%;
+  border-radius: 10px;
+  background-color: var(--accent-card-color-transparent);
+  border: 2px solid black;
+  cursor: pointer;
+}
+.Card button.newCardButton img{
+  width: 50%;
+}
+body.lightMode .Card button.newCardButton img{
+  filter: brightness(0) saturate(100%) invert(51%) sepia(4%) saturate(672%) hue-rotate(160deg) brightness(90%) contrast(88%);
+}
 
 body.lightMode .Card{
   background-color: var(--light-mode-card-color);
   border-color: var(--primary-color);
+}
+
+.Card dialog.deleteDialog{
+  border: 4px solid white;
+  border-radius: 10px;
+  color:white;
+  background-color: var(--light-mode-card-color);
+  padding: 0;
+  
+}
+.Card dialog.deleteDialog::backdrop{
+  backdrop-filter: blur(10px);
+}
+body.lightMode .Card dialog.deleteDialog{
+  border-color: black;
+  color: black;
+}
+.Card dialog.deleteDialog div.deleteDialogDiv{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  
+  width: 300px;
+  height: 300px;
+  padding-bottom: 1em;
+  background-color: var(--primary-card-color);
+  
+}
+body.lightMode .Card dialog.deleteDialog div.deleteDialogDiv{
+  background-color: var(--light-mode-card-color);
+}
+.Card dialog.deleteDialog div.deleteDialogDiv div.deleteDialogHeader{
+  display:flex;
+  width: 100%;
+  border-bottom: 2px solid white;
+}
+body.lightMode .Card dialog.deleteDialog div.deleteDialogDiv div.deleteDialogHeader{
+  border-color: black;
+}
+.Card dialog.deleteDialog button.closeDeleteDialog{
+
+  margin-left: auto;
+  padding: 0.5em;
+  border: none;
+  border-left: solid 2px white;
+  font-weight: bolder;
+  font-size: larger;
+  color: white;
+  background-color: inherit;
+  cursor: pointer;
+}
+body.lightMode .Card dialog.deleteDialog button.closeDeleteDialog{
+  border-color: black;
+  color: black;
+}
+.Card dialog.deleteDialog button.deleteProjectButton{
+  font-weight: bolder;
+  font-size: larger;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--secondary-card-color);
+  color: white;
+  padding: 0.25em 0.5em 0.25em 0.5em;
+  cursor: pointer;
+}
+
+.Card dialog.deleteDialog h2{
+  padding: 0.5em;
 }
 
 .CardTexts{

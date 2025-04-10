@@ -1,6 +1,8 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import ProjectDetailPage from "../pages/ProjectDetailPage";
 import AuthConext from "../Context/authProvider";
+import useInterceptorHook from "../Hooks/axiosPrivateInterceptorHook";
+import LoadingError from "./LoadingError";
 
 /**
  * Component Description: displays the details and images of the project
@@ -21,13 +23,85 @@ import AuthConext from "../Context/authProvider";
 
 export default function ProjectCard(props) {
     const [projecdtDetailPageModal, setProjectDetailPage] = useState(false)
-    const {accessToken} = useContext(AuthConext)
+    const [isLoading, setIsLoading] = useState(null)
+    const [error, setError] = useState(false)
+    const {accessToken, baseURL} = useContext(AuthConext)
+    const axios = useInterceptorHook()
+    const deleteDialogRef = useRef(null)
+    async function deleteProject(){
+        try{
+            setIsLoading(true)
+            let data = await axios.delete(baseURL + '/' + props.CardData.name)
+            if (data.status == 201){
+                return console.log('deleted Successfully')
+            }
+            else{
+                setError(true)
+                throw new Error('wrong status code returned, check server logs')
+            }
+            
+        }
+        catch(error) {
+            setError(true)
+            console.log(error)
+        }
+        finally{
+            setIsLoading(false)
+        }
+        
+    }
     return (
         <li className="Card">
-            {accessToken && <img alt='edit button' className="deleteButton" src={process.env.PUBLIC_URL + 'Assets/App/Cards/edit.svg'}/>}
-            {accessToken && <img alt='delete button' className="editButton" src={process.env.PUBLIC_URL + 'Assets/App/Cards/delete.svg'}/>}
+            {/* edit and delete buttons */}
+            {accessToken && <img alt='edit button' className="editButton" 
+                src={process.env.PUBLIC_URL + 'Assets/App/Cards/edit.svg'}
+                onClick={() => {
+
+                }}
+            />}
+            {accessToken && <img alt='delete button' className="deleteButton" 
+                src={process.env.PUBLIC_URL + 'Assets/App/Cards/delete.svg'}
+                onClick={() => {
+                    deleteDialogRef.current.showModal()
+                }}
+                />}
             {projecdtDetailPageModal && <ProjectDetailPage DialogStatus={projecdtDetailPageModal}
             DialogStatusFunc={setProjectDetailPage} CardData={props.CardData}/>}
+
+            {/* delete dialog */}
+            <dialog ref={deleteDialogRef} className="deleteDialog">
+                    
+                    
+                <div className="deleteDialogDiv">
+                    <div className="deleteDialogHeader">
+                        <button className="closeDeleteDialog" onClick={() => {
+                                props.queryFunction()
+                                deleteDialogRef.current.close()
+                            }}>
+                                X
+                        </button>
+                    </div>
+
+                    {isLoading && <span>Loading...</span>}
+                    {(isLoading == null) && 
+                    <>
+                        <h2>Are You Sure You Want to Delete This Project?</h2>
+                        <button className="deleteProjectButton" onClick={deleteProject}>
+                            Yes Delete The Project
+                        </button>
+                    </>}
+                    {isLoading != null && !isLoading && !error &&
+                        <span>
+                            deleted Successfully
+                        </span>
+                    }
+                    {!isLoading && error &&
+                        <LoadingError></LoadingError>
+                    }
+                </div>   
+            </dialog>
+
+            {/* default projecet card elements(images, and descriptions) */}
             <img className = "ProjectPicLoader" src={process.env.PUBLIC_URL + 'Assets/App/Cards/ProjectPics/placeholder.avif'} 
                 alt = 'Place holder picture'/> 
             <img className = "ProjectPic" src={props.CardData.pictureURL} 

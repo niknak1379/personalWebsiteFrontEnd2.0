@@ -1,10 +1,11 @@
 import { Simulate } from 'react-dom/test-utils'
 import './Projects.css'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useContext } from 'react'
 import ProjectCard from '../UI/ProjectCard'
 import LoadingPlaceHolder from '../UI/LoadingPlaceHodler'
 import LoadingError from '../UI/LoadingError'
 import userEvent from '@testing-library/user-event'
+import AuthConext from '../Context/authProvider'
 export default function Projects(){
     const [isLoading, setIsLoading] = useState(false) //update UI for loading components
     const [sideBarLaoding, setSideBarLoading] = useState(false) //update UI for loading components
@@ -18,6 +19,7 @@ export default function Projects(){
     const statusDropDownRef = useRef(null)
     const formRef = useRef(null)
     const abortControllerRef = useRef(null)
+    const {accessToken} = useContext(AuthConext)
     useEffect(() => {
         async function fetchTags(){
             setSideBarLoading(true)
@@ -245,12 +247,20 @@ export default function Projects(){
                    <ul className='projectList'>
                         {(projectArr.length != 0) && projectArr.map(item => {
                             return (
-                                <ProjectCard CardData={item} key={item.name}/>
+                                <ProjectCard CardData={item} key={item.name} queryFunction={fetchSearchQuery}/>
                             )
                         })}
                         {
                             (projectArr.length == 0) &&
                             <span>No entries found!</span>
+                        }
+                        {
+                            accessToken &&
+                            <li className='Card'>
+                                <button className='newCardButton'>
+                                    <img img='plus' src={process.env.PUBLIC_URL + 'Assets/App/Cards/plus.svg'}/>
+                                </button>
+                            </li>
                         }
                     </ul>
                 }

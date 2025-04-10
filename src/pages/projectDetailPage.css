@@ -24,7 +24,6 @@ dialog.projectDetailPage{
 }
 dialog.projectDetailPage::backdrop{
     backdrop-filter: blur(10px);
-    
 }
 body.lightMode dialog.projectDetailPage{
     border-color: black;
