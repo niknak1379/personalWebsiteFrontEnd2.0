@@ -6,6 +6,7 @@ import LoadingPlaceHolder from '../UI/LoadingPlaceHodler'
 import LoadingError from '../UI/LoadingError'
 import userEvent from '@testing-library/user-event'
 import AuthConext from '../Context/authProvider'
+import NewProjectPage from './addNewProjectPage'
 export default function Projects(){
     const [isLoading, setIsLoading] = useState(false) //update UI for loading components
     const [sideBarLaoding, setSideBarLoading] = useState(false) //update UI for loading components
@@ -15,6 +16,7 @@ export default function Projects(){
     const [tagsArr, setTagsArr] = useState([])
     const [statusArr, setStatusArr] = useState([])
     const [projectArr, setProjArr] = useState([])
+    const [newProjectState, setNewProject] = useState(false)
     const tagsDropDownRef = useRef(null)
     const statusDropDownRef = useRef(null)
     const formRef = useRef(null)
@@ -257,9 +259,15 @@ export default function Projects(){
                         {
                             accessToken &&
                             <li className='Card'>
-                                <button className='newCardButton'>
+                                <button className='newCardButton' onClick={() => {
+                                    console.log('setting dialog to true')
+                                    setNewProject(true)
+                                    }}>
                                     <img img='plus' src={process.env.PUBLIC_URL + 'Assets/App/Cards/plus.svg'}/>
                                 </button>
+                                {newProjectState && <NewProjectPage DialogStatus={newProjectState}
+                                        DialogStatusFunc = {setNewProject} queryFunction={fetchSearchQuery}
+                                />}
                             </li>
                         }
                     </ul>

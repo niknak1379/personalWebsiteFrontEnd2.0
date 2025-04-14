@@ -5,13 +5,12 @@ import { Form } from "react-router";
 import AuthConext from "../Context/authProvider";
 import useInterceptorHook from "../Hooks/axiosPrivateInterceptorHook";
 
-export default function ProjectEditPage(props) {
+export default function NewProjectPage(props) {
     const EditDialogRef = useRef(null)
     const formRef = useRef(null)
     const {baseURL} = useContext(AuthConext)
     const [isLoading, setLoading] = useState(null)
     const [error, setError] = useState(false)
-    const [projData, setData] = useState(null)
     const axios = useInterceptorHook()
 
     //form states:
@@ -49,27 +48,9 @@ export default function ProjectEditPage(props) {
  */
 
     useEffect(() => {
-        async function getProjectDetails(){
-            setError(false)
-            setLoading(true)
-            try{
-                let data = await fetch('http://localhost:8080/projectDetails/' + props.CardData.name)
-                let readabledata = await data.json()
-                setData(readabledata)
-                console.log(readabledata)
-            }
-            catch(e){
-                setError(true)
-                console.log(e)
-            }
-            finally{
-                setLoading(false)
-            }
-        }
         if (props.DialogStatus){
             console.log('opening bc of state')
             EditDialogRef.current?.showModal()
-            getProjectDetails()
         }
         if (!props.DialogStatus){
             console.log('closing bc of state')
@@ -80,11 +61,11 @@ export default function ProjectEditPage(props) {
     async function handleSubmit(event){
         event.preventDefault()
         let formData = new FormData(formRef.current)
-        formData.append("originalName", props.CardData.name)
-        formData.append("status", "Complete")
+        //formData.append("originalName", props.CardData.name)
+        formData.append("status", "In Progress")
         console.log('submitting')
         try{
-            let data = await axios.put(baseURL + '/editProject', formData, {headers: {'Content-Type': 'multipart/form-data'}})
+            let data = await axios.post(baseURL + '/newProject', formData, {headers: {'Content-Type': 'multipart/form-data'}})
             console.log(data.body)
         }
         catch(error){
@@ -122,23 +103,23 @@ export default function ProjectEditPage(props) {
                 <LoadingError />
             }
             {
-                projData != null && !isLoading && !error &&
+                !isLoading && !error &&
                 <form ref={formRef} className="editProjectForm" onSubmit={handleSubmit}>
                     <label htmlFor="name">
                         Name:
-                        <input id="name" name="name" required defaultValue={props.CardData.name}/>
+                        <input id="name" name="name" required/>
                     </label>
                     <label htmlFor="description">
                         Description:
-                        <input required id="description" name="description" defaultValue={props.CardData.description}/>
+                        <input required id="description" name="description"/>
                     </label>
                     <label htmlFor="longDescription">
                         Long Description:
-                        <textarea required id="longDescription" name="longDescription" defaultValue={projData.longDescription}></textarea>
+                        <textarea required id="longDescription" name="longDescription"></textarea>
                     </label>
                     <label htmlFor="status">
                         Status:
-                        {props.CardData.status}
+                        
                         <ul>
                             <li>
                                 In Progress
@@ -156,22 +137,21 @@ export default function ProjectEditPage(props) {
                     </label>
                     <label htmlFor="githubURL">
                         Github URL:
-                        <input required name="githubURL" id="githubURL" defaultValue={props.CardData.githubURL}/>
+                        <input required name="githubURL" id="githubURL"/>
                     </label>
                     <label htmlFor="obsidianURL">
                         Obsidian URL:
-                        <input required name="obsidianURL" id="githubURL" defaultValue={projData.obsidianURL}/>
+                        <input required name="obsidianURL" id="githubURL"/>
                     </label>
                     <label htmlFor="deploymentURL">
                         Deployment URL:
-                        <input required name="deploymentURL" id="deploymentURL" defaultValue={props.CardData.deploymentURL}/>
+                        <input required name="deploymentURL" id="deploymentURL"/>
                     </label>
                     <label htmlFor="tags">
                         Project Tags:
-                        {console.log(projData.tags)}
-                        <input required name="tags" id="tags" defaultValue={
-                            projData.tags.join('-')
-                        }
+                        
+                        <input required name="tags" id="tags" 
+                        
                         />
                     </label>
                     <label htmlFor="picture">
@@ -195,6 +175,7 @@ export default function ProjectEditPage(props) {
             
             <button onClick={() => {
                 props.queryFunction()
+                console.log('setting to false')
                 props.DialogStatusFunc(false)
             }}>close</button>
         </dialog>

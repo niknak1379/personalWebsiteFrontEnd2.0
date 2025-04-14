@@ -3,6 +3,7 @@ import ProjectDetailPage from "../pages/ProjectDetailPage";
 import AuthConext from "../Context/authProvider";
 import useInterceptorHook from "../Hooks/axiosPrivateInterceptorHook";
 import LoadingError from "./LoadingError";
+import ProjectEditPage from "../pages/editProjectsPage";
 
 /**
  * Component Description: displays the details and images of the project
@@ -23,6 +24,7 @@ import LoadingError from "./LoadingError";
 
 export default function ProjectCard(props) {
     const [projecdtDetailPageModal, setProjectDetailPage] = useState(false)
+    const [projectEditPageModal, setProjectEditPage] = useState(false)
     const [isLoading, setIsLoading] = useState(null)
     const [error, setError] = useState(false)
     const {accessToken, baseURL} = useContext(AuthConext)
@@ -56,8 +58,9 @@ export default function ProjectCard(props) {
             {accessToken && <img alt='edit button' className="editButton" 
                 src={process.env.PUBLIC_URL + 'Assets/App/Cards/edit.svg'}
                 onClick={() => {
-
-                }}
+                    if(!projectEditPageModal) {
+                        setProjectEditPage(true)
+                    }}}
             />}
             {accessToken && <img alt='delete button' className="deleteButton" 
                 src={process.env.PUBLIC_URL + 'Assets/App/Cards/delete.svg'}
@@ -67,6 +70,8 @@ export default function ProjectCard(props) {
                 />}
             {projecdtDetailPageModal && <ProjectDetailPage DialogStatus={projecdtDetailPageModal}
             DialogStatusFunc={setProjectDetailPage} CardData={props.CardData}/>}
+
+            
 
             {/* delete dialog */}
             <dialog ref={deleteDialogRef} className="deleteDialog">
