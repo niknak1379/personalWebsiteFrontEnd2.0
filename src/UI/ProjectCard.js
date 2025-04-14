@@ -71,7 +71,8 @@ export default function ProjectCard(props) {
             {projecdtDetailPageModal && <ProjectDetailPage DialogStatus={projecdtDetailPageModal}
             DialogStatusFunc={setProjectDetailPage} CardData={props.CardData}/>}
 
-            
+            {projectEditPageModal && <ProjectEditPage DialogStatus={projectEditPageModal}
+            DialogStatusFunc={setProjectEditPage} CardData={props.CardData} queryFunction={props.queryFunction}/>}
 
             {/* delete dialog */}
             <dialog ref={deleteDialogRef} className="deleteDialog">

@@ -175,16 +175,20 @@ export default function ProjectEditPage(props) {
                         />
                     </label>
                     <label htmlFor="picture">
-                        <input required id='picture' name="pictureURL" type="file" accept="image/avif"></input>
+                        <img src={projData.pictureURL}/>
+                        <input id='picture' name="pictureURL" type="file" accept="image/avif"></input>
                     </label>
                     <label htmlFor="Carousel1">
-                        <input required id="Carousel1" name="carouselImage_1" type="file" accept="image/avif"></input>
+                        <img src={projData.carouselImage_1}/>
+                        <input id="Carousel1" name="carouselImage_1" type="file" accept="image/avif"></input>
                     </label>
                     <label htmlFor="Carousel2">
-                        <input required id="Carousel2" name="carouselImage_2" type="file" accept="image/avif"></input>
+                        <img src={projData.carouselImage_2}/>
+                        <input id="Carousel2" name="carouselImage_2" type="file" accept="image/avif"></input>
                     </label>
                     <label htmlFor="Carousel3">
-                        <input required id="Carousel3" name="carouselImage_3" type="file" accept="image/avif"></input>
+                        <img src={projData.carouselImage_3}/>
+                        <input id="Carousel3" name="carouselImage_3" type="file" accept="image/avif"></input>
                     </label>
                     <button type="submit" >
                         submit
