@@ -74,6 +74,9 @@ div.dialogWrapper{
     div.textDetails{
         min-width: calc(100% - 2em) !important;
     }
+    div.tagAndLinkWrapper:has(> div.TagLinkInputWrapper){
+        flex-direction: column !important;
+    }
     ul.linksList{
         font-size: small;
     }
@@ -105,6 +108,9 @@ div.imgCarousel > img{
     object-fit: cover;
     opacity: 0;
     transition: opacity 0.3s;
+}
+img.animate{
+    border-bottom: 3px solid red;
 }
 div.imgCarousel > img.visible{
     transition: opacity 0.3s;
@@ -144,6 +150,8 @@ div.imgCarousel ul.imgPreview li:last-child img{
 } */
 
 div.textDetails {
+    display: flex;
+    flex-direction: column;
     max-width: 50%;
     border: 4px solid;
     border-radius: 10px;
@@ -161,8 +169,38 @@ body.lightMode div.textDetails{
 div.textDetails h1{
     margin: 0;
 }
-div.textDetails span{
+
+div.textDetails h1 label{
     display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+div.textDetails h1 label span{
+    display: flex;
+    align-items: center;
+    font-size: large;
+}
+div.textDetails h1 input{
+    flex-grow: 1;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: large;
+    color: black;
+    background-color: var(--light-mode-card-color);
+}
+div.textDetails ul{
+    display: flex;
+    padding: 0;
+}
+div.textDetails > span{
+    display: flex;
+}
+div.textDetails h2:has( > ul) {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    line-height: auto;
 }
 div.textDetails h2{
     font-size: medium !important;
@@ -181,8 +219,25 @@ body.lightMode div.textDetails h2{
 }
 div.textDetails p{
     font-size: medium;
+    display: flex;
     margin: 0;
+    flex-grow: 1;
 }
+div.textDetails p label{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+div.textDetails p label textarea,
+div.textDetails p label textarea:focus{
+    background-color: var(--light-mode-card-color);
+    resize: none;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: black;
+    flex-grow: 1;
+}
+
 div.tagAndLinkWrapper{
     background-color: var(--light-mode-card-color);
     border: solid 4px white;
@@ -193,8 +248,60 @@ div.tagAndLinkWrapper{
     
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    
     gap: 1em;
+}
+div.tagAndLinkWrapper:not(:has(> div.TagLinkInputWrapper)){
+    align-items: flex-start;
+}
+div.tagAndLinkWrapper:has(> div.TagLinkInputWrapper){
+    flex-direction: row;
+}
+div.TagLinkInputWrapper, div.fileUploadWrapper{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    gap: 0.5em;
+}
+div.TagLinkInputWrapper > label, div.fileUploadWrapper label{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+}
+div.TagLinkInputWrapper input, div.TagLinkInputWrapper textarea{
+    flex-grow: 1;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: black;
+    background-color: var(--light-mode-card-color);
+}
+div.fileUploadWrapper{
+    justify-content: space-between;
+    flex-grow: 1;
+    
+}
+div.fileUploadWrapper > span{
+    font-size: small;
+}
+div.fileUploadWrapper input::file-selector-button{
+    background-color: inherit;
+    border: 2px dashed white;
+    border-radius: 10px;
+    color: inherit;
+    
+}
+div.fileUploadWrapper button{
+    background-color: var(--secondary-card-color);
+    cursor: pointer;
+    border: 4px solid white;
+    border-radius: 10px;
+    color: white;
+    padding: 0.25em;
+    font-size: large;
+}
+div.fileUploadWrapper button:hover{
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    opacity: 0.9;
 }
 body.lightMode div.tagAndLinkWrapper{
     color: white;
@@ -236,6 +343,19 @@ div.tagAndLinkWrapper ul.linksList{
     flex-direction: column;
     gap:0.25em;
     color: white;
+    font-size: medium;
+}
+ul.linksList label{
+    display: flex;
+    flex-grow: 1;
+}
+ul.linksList input{
+    background-color: var(--primary-card-color);
+    color: white;
+    margin-left: auto;
+    flex-basis: 50px;
+    flex-grow: 0;
+    
 }
 body.lightMode div.tagAndLinkWrapper ul.linksList{
     background-color: var(--light-mode-card-color);
@@ -245,7 +365,7 @@ body.lightMode div.tagAndLinkWrapper ul.linksList{
 div.tagAndLinkWrapper ul.linksList li{
     display: flex;
     height: calc(34px + 0.4em);
-    line-height: calc(34px + 0.4em)
+    line-height: calc(34px + 0.4em);
 }
 div.tagAndLinkWrapper ul.linksList img{
     height: 30px;

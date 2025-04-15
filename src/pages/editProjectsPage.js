@@ -6,14 +6,27 @@ import AuthConext from "../Context/authProvider";
 import useInterceptorHook from "../Hooks/axiosPrivateInterceptorHook";
 
 export default function ProjectEditPage(props) {
+    const Controller = new AbortController()
     const EditDialogRef = useRef(null)
     const formRef = useRef(null)
     const {baseURL} = useContext(AuthConext)
     const [isLoading, setLoading] = useState(null)
     const [error, setError] = useState(false)
     const [projData, setData] = useState(null)
+    const [refresh, setRefresh] = useState(0)
     const axios = useInterceptorHook()
-
+    const [visibleCarouselImg, setVisibleCarouselImg] = useState(0)
+    const pictureRef0 = useRef(null)
+    const pictureRef1 = useRef(null)
+    const pictureRef2 = useRef(null)
+    const pictureRef3 = useRef(null)
+    const carouselArr = [pictureRef0, pictureRef1, pictureRef2, pictureRef3]
+    function updateCarousel(i) {
+        carouselArr[visibleCarouselImg].current.classList.remove('visible')
+        carouselArr[i].current.classList.add('visible')
+        setVisibleCarouselImg(i)
+        console.log(visibleCarouselImg, i)
+    }
     //form states:
     {/*
             -- DB Fields:
@@ -53,7 +66,9 @@ export default function ProjectEditPage(props) {
             setError(false)
             setLoading(true)
             try{
-                let data = await fetch('http://localhost:8080/projectDetails/' + props.CardData.name)
+                let data = await fetch('http://localhost:8080/projectDetails/' + props.CardData.name,
+                    {signal: Controller.abort()}
+                )
                 let readabledata = await data.json()
                 setData(readabledata)
                 console.log(readabledata)
@@ -75,26 +90,43 @@ export default function ProjectEditPage(props) {
             console.log('closing bc of state')
             EditDialogRef.current?.close()
         }
-    }, [props.DialogStatus])
+        return() => Controller.abort()
+    }, [props.DialogStatus, refresh])
 
     async function handleSubmit(event){
         event.preventDefault()
         let formData = new FormData(formRef.current)
         formData.append("originalName", props.CardData.name)
-        formData.append("status", "Complete")
         console.log('submitting')
         try{
-            let data = await axios.put(baseURL + '/editProject', formData, {headers: {'Content-Type': 'multipart/form-data'}})
+            setLoading(true)
+            let data = await axios.put(baseURL + '/editProject', formData, 
+                {
+                    headers: {'Content-Type': 'multipart/form-data'},
+                    signal: Controller.signal
+                })
             console.log(data.body)
         }
         catch(error){
             setError(error)
             console.log(error)
         }
+        finally{
+            setLoading(false)
+            setRefresh(refresh + 1)
+        }
     }
     return(
-        <dialog ref={EditDialogRef}>
-
+        <dialog className="projectDetailPage" ref={EditDialogRef}>
+            <div className="projectButtonWrapper">
+                <span>Nikan.</span>
+                <button onClick={() => {
+                    console.log('closing')
+                    props.DialogStatusFunc(false)}}
+                >
+                    X
+                </button>
+            </div>
             {/*
             -- DB Fields:
             -- TABLE Projects:
@@ -124,83 +156,178 @@ export default function ProjectEditPage(props) {
             {
                 projData != null && !isLoading && !error &&
                 <form ref={formRef} className="editProjectForm" onSubmit={handleSubmit}>
-                    <label htmlFor="name">
-                        Name:
-                        <input id="name" name="name" required defaultValue={props.CardData.name}/>
-                    </label>
-                    <label htmlFor="description">
-                        Description:
-                        <input required id="description" name="description" defaultValue={props.CardData.description}/>
-                    </label>
-                    <label htmlFor="longDescription">
-                        Long Description:
-                        <textarea required id="longDescription" name="longDescription" defaultValue={projData.longDescription}></textarea>
-                    </label>
-                    <label htmlFor="status">
-                        Status:
-                        {props.CardData.status}
-                        <ul>
+
+                <div className="dialogWrapper">
+                    <div className="imgCarousel">
+                        <img ref={pictureRef0} className='visible'alt='project image 1' src={projData.pictureURL}></img>
+                        <img ref={pictureRef1} className="" alt='project image 2' src={projData.carouselImage_1}></img>
+                        <img ref={pictureRef2} className="" alt='project image 3' src={projData.carouselImage_2}></img>
+                        <img ref={pictureRef3} className="" alt='project image 4' src={projData.carouselImage_3}></img>
+                        <ul className="imgPreview">
                             <li>
-                                In Progress
-                                <input type="checkbox"/>
+                                <img onClick={() => (updateCarousel(0))} className="carousel" alt='project image 1' src={projData.pictureURL}></img>
                             </li>
                             <li>
-                                Has Not Started
-                                <input type="checkbox"/>
+                                <img onClick={() => (updateCarousel(1))} className="carousel" alt='project image 2' src={projData.carouselImage_1}></img>
                             </li>
                             <li>
-                                Complete
-                                <input type="checkbox"/>
+                                <img onClick={() => (updateCarousel(2))} className="carousel" alt='project image 3' src={projData.carouselImage_2}></img>
+                            </li>
+                            <li>
+                                <img onClick={() => (updateCarousel(3))} className="carousel" alt='project image 4' src={projData.carouselImage_3}></img>
                             </li>
                         </ul>
-                    </label>
-                    <label htmlFor="githubURL">
-                        Github URL:
-                        <input required name="githubURL" id="githubURL" defaultValue={props.CardData.githubURL}/>
-                    </label>
-                    <label htmlFor="obsidianURL">
-                        Obsidian URL:
-                        <input required name="obsidianURL" id="githubURL" defaultValue={projData.obsidianURL}/>
-                    </label>
-                    <label htmlFor="deploymentURL">
-                        Deployment URL:
-                        <input required name="deploymentURL" id="deploymentURL" defaultValue={props.CardData.deploymentURL}/>
-                    </label>
-                    <label htmlFor="tags">
-                        Project Tags:
-                        {console.log(projData.tags)}
-                        <input required name="tags" id="tags" defaultValue={
-                            projData.tags.join('-')
-                        }
-                        />
-                    </label>
-                    <label htmlFor="picture">
-                        <img src={projData.pictureURL}/>
-                        <input id='picture' name="pictureURL" type="file" accept="image/avif"></input>
-                    </label>
-                    <label htmlFor="Carousel1">
-                        <img src={projData.carouselImage_1}/>
-                        <input id="Carousel1" name="carouselImage_1" type="file" accept="image/avif"></input>
-                    </label>
-                    <label htmlFor="Carousel2">
-                        <img src={projData.carouselImage_2}/>
-                        <input id="Carousel2" name="carouselImage_2" type="file" accept="image/avif"></input>
-                    </label>
-                    <label htmlFor="Carousel3">
-                        <img src={projData.carouselImage_3}/>
-                        <input id="Carousel3" name="carouselImage_3" type="file" accept="image/avif"></input>
-                    </label>
-                    <button type="submit" >
-                        submit
-                    </button>
+                    </div>
+                    <div className="textDetails">
+                        <h1>
+                            <label htmlFor="name">
+                                <span>Project Name:</span>
+                                <input id="name" name="name" required defaultValue={props.CardData.name}/>
+                            </label>
+                        </h1>
+                        
+                            <h2>
+                            Status:
+                                <ul>
+                                    <li>
+                                        <input id="In Progress" name="status" type="radio" value="In Progress"/>
+                                        <label htmlFor="In Progress">
+                                            In Progress
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input id="To Be Started" name="status" type="radio" value="To Be Started"/>
+                                        <label htmlFor="To Be Started">
+                                            To Be Started
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input id="Complete" name="status" type="radio" value="Complete"/>
+                                        <label htmlFor="Complete">
+                                            Complete
+                                        </label>
+                                    </li>
+                                </ul>
+                            </h2>
+                        
+                        <p>
+                            <label htmlFor="longDescription">
+                                Long Description:
+                                <textarea required id="longDescription" name="longDescription" defaultValue={projData.longDescription}></textarea>
+                            </label>
+                        </p>
+                    </div>
+                </div>
+                <div className="tagAndLinkWrapper">
+                    <div className="TagLinkInputWrapper">
+                        <label htmlFor="description">
+                            Short Description:
+                            <textarea required id="description" name="description" defaultValue={props.CardData.description}/>
+                        </label>
+                        
+                        <label htmlFor="tags">
+                            Project Tags:
+                            {console.log(projData.tags)}
+                            <input required name="tags" id="tags" defaultValue={
+                                projData.tags.join('-')
+                            }
+                            />
+                        </label>
+                        <span>Additional Links:</span>
+                        <ul className="linksList">
+                            <li>
+                                <label htmlFor="deploymentURL">
+                                    <span>Deployment URL:</span>
+                                    <input required name="deploymentURL" id="deploymentURL" defaultValue={props.CardData.deploymentURL}/>
+                                </label>
+                            </li>
+                            <li>
+                                
+                                <label htmlFor="githubURL">
+                                    <span>Repository:</span>
+                                    <input required name="githubURL" id="githubURL" defaultValue={props.CardData.githubURL}/>
+                                </label>
+                            </li>
+                            <li>
+                                 
+                                <label htmlFor="obsidianURL">  
+                                <span>Documentation:</span>
+                                    <input required name="obsidianURL" id="obsidianURL" defaultValue={projData.obsidianURL}/>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                   
+                    <div className="fileUploadWrapper">
+                        
+                        <label htmlFor="picture" 
+                            onMouseOver={(e) => {
+                                console.log('running on mouseover')
+                                updateCarousel(0)
+                                pictureRef0.current.classList.add('animate')
+                                
+                            }}
+                            onMouseLeave={(e) => {
+                                console.log('running mouseout')
+                                pictureRef0.current.classList.remove('animate')
+                            }}>
+                            Main Picture:
+                            <input id='picture' name="pictureURL" type="file" accept="image/avif"></input>
+                        </label>
+                        <label htmlFor="Carousel1"
+                            onMouseOver={(e) => {
+                                console.log('running on mouseover')
+                                updateCarousel(1)
+                                pictureRef1.current.classList.add('animate')
+                                
+                            }}
+                            onMouseLeave={(e) => {
+                                console.log('running mouseout')
+                                pictureRef1.current.classList.remove('animate')
+                            }}>
+                            Second Picture:
+                            <input id="Carousel1" name="carouselImage_1" type="file" accept="image/avif"></input>
+                        </label>
+                        <label htmlFor="Carousel2"
+                            onMouseOver={(e) => {
+                                console.log('running on mouseover')
+                                updateCarousel(2)
+                                pictureRef2.current.classList.add('animate')
+                                
+                            }}
+                            onMouseLeave={(e) => {
+                                console.log('running mouseout')
+                                pictureRef2.current.classList.remove('animate')
+                            }}>
+                            Third Picture:
+                            <input id="Carousel2" name="carouselImage_2" type="file" accept="image/avif"></input>
+                        </label>
+                        <label htmlFor="Carousel3"
+                            onMouseOver={(e) => {
+                                console.log('running on mouseover')
+                                updateCarousel(3)
+                                pictureRef3.current.classList.add('animate')
+                                
+                            }}
+                            onMouseLeave={(e) => {
+                                console.log('running mouseout')
+                                pictureRef3.current.classList.remove('animate')
+                            }}>
+                            Fourth Picture:
+                            <input id="Carousel3" name="carouselImage_3" type="file" accept="image/avif"></input>
+                        </label>
+                        <span>
+                            note: if a file is not uploaded the previous
+                            uploaded image will remain in the database
+                        </span>
+                        <button type="submit" >
+                        Submit
+                        </button>
+                    </div>
+                </div>
+                    
                 </form>
             }
-            
-            
-            <button onClick={() => {
-                props.queryFunction()
-                props.DialogStatusFunc(false)
-            }}>close</button>
         </dialog>
     );
 }
