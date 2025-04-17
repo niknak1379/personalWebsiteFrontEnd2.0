@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
 :root {
     --primary-color: #18181b; /* black color */
     --primary-card-color: rgb(76, 71, 82); /* black color */
@@ -15,19 +19,27 @@
     --animation-timing: 200ms ease-in-out;
     --theme-change-timing: 0;
     --hamburger-height: calc(var(--bar-height) * 3 + var(--bar-gap) * 2);
+
+    --mainFont: "Gugi", sans-serif;
+    --newFont: "Tomorrow", sans-serif;
+    --third: "Share Tech", sans-serif;
+    --fourth: "Aldrich", sans-serif;
 }
-  
+
 body {
     /* set background and font settings of the body */
     background-color: var(--primary-color); /*dark gray*/
     color: white;
-    font-family: "Playfair Display", serif; /*idk if this is working or not*/
+    /* font-family: "Playfair Display", serif; */
+    font-family: var(--third);
     transition: background var(--theme-change-timing) ease, color var(--theme-change-timing) ease;;
     /* overflow-x: hidden; */
     max-width: 1200px;
     margin-inline: auto;
 }
-
+h1, h2, h3{
+    font-family: var(--fourth);
+}
 
 body.lightMode {
     background: white;
@@ -71,7 +83,8 @@ div.header {
     padding-top: 0.5%;
     padding-bottom: 0.5%;
 
-    font-family: "Playfair Display", serif; 
+    /* font-family: "Playfair Display", serif;  */
+    font-family: var(--newFont);
 
     gap: 2em
 }
@@ -115,7 +128,8 @@ nav.mainNav{
     margin-right: auto;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
+    align-self: stretch;
 }
 
 
@@ -130,13 +144,24 @@ ul{
 nav.mainNav ul.navList {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
     padding: 0;
     margin: 0;
     gap: 1em;
 }
 
+nav.mainNav ul.navList li{
+    /* padding: 0.5em; */
+    display: flex;
+    align-items: stretch;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+}
 nav.mainNav ul.navList a{
     padding: 0.5em;
+    display: flex;
+    align-items:center;
     border-radius: 5px;
     transition: all 0.2s ease-in-out;
 }
@@ -144,22 +169,33 @@ nav.mainNav ul.navList a:hover{
 
     background: var(--accent-card-color);
     color: white;
-    transform: scale(2);
+    transform: scale(1.1);
     transform-origin: center;
 }
 button.logoutButton{
-    font-size: 1em;
-    font-weight:normal;
-    font-family: "Playfair Display", serif; 
+    
+    font: inherit;
+    font-weight: 600;
     background-color: inherit;
     
     color:inherit;
     
     cursor:pointer;
     border-style: none;
+    transition: transform 0.3s;
 }
-
-
+button.logoutButton:hover{
+    
+    background-color: var(--accent-card-color);
+    border: 1px solid white;
+    border-radius: 5px;
+    transform: scale(1.1);
+    transition: all 0.2s ease-in-out;
+}
+body.lightMode button.logoutButton:hover{
+    border: 1px solid black;
+    color: white !important;
+}
 label.hamburgerNav{
     display:none;
 }
@@ -594,7 +630,7 @@ section {
     /* sets sections to flex containers */
     display: flex;
     flex-direction: column;
-    font-family: "Playfair Display", serif; /*idk if this is working or not*/
+    /* font-family: "Playfair Display", serif; */
     align-items: center;
 }
 

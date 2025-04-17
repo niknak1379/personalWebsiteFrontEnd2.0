@@ -77,7 +77,7 @@ export default function NewProjectPage(props) {
         event.preventDefault()
         let formData = new FormData(formRef.current)
         //formData.append("originalName", props.CardData.name)
-        formData.append("status", "In Progress")
+        //formData.append("status", "In Progress")
         console.log('submitting')
         try{
             setLoading(true)
@@ -94,6 +94,10 @@ export default function NewProjectPage(props) {
         }
         finally{
             setLoading(false)
+            if(error == null){
+                window.alert('project added successfully')
+                props.DialogStatusFunc(false)
+            }
         }
     }
     return(
@@ -127,7 +131,9 @@ export default function NewProjectPage(props) {
             */}
             {
                 isLoading &&
-                <span>Loading</span>
+                <div className='sidebarLoading'>
+                        Loading <span><span></span></span>
+                </div>
             }
             {
                 !isLoading && error &&

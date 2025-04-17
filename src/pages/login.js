@@ -41,29 +41,6 @@ export default function Login() {
             console.log(e)
         }
     }
-    async function logout() {
-        console.log(accessToken)
-        try{
-            let logout = await axios.post(baseURL + '/logout')
-            console.log('loggingout', logout.data)
-            setToken(null)
-        }
-        catch(e){
-            console.log(e)
-        }
-    }
-    async function auth() {
-        console.log(accessToken)
-        // uncomment next line to test response interceptor
-        setToken(1)
-        try{
-            let logout = await axios.get(baseURL + '/auth')
-            console.log('auth', logout.data)
-        }
-        catch(e){
-            console.log(e)
-        }
-    }
     function toggleTrust(){
         setTrust(prev => !prev)
     }
@@ -84,9 +61,9 @@ export default function Login() {
             (accessToken == null) &&
             <form className='loginForm Background' ref={loginRef}>
                 <label htmlFor="email">Email or Username</label>
-                <input id="email" name="email" value={'nikan'}></input>
+                <input id="email" name="email"></input>
                 <label htmlFor="password">Password</label>
-                <input id="password" name="password" value={'78M56Soo!'}></input>
+                <input id="password" name="password"></input>
 
                 <label htmlFor="trust">
                     <input type="checkbox" name="trust" id="trust" onChange={toggleTrust} checked={trust}/>

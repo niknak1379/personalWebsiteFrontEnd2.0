@@ -88,7 +88,12 @@ export default function ProjectCard(props) {
                         </button>
                     </div>
 
-                    {isLoading && <span>Loading...</span>}
+                    {
+                        isLoading && 
+                        <div className='sidebarLoading'>
+                            Loading <span><span></span></span>
+                        </div>
+                    }
                     {(isLoading == null) && 
                     <>
                         <h2>Are You Sure You Want to Delete This Project?</h2>

@@ -90,11 +90,13 @@
 
   background-color: var(--light-mode-card-color);
   border-radius: 10px;
+  border: 2px solid black;
   padding: 5px;
 }
 body.lightMode .Card:hover img.deleteButton, 
 body.lightMode .Card:hover img.editButton{
-  background-color: var(--lightMode-color);
+  /* background-color: var(--lightMode-color); */
+  filter: invert()
 }
 .Card:hover img.deleteButton{
   right: 4px;
@@ -204,7 +206,7 @@ body.lightMode .Card dialog.deleteDialog button.closeDeleteDialog{
 
   display:flex;
   flex-direction: column;
-
+  justify-content: space-between;
   flex-grow: 1; /*not sure why this line is here rn*/
 }
 
@@ -229,6 +231,7 @@ body.lightMode .Card dialog.deleteDialog button.closeDeleteDialog{
 .Card h3{
   /* sets the project name settings*/
   font-size: 1em;
+  text-decoration: underline;
   margin-bottom: 0;
   margin-top: 0;
 }
@@ -239,7 +242,7 @@ body.lightMode .Card dialog.deleteDialog button.closeDeleteDialog{
 
 .Card p{
   /*sets project description settings*/
-  font-size: 0.75em;
+  font-size: 1em;
   margin-bottom: 0;
 }
 
@@ -248,6 +251,7 @@ div.cardBottomSection{
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-self: flex-end !important;
   font-size: 0.5em;
   color: white;
 }

@@ -36,6 +36,11 @@
     margin-right: 3vw;
 
 }
+
+.projectDetailPage .networkError{
+    margin-inline: auto !important;
+    border: none !important;
+}
 body.lightMode .networkError{
     background-color: var(--light-mode-card-color);
     border-color: var(--primary-color);
@@ -88,3 +93,4 @@ body.lightMode .networkError{
     scale: 1.1;
     cursor:pointer;
 }
+

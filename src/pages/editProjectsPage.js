@@ -113,7 +113,10 @@ export default function ProjectEditPage(props) {
         }
         finally{
             setLoading(false)
-            setRefresh(refresh + 1)
+            if(error == null){
+                window.alert('project edited successfully')
+                setRefresh(refresh + 1)
+            }
         }
     }
     return(
@@ -147,7 +150,9 @@ export default function ProjectEditPage(props) {
             */}
             {
                 isLoading &&
-                <span>Loading</span>
+                <div className='sidebarLoading'>
+                        Loading <span><span></span></span>
+                </div>
             }
             {
                 !isLoading && error &&
