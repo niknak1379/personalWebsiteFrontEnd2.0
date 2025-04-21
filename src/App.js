@@ -18,25 +18,25 @@ import RequireAuth from "./Hooks/requireAuth";
  * @returns {JSX.Element} react component with interactable gallery of projects
  */
 function App() {
-  return (
-    <div className="App">
-      <Suspense fallback={<div className="container">Loading...</div>}>
-        <Header />
-        <Routes>
-          <Route element={<PersistLogin />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/Projects" element={<Projects />} />
+	return (
+		<div className="App">
+			<Suspense fallback={<div className="container">Loading...</div>}>
+				<Header />
+				<Routes>
+					<Route element={<PersistLogin />}>
+						<Route path="/" element={<Home />} />
+						<Route path="/Projects" element={<Projects />} />
 
-            <Route path="/Login" element={<Login />} />
-            <Route element={<RequireAuth />}>
-              <Route path="/edit" element={<EditPage />} />
-            </Route>
-          </Route>
-        </Routes>
-        <Footer />
-      </Suspense>
-    </div>
-  );
+						<Route path="/Login" element={<Login />} />
+						<Route element={<RequireAuth />}>
+							<Route path="/edit" element={<EditPage />} />
+						</Route>
+					</Route>
+				</Routes>
+				<Footer />
+			</Suspense>
+		</div>
+	);
 }
 
 export default App;
