@@ -82,7 +82,7 @@ export default function ProjectEditPage(props) {
             }
         }
         if (props.DialogStatus){
-            console.log('opening bc of state')
+            console.log('opening bc of state', refresh)
             EditDialogRef.current?.showModal()
             getProjectDetails()
         }
@@ -105,7 +105,6 @@ export default function ProjectEditPage(props) {
                     headers: {'Content-Type': 'multipart/form-data'},
                     signal: Controller.signal
                 })
-            console.log(data.body)
         }
         catch(error){
             setError(error)
@@ -113,7 +112,7 @@ export default function ProjectEditPage(props) {
         }
         finally{
             setLoading(false)
-            if(error == null){
+            if(error == false){
                 window.alert('project edited successfully')
                 setRefresh(refresh + 1)
             }
@@ -227,12 +226,11 @@ export default function ProjectEditPage(props) {
                     <div className="TagLinkInputWrapper">
                         <label htmlFor="description">
                             Short Description:
-                            <textarea required id="description" name="description" defaultValue={props.CardData.description}/>
+                            <textarea required id="description" name="description" defaultValue={projData.description}/>
                         </label>
                         
                         <label htmlFor="tags">
                             Project Tags:
-                            {console.log(projData.tags)}
                             <input required name="tags" id="tags" defaultValue={
                                 projData.tags.join('-')
                             }

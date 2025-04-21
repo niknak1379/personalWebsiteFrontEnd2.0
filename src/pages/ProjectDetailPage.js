@@ -10,6 +10,7 @@ export default function ProjectDetailPage(props){
     const pictureRef1 = useRef(null)
     const pictureRef2 = useRef(null)
     const pictureRef3 = useRef(null)
+    const parRef = useRef(null)
     const carouselArr = [pictureRef0, pictureRef1, pictureRef2, pictureRef3]
     const dialogRef = useRef(null)
     useEffect(() => {
@@ -41,6 +42,10 @@ export default function ProjectDetailPage(props){
             dialogRef.current?.close()
         }
     }, [props.DialogStatus])
+    useEffect(() => {
+        console.log(projData)
+        if (projData != null) parRef.current.innerHTML = projData.longDescription.replaceAll('\r\n', '<br></br>')
+    }, [projData])
 
     function updateCarousel(i) {
         carouselArr[visibleCarouselImg].current.classList.remove('visible')
@@ -153,7 +158,7 @@ export default function ProjectDetailPage(props){
                 <div className="textDetails">
                     <h1>{props.CardData.name}</h1>
                     <span><h2>{projData.status}</h2></span>
-                    <p>{projData.longDescription}</p>
+                    <p ref={parRef}></p>
                 </div>
             </div>
             }

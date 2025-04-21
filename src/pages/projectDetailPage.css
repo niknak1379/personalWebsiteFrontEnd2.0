@@ -357,7 +357,7 @@ div.tagAndLinkWrapper ul.tagsList{
     flex-wrap: wrap;
 }
 div.tagAndLinkWrapper ul.tagsList li{
-    font-size: 0.750em;
+    font-size: 0.60em;
     padding: 0.25em;
     border: 1px solid black;
     height: 1.25em;
@@ -380,7 +380,7 @@ div.tagAndLinkWrapper ul.linksList{
     flex-direction: column;
     gap:0.25em;
     color: white;
-    font-size: medium;
+    font-size: large;
 }
 ul.linksList label{
     display: flex;

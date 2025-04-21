@@ -41,7 +41,7 @@ export default function ProjectCard(props) {
                 setError(true)
                 throw new Error('wrong status code returned, check server logs')
             }
-            
+        
         }
         catch(error) {
             setError(true)
