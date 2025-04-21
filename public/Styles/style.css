@@ -1,51 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gugi&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Aldrich&display=swap");
 :root {
-    --primary-color: #18181b; /* black color */
-    --primary-card-color: rgb(76, 71, 82); /* black color */
-    --secondary-color: #a855f7; /* purple color */
-    --accent-color: #71797E; /* grey color */
-    --light-accent-color: white; /* light grey color */
-    --lightMode-color: rgba(211, 117, 22, 0.33);
-    --light-mode-card-color: rgb(208, 190, 204);
-    --accent-card-color: #42394e; /* grey color */
-    --accent-card-color-transparent: rgba(255, 255, 255, 0.33); /* grey color */
+	--primary-color: #18181b; /* black color */
+	--primary-card-color: rgb(76, 71, 82); /* black color */
+	--secondary-color: #a855f7; /* purple color */
+	--accent-color: #71797e; /* grey color */
+	--light-accent-color: white; /* light grey color */
+	--lightMode-color: rgba(211, 117, 22, 0.33);
+	--light-mode-card-color: rgb(208, 190, 204);
+	--accent-card-color: #42394e; /* grey color */
+	--accent-card-color-transparent: rgba(255, 255, 255, 0.33); /* grey color */
 
-    --bar-width: 30px;
-    --bar-height: 0.25em;
-    --bar-gap: 0.5em;
-    --animation-timing: 200ms ease-in-out;
-    --theme-change-timing: 0;
-    --hamburger-height: calc(var(--bar-height) * 3 + var(--bar-gap) * 2);
+	--bar-width: 30px;
+	--bar-height: 0.25em;
+	--bar-gap: 0.5em;
+	--animation-timing: 200ms ease-in-out;
+	--theme-change-timing: 0;
+	--hamburger-height: calc(var(--bar-height) * 3 + var(--bar-gap) * 2);
 
-    --mainFont: "Gugi", sans-serif;
-    --newFont: "Tomorrow", sans-serif;
-    --third: "Share Tech", sans-serif;
-    --fourth: "Aldrich", sans-serif;
+	--mainFont: "Gugi", sans-serif;
+	--newFont: "Tomorrow", sans-serif;
+	--third: "Share Tech", sans-serif;
+	--fourth: "Aldrich", sans-serif;
 }
 
 body {
-    /* set background and font settings of the body */
-    background-color: var(--primary-color); /*dark gray*/
-    color: white;
-    /* font-family: "Playfair Display", serif; */
-    font-family: var(--third);
-    transition: background var(--theme-change-timing) ease, color var(--theme-change-timing) ease;;
-    /* overflow-x: hidden; */
-    max-width: 1200px;
-    margin-inline: auto;
+	/* set background and font settings of the body */
+	background-color: var(--primary-color); /*dark gray*/
+	color: white;
+	/* font-family: "Playfair Display", serif; */
+	font-family: var(--third);
+	transition:
+		background var(--theme-change-timing) ease,
+		color var(--theme-change-timing) ease;
+	/* overflow-x: hidden; */
+	max-width: 1200px;
+	margin-inline: auto;
 }
-h1, h2, h3{
-    font-family: var(--fourth);
+h1,
+h2,
+h3 {
+	font-family: var(--fourth);
 }
 
 body.lightMode {
-    background: white;
-    color: #18181b;
+	background: white;
+	color: #18181b;
 }
-
 
 /* 
 
@@ -54,201 +57,194 @@ body.lightMode {
 
 
 */
-header{
-    background: var(--primary-color);
-    box-shadow: 0px 4px 17px 0px var(--accent-card-color-transparent);
-    position: fixed;
-    width: 100%;
-    top:0;
-    left: 0;
-    opacity: 0.95;
-    z-index: 999;
-    transition: background var(--theme-change-timing) ease-in;
+header {
+	background: var(--primary-color);
+	box-shadow: 0px 4px 17px 0px var(--accent-card-color-transparent);
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	opacity: 0.95;
+	z-index: 999;
+	transition: background var(--theme-change-timing) ease-in;
 }
-body.lightMode header{
-    background: white;
-    /* border: black 1px solid; */
-    box-shadow: 0px 4px 17px 0px darkgrey;
+body.lightMode header {
+	background: white;
+	/* border: black 1px solid; */
+	box-shadow: 0px 4px 17px 0px darkgrey;
 }
 div.header {
-    
-    
-    /* set the header so that nav bar can be in the center */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	/* set the header so that nav bar can be in the center */
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-top: 0.5%;
-    padding-bottom: 0.5%;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-top: 0.5%;
+	padding-bottom: 0.5%;
 
-    /* font-family: "Playfair Display", serif;  */
-    font-family: var(--newFont);
+	/* font-family: "Playfair Display", serif;  */
+	font-family: var(--newFont);
 
-    gap: 2em
+	gap: 2em;
 }
 
 a {
-    text-decoration: none;
-    color:inherit;
+	text-decoration: none;
+	color: inherit;
 }
-a.logo{
-    /* Nikan. logo font settings */
-    font-weight: bold;
-    font-size: 2.5em;
-    
+a.logo {
+	/* Nikan. logo font settings */
+	font-weight: bold;
+	font-size: 2.5em;
 
-    position: relative;
-    /*height: 100%;
+	position: relative;
+	/*height: 100%;
     height: 0.8em;
     width: 3em; */
 }
-header a.logo{
-    height: 1em;
-    display: flex;
+header a.logo {
+	height: 1em;
+	display: flex;
 }
-a.logo img.logo{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    left: 0%;
-    top: 0%;
-    transition: opacity var(--theme-change-timing) ease-in;
+a.logo img.logo {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	left: 0%;
+	top: 0%;
+	transition: opacity var(--theme-change-timing) ease-in;
 }
-a.logo img.logo:first-child{
-    position: relative;
-}
-
-body.lightMode a.logo img.darkLogo{
-    opacity: 0;
-}
-nav.mainNav{
-    margin-right: auto;
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    align-self: stretch;
+a.logo img.logo:first-child {
+	position: relative;
 }
 
+body.lightMode a.logo img.darkLogo {
+	opacity: 0;
+}
+nav.mainNav {
+	margin-right: auto;
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
+	align-self: stretch;
+}
 
 /* a:hover {
     color: var(--secondary-color);
 } */
 
-ul{
-    list-style: none;
+ul {
+	list-style: none;
 }
 
 nav.mainNav ul.navList {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: stretch;
-    padding: 0;
-    margin: 0;
-    gap: 1em;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: stretch;
+	padding: 0;
+	margin: 0;
+	gap: 1em;
 }
 
-nav.mainNav ul.navList li{
-    /* padding: 0.5em; */
-    display: flex;
-    align-items: stretch;
-    border-radius: 5px;
-    transition: all 0.2s ease-in-out;
+nav.mainNav ul.navList li {
+	/* padding: 0.5em; */
+	display: flex;
+	align-items: stretch;
+	border-radius: 5px;
+	transition: all 0.2s ease-in-out;
 }
-nav.mainNav ul.navList a{
-    padding: 0.5em;
-    display: flex;
-    align-items:center;
-    border-radius: 5px;
-    transition: all 0.2s ease-in-out;
+nav.mainNav ul.navList a {
+	padding: 0.5em;
+	display: flex;
+	align-items: center;
+	border-radius: 5px;
+	transition: all 0.2s ease-in-out;
 }
-nav.mainNav ul.navList a:hover{
+nav.mainNav ul.navList a:hover {
+	background: var(--accent-card-color);
+	color: white;
+	transform: scale(1.1);
+	transform-origin: center;
+}
+button.logoutButton {
+	font: inherit;
+	font-weight: 600;
+	background-color: inherit;
 
-    background: var(--accent-card-color);
-    color: white;
-    transform: scale(1.1);
-    transform-origin: center;
+	color: inherit;
+
+	cursor: pointer;
+	border-style: none;
+	transition: transform 0.3s;
 }
-button.logoutButton{
-    
-    font: inherit;
-    font-weight: 600;
-    background-color: inherit;
-    
-    color:inherit;
-    
-    cursor:pointer;
-    border-style: none;
-    transition: transform 0.3s;
+button.logoutButton:hover {
+	background-color: var(--accent-card-color);
+	border: 1px solid white;
+	border-radius: 5px;
+	transform: scale(1.1);
+	transition: all 0.2s ease-in-out;
 }
-button.logoutButton:hover{
-    
-    background-color: var(--accent-card-color);
-    border: 1px solid white;
-    border-radius: 5px;
-    transform: scale(1.1);
-    transition: all 0.2s ease-in-out;
+body.lightMode button.logoutButton:hover {
+	border: 1px solid black;
+	color: white !important;
 }
-body.lightMode button.logoutButton:hover{
-    border: 1px solid black;
-    color: white !important;
-}
-label.hamburgerNav{
-    display:none;
+label.hamburgerNav {
+	display: none;
 }
 
-aside.sidebar{
-    display: none;
+aside.sidebar {
+	display: none;
 }
 
 div.header > div {
-    /* handles centering the nav bar through resizing the left and right elements*/
-    flex-grow: 1;
-    flex-basis: 0;
+	/* handles centering the nav bar through resizing the left and right elements*/
+	flex-grow: 1;
+	flex-basis: 0;
 
-    display: flex;
-    align-self: stretch;
+	display: flex;
+	align-self: stretch;
 }
 
 .contactButton {
-    font-size: 1em;
-    font-weight:bold;
-    font-family: "Playfair Display", serif; 
-    background-color: var(--secondary-color);
-    color:white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /*pushes it to the right edge of the div container*/
-    /* margin-left:auto; */
-    
-    cursor:pointer;
-    border-style: none;
-    padding: 0.5em 1em 0.5em 1em;
-    border-radius: 5px;
+	font-size: 1em;
+	font-weight: bold;
+	font-family: "Playfair Display", serif;
+	background-color: var(--secondary-color);
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/*pushes it to the right edge of the div container*/
+	/* margin-left:auto; */
 
-    transition: all 0.3s ease;
+	cursor: pointer;
+	border-style: none;
+	padding: 0.5em 1em 0.5em 1em;
+	border-radius: 5px;
+
+	transition: all 0.3s ease;
 }
 div.header .contactButton:hover,
-dialog.contactMeDialog .contactButton:hover{
-    background-color: var(--primary-card-color);
-    transform: scale(1.1);
-    transform-origin:center;
+dialog.contactMeDialog .contactButton:hover {
+	background-color: var(--primary-card-color);
+	transform: scale(1.1);
+	transform-origin: center;
 }
-.contactButton span{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.contactButton span {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
-img.formRetry{
-    width: 1.1em;
-    height: 100%;
-    filter:invert();
-    margin-left: 1em;
-    margin-bottom: 0!important;
+img.formRetry {
+	width: 1.1em;
+	height: 100%;
+	filter: invert();
+	margin-left: 1em;
+	margin-bottom: 0 !important;
 }
 
 /* 
@@ -260,67 +256,64 @@ img.formRetry{
 */
 
 input.lightModeToggle {
-    display: none;
+	display: none;
 }
 
 label.darkModeLabel {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    position:relative;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
 
-    background-color: var(--accent-card-color-transparent);
-    padding: 0.5em;
-    border-radius: 100px;
-    margin-left: auto;
+	background-color: var(--accent-card-color-transparent);
+	padding: 0.5em;
+	border-radius: 100px;
+	margin-left: auto;
 
-    height: 2em;
-    width: 4em;
+	height: 2em;
+	width: 4em;
 
-    cursor: pointer;
-    font-size: 10px;
+	cursor: pointer;
+	font-size: 10px;
 
-    transition: all 0.3s ease;
+	transition: all 0.3s ease;
 }
 
-div.header label.darkModeLabel:hover{
-    transform: scale(1.1);
-    transform-origin:center;
+div.header label.darkModeLabel:hover {
+	transform: scale(1.1);
+	transform-origin: center;
 }
 
-div.contactButtonWraper{
-    align-items: center;
-    gap: 1em;
+div.contactButtonWraper {
+	align-items: center;
+	gap: 1em;
 }
-label.darkModeLabel img{
-    width: 1.5em;
-    height: auto;
+label.darkModeLabel img {
+	width: 1.5em;
+	height: auto;
 }
-img.darkToggle{
-    margin-left: auto;
+img.darkToggle {
+	margin-left: auto;
 }
-label.darkModeLabel span.ball{
-    position:absolute;
-    top: 0.5em;
-    left: 0.5em;
+label.darkModeLabel span.ball {
+	position: absolute;
+	top: 0.5em;
+	left: 0.5em;
 
-    height: 2em;
-    width: 2em;
-    background: white;
-    border-radius: 50%;
+	height: 2em;
+	width: 2em;
+	background: white;
+	border-radius: 50%;
 
-    transition: transform 0.3s ease;
+	transition: transform 0.3s ease;
 }
-input.lightModeToggle:checked + label.darkModeLabel span.ball{
-    transform: translateX(2em);
+input.lightModeToggle:checked + label.darkModeLabel span.ball {
+	transform: translateX(2em);
 }
-input.lightModeToggle:checked + label.darkModeLabel{
-    background: var(--secondary-color);
+input.lightModeToggle:checked + label.darkModeLabel {
+	background: var(--secondary-color);
 }
-
-
-
 
 /* 
 
@@ -330,220 +323,213 @@ input.lightModeToggle:checked + label.darkModeLabel{
     
 */
 
-dialog.contactMeDialog{
-    position: fixed;
-    top: 10%;
-    width: 70%;
-    max-width: 700px;
-    
-    /* filter: none !important; */
-    background-color: var(--primary-color);
-    color: white;
+dialog.contactMeDialog {
+	position: fixed;
+	top: 10%;
+	width: 70%;
+	max-width: 700px;
 
-    /* background-color: white;
+	/* filter: none !important; */
+	background-color: var(--primary-color);
+	color: white;
+
+	/* background-color: white;
     color: black;
     border-color: black; */
 
-    font-family: "Playfair Display", serif; /*idk if this is working or not*/
-    
-    /* styling for the contact me dialog */
-    border: solid var(--accent-card-color-transparent);
-    
-    border-radius: 5px;
-    padding: 0;
-    z-index: 10000;
-}
-body.lightMode dialog.contactMeDialog{
-    background-color: white;
-    color: black;
-    border-color: black;
-}
+	font-family: "Playfair Display", serif; /*idk if this is working or not*/
 
-body.lightMode dialog.contactMeDialog p{
+	/* styling for the contact me dialog */
+	border: solid var(--accent-card-color-transparent);
 
-    color: var(--accent-color);
+	border-radius: 5px;
+	padding: 0;
+	z-index: 10000;
+}
+body.lightMode dialog.contactMeDialog {
+	background-color: white;
+	color: black;
+	border-color: black;
 }
 
-
+body.lightMode dialog.contactMeDialog p {
+	color: var(--accent-color);
+}
 
 .blur {
-    /* blur effect for the dialog */
-    filter: blur(5px);
+	/* blur effect for the dialog */
+	filter: blur(5px);
 }
-.blurTimed{
-    transition: var(--animation-timing);
-    filter: blur(5px);
+.blurTimed {
+	transition: var(--animation-timing);
+	filter: blur(5px);
 }
 
-dialog.contactMeDialog #dialogHeader{
-    /* padding for the header section of the dialog */
-    padding: 10px 5% 10px 5%;
-    font-weight: bold;
-    font-size: 2.5em;
+dialog.contactMeDialog #dialogHeader {
+	/* padding for the header section of the dialog */
+	padding: 10px 5% 10px 5%;
+	font-weight: bold;
+	font-size: 2.5em;
 
-    border-bottom: solid var(--accent-card-color-transparent);
-    /* border-bottom: solid black; */
+	border-bottom: solid var(--accent-card-color-transparent);
+	/* border-bottom: solid black; */
 
-    display: flex;
+	display: flex;
 }
-body.lightMode dialog.contactMeDialog #dialogHeader{
-    border-bottom: solid black;
+body.lightMode dialog.contactMeDialog #dialogHeader {
+	border-bottom: solid black;
 }
 
 dialog.contactMeDialog #dialogHeader #closeButton {
+	/* pushes the close button to the right */
+	margin-left: auto;
+	padding: 0;
 
-    /* pushes the close button to the right */
-    margin-left: auto;
-    padding: 0;
+	background-color: var(--primary-color);
+	/* background-color: white; */
+	color: var(--accent-card-color-transparent);
+	border: none;
 
-    background-color: var(--primary-color);
-    /* background-color: white; */
-    color: var(--accent-card-color-transparent);
-    border: none;
-
-    font-size: large;
-    font-weight: bolder;
-    cursor:pointer;
+	font-size: large;
+	font-weight: bolder;
+	cursor: pointer;
 }
-body.lightMode dialog.contactMeDialog #dialogHeader #closeButton{
-    background-color: white;
-    /* background-color: white; */
-    color: black;
-}
-
-dialog.contactMeDialog form{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    /* font-size: 16px; */
-
-    /* margin: 0 5% 0% 5%; */
-    gap: 5%;
+body.lightMode dialog.contactMeDialog #dialogHeader #closeButton {
+	background-color: white;
+	/* background-color: white; */
+	color: black;
 }
 
-dialog.contactMeDialog form #inputFields, #contactInfo{
+dialog.contactMeDialog form {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	/* font-size: 16px; */
 
-    /* set margin and direction settings for the two columns of the form */
-    margin: 5% 5% 10% 5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+	/* margin: 0 5% 0% 5%; */
+	gap: 5%;
 }
 
-dialog.contactMeDialog form #contactInfo *{
-
-    margin-top: 0;
-    margin-bottom: 2%;
+dialog.contactMeDialog form #inputFields,
+#contactInfo {
+	/* set margin and direction settings for the two columns of the form */
+	margin: 5% 5% 10% 5%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
-dialog.contactMeDialog form label{
-    /* sets styling for the labels of the form fields */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    font-weight: bold;
-    font-size: 1.25em;
+dialog.contactMeDialog form #contactInfo * {
+	margin-top: 0;
+	margin-bottom: 2%;
 }
 
-dialog.contactMeDialog form label input{
+dialog.contactMeDialog form label {
+	/* sets styling for the labels of the form fields */
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 
-    /* margin-top: 5%; */
-    border-radius: 3px;
-    padding: 5% 0 5% 0;
-    border:none;
-
-    border-bottom: solid var(--accent-card-color-transparent);
-    background-color: var(--primary-color);
-    color: var(--accent-card-color-transparent);
-
-    font-family: "Poppins", sans-serif;
-    font-size: 16px;
-}
-body.lightMode dialog.contactMeDialog form label input{
-
-    border-bottom: solid black;
-    background-color: white;
-    color: black;
+	font-weight: bold;
+	font-size: 1.25em;
 }
 
-dialog.contactMeDialog form label span{
-    font-weight: 400;
-    font-size: small;
-    display: none;
-    color: red;
-    margin: 0;
-    padding: 0;
+dialog.contactMeDialog form label input {
+	/* margin-top: 5%; */
+	border-radius: 3px;
+	padding: 5% 0 5% 0;
+	border: none;
+
+	border-bottom: solid var(--accent-card-color-transparent);
+	background-color: var(--primary-color);
+	color: var(--accent-card-color-transparent);
+
+	font-family: "Poppins", sans-serif;
+	font-size: 16px;
+}
+body.lightMode dialog.contactMeDialog form label input {
+	border-bottom: solid black;
+	background-color: white;
+	color: black;
 }
 
-dialog.contactMeDialog form label textarea{
-    /* text area settings */
-    border:solid var(--accent-card-color-transparent);
-    border-radius: 5px;
-    background-color: var(--primary-color);
-    color: var(--accent-card-color-transparent);
-
-    margin-top: 5%;
-    resize: none;
-
-    font-size: 16px;
-    font-family: "Poppins", sans-serif;
-}
-body.lightMode dialog.contactMeDialog form label textarea{
-    /* text area settings */
-    border:solid black;
-    background-color: white;
-    color: black;
+dialog.contactMeDialog form label span {
+	font-weight: 400;
+	font-size: small;
+	display: none;
+	color: red;
+	margin: 0;
+	padding: 0;
 }
 
-dialog.contactMeDialog form input:focus, dialog form textarea:focus{
-    color: white;
-    outline-style: solid;
-    outline-color: var(--secondary-color);
-    border-color: var(--secondary-color);
+dialog.contactMeDialog form label textarea {
+	/* text area settings */
+	border: solid var(--accent-card-color-transparent);
+	border-radius: 5px;
+	background-color: var(--primary-color);
+	color: var(--accent-card-color-transparent);
+
+	margin-top: 5%;
+	resize: none;
+
+	font-size: 16px;
+	font-family: "Poppins", sans-serif;
+}
+body.lightMode dialog.contactMeDialog form label textarea {
+	/* text area settings */
+	border: solid black;
+	background-color: white;
+	color: black;
 }
 
-dialog.contactMeDialog form input.invalid:focus, dialog.contactMeDialog form input.invalid {
-    outline-color: red;
-    border: solid;
-    border-color: red;
+dialog.contactMeDialog form input:focus,
+dialog form textarea:focus {
+	color: white;
+	outline-style: solid;
+	outline-color: var(--secondary-color);
+	border-color: var(--secondary-color);
 }
 
-dialog.contactMeDialog h4{
-    margin-bottom: 0;
+dialog.contactMeDialog form input.invalid:focus,
+dialog.contactMeDialog form input.invalid {
+	outline-color: red;
+	border: solid;
+	border-color: red;
+}
+
+dialog.contactMeDialog h4 {
+	margin-bottom: 0;
 }
 
 dialog.contactMeDialog h3 {
-    margin-bottom: 5%;
+	margin-bottom: 5%;
 }
 
 dialog.contactMeDialog p {
-    color:var(--accent-card-color-transparent);
-    margin-bottom: 5% !important; 
+	color: var(--accent-card-color-transparent);
+	margin-bottom: 5% !important;
 }
 
 dialog.contactMeDialog form #formButton {
-    margin-right: auto;
-    margin-bottom: 0 !important;
+	margin-right: auto;
+	margin-bottom: 0 !important;
 }
 dialog.contactMeDialog form #formButton:hover {
-    background-color: var(--primary-card-color);
+	background-color: var(--primary-card-color);
 }
-div.buttonWrap{
-    /* used to push the button to the left */
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 0 !important;
-}
-
-div.g-recaptcha{
-    transform: scale(0.6);
-    transform-origin:left;
-    margin-right: auto;
-    margin-bottom: 0 !important;
+div.buttonWrap {
+	/* used to push the button to the left */
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 0 !important;
 }
 
-
+div.g-recaptcha {
+	transform: scale(0.6);
+	transform-origin: left;
+	margin-right: auto;
+	margin-bottom: 0 !important;
+}
 
 /* 
 
@@ -553,69 +539,67 @@ div.g-recaptcha{
     
 */
 
-
 dialog.notification {
-    background-color: var(--primary-color);
-    border-style: solid;
-    border-color: var(--accent-card-color-transparent);
-    border-width: 2px;
-    border-radius: 5px;
+	background-color: var(--primary-color);
+	border-style: solid;
+	border-color: var(--accent-card-color-transparent);
+	border-width: 2px;
+	border-radius: 5px;
 
-    position:fixed;
-    margin-right:5vw;
-    margin-top: 0vh;
-    width: 150px;
-    z-index: 10;
+	position: fixed;
+	margin-right: 5vw;
+	margin-top: 0vh;
+	width: 150px;
+	z-index: 10;
 }
 
-dialog.notification div{
-    display: flex;
-    flex-direction: column;
-
+dialog.notification div {
+	display: flex;
+	flex-direction: column;
 }
 
-dialog.notification div img{
-    height: 50px;
-    width: 50px;
-    margin: 0 auto 0 auto;
+dialog.notification div img {
+	height: 50px;
+	width: 50px;
+	margin: 0 auto 0 auto;
 }
 
-dialog.notification div h4{
-    text-align: center;
-    color:white;
+dialog.notification div h4 {
+	text-align: center;
+	color: white;
 }
 
 dialog.notification[open] {
-    animation: show 1s ease normal;
+	animation: show 1s ease normal;
 }
-@keyframes show{
-    from {
-        transform: translateX(110%);
-    }
-    to {
-        transform: translateX(0%);
-    }
+@keyframes show {
+	from {
+		transform: translateX(110%);
+	}
+	to {
+		transform: translateX(0%);
+	}
 }
 
 dialog.notification.hiding {
-    animation: hide 1s ease normal;
+	animation: hide 1s ease normal;
 }
-@keyframes hide{
-    to {
-        transform: translateX(200%);
-    }
-}
-
-hr.navDivider, hr.headerDivider{
-    margin: 0 !important;
-}
-header{
-    border-bottom: 2px solid white;
-}
-body.lightMode header{
-    border-color: black;
+@keyframes hide {
+	to {
+		transform: translateX(200%);
+	}
 }
 
+hr.navDivider,
+hr.headerDivider {
+	margin: 0 !important;
+}
+header {
+	border-bottom: 2px solid white;
+}
+body.lightMode header {
+	border-color: black;
+}
 
 /* 
 
@@ -626,145 +610,141 @@ body.lightMode header{
 */
 
 section {
-
-    /* sets sections to flex containers */
-    display: flex;
-    flex-direction: column;
-    /* font-family: "Playfair Display", serif; */
-    align-items: center;
+	/* sets sections to flex containers */
+	display: flex;
+	flex-direction: column;
+	/* font-family: "Playfair Display", serif; */
+	align-items: center;
 }
 
-section section.hero{
-    /* max-width: 1200px; */ /* for larger displays */
-    flex-direction: row-reverse;
-    gap: 5%;
-    padding: 3em 5% 5em 5%;
-    text-align: left;
-    /* background-image: url( '../Assets/Main/Background.svg' );
+section section.hero {
+	/* max-width: 1200px; */ /* for larger displays */
+	flex-direction: row-reverse;
+	/* flex-grow: 0;
+	flex-shrink: 0; */
+	gap: 5%;
+	padding: 3em 5% 5em 5%;
+	text-align: left;
+	/* background-image: url( '../Assets/Main/Background.svg' );
     background-repeat: no-repeat;
     background-position: bottom center, 50%, 50%; */
 }
 
-
-
 #introduction section.hero p {
-    /* styles the introduction paragraph */
+	/* styles the introduction paragraph */
 
-    font-weight: bold;
-    font-size: 3em;
-    color: var(--accent-color);
+	font-weight: bold;
+	font-size: 3em;
+	color: var(--accent-color);
 }
 #introduction section.hero h1 {
-    /* styles the introduction paragraph */
-    font-size: 3em;
-    max-height: 1.1em;
-    overflow: hidden;
+	/* styles the introduction paragraph */
+	font-size: 3em;
+	max-height: 1.1em;
+	overflow: hidden;
 }
-#introduction section.hero div.heroText{
-    display: block;
-    overflow: hidden;
+#introduction section.hero div.heroText {
+	display: block;
+	overflow: hidden;
 }
 
+div.heroImgWrapper {
+	margin-inline: auto;
+	margin-top: 8em;
+	margin-bottom: 8em;
 
-div.heroImgWrapper{
-    margin-inline: auto;
-    margin-top:8em;
-    margin-bottom: 8em;
-    
-    position: relative;
-    width: 35vw;
-    min-width: 35vw;
-    
+	position: relative;
+	width: 35vw;
+	min-width: 35vw;
 
-    /* background-image: url( '../Assets/Main/1.svg' );
+	/* background-image: url( '../Assets/Main/1.svg' );
     background-repeat: no-repeat;
     background-position: center, 50%, 50%; */
 }
 
 img.heroImg {
-    /* Hero image centering and sizing */
-    position: absolute;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-inline: auto;
-    right: 0;
-    left: 0;
-    top:0;
-    bottom: 0;
-    height: 20vw;
-    width: auto;
+	/* Hero image centering and sizing */
+	position: absolute;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-inline: auto;
+	right: 0;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	height: 20vw;
+	width: auto;
 }
-img.heroSVG{
-    position: absolute;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-inline: auto;
-    right: 0;
-    left: 0;
-    top:0;
-    bottom: 0;
+img.heroSVG {
+	position: absolute;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-inline: auto;
+	right: 0;
+	left: 0;
+	top: 0;
+	bottom: 0;
 
-    height: 35vw;
-    width: auto;
-    animation: rotation 16s infinite linear;
+	height: 35vw;
+	width: auto;
+	animation: rotation 16s infinite linear;
 }
 @keyframes rotation {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(359deg);
-    }
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(359deg);
+	}
+}
 
-table { 
-    /* eliminates double border and sets the width */
-    width: 100%;
-    max-width: 1100px;
-    border-collapse: collapse;
+table {
+	/* eliminates double border and sets the width */
+	width: 100%;
+	max-width: 1100px;
+	border-collapse: collapse;
 }
 
 td {
-    /* handles styling for the right side of table */
-    border-bottom: 1px solid; /* Add border along each row */
-    border-top: 1px solid; /* Add border along each row */
+	/* handles styling for the right side of table */
+	border-bottom: 1px solid; /* Add border along each row */
+	border-top: 1px solid; /* Add border along each row */
 
-    padding-right: 2em;
-    padding-top: 1em;
-    padding-bottom: 1em;
+	padding-right: 2em;
+	padding-top: 1em;
+	padding-bottom: 1em;
 
-    font-size: 1.125em;
-    text-align: right;
+	font-size: 1.125em;
+	text-align: right;
 }
 th {
-    /* handles styling for the left side of the table */
-    border-bottom: 1px solid; /* Add border along each row */
-    border-top: 1px solid; /* Add border along each row */
+	/* handles styling for the left side of the table */
+	border-bottom: 1px solid; /* Add border along each row */
+	border-top: 1px solid; /* Add border along each row */
 
-    padding-left: 2em;
-    padding-top: 1em;
-    padding-bottom: 1em;
+	padding-left: 2em;
+	padding-top: 1em;
+	padding-bottom: 1em;
 
-    font-size: 1.375em;
-    text-align: left;
+	font-size: 1.375em;
+	text-align: left;
 }
 
-#Skillset{
-    /* styles the skillset large text */
-    font-size: 6.75em;
-    text-align: center;
+#Skillset {
+	/* styles the skillset large text */
+	font-size: 6.75em;
+	text-align: center;
 
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
 
-#SkillsetExplanation{
-    /* styles the skillset explanation under the skillset large text */
-    margin-top:0;
+#SkillsetExplanation {
+	/* styles the skillset explanation under the skillset large text */
+	margin-top: 0;
 
-    font-size: 2.25em;
-    text-align: center;
+	font-size: 2.25em;
+	text-align: center;
 }
-
 
 /* 
 
@@ -775,126 +755,119 @@ th {
 */
 
 footer {
+	/* footer properties */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
 
-    /* footer properties */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-
-
-    margin-inline: 5%;
-    padding-top: 20vh;
-    margin-bottom: 5vh;
-/*     gap: 0%; */
+	margin-inline: 5%;
+	padding-top: 20vh;
+	margin-bottom: 5vh;
+	/*     gap: 0%; */
 }
 
-footer a.logo{
-    width: 200px;
-
+footer a.logo {
+	width: 200px;
 }
 
-footer a.logo img{
-    width: 100% !important;
-    height: auto !important;
+footer a.logo img {
+	width: 100% !important;
+	height: auto !important;
 }
 
-footer ul.footerLinks{
-    padding: 0;
-    margin-top: 3em;
+footer ul.footerLinks {
+	padding: 0;
+	margin-top: 3em;
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
 }
 
-footer ul.footerLinks li{
-    margin-right: 1em;
+footer ul.footerLinks li {
+	margin-right: 1em;
 }
 
-footer ul.footerLinks li a:hover{
-    text-decoration: underline;
+footer ul.footerLinks li a:hover {
+	text-decoration: underline;
 }
 
-footer ul.footerLinks li:not(:first-child)::before{
-    content: '/';
-    margin-right: 1em;
+footer ul.footerLinks li:not(:first-child)::before {
+	content: "/";
+	margin-right: 1em;
 }
 
-footer ul.footerIcon{
-    padding: 0;
-    display: flex;
-    gap: 1.5em;
+footer ul.footerIcon {
+	padding: 0;
+	display: flex;
+	gap: 1.5em;
 }
 
-footer ul.footerIcon img{
-    height: 35px;
-    width: auto;
+footer ul.footerIcon img {
+	height: 35px;
+	width: auto;
 }
 
+#footerButton {
+	height: 50px;
+	width: 50px;
 
-
-#footerButton{
-
-    height: 50px;
-    width: 50px;
-
-    position: absolute;
-    border-radius: 50px;
-    right: 5%;
-    margin-top: -5em;
-    background-color: inherit;
+	position: absolute;
+	border-radius: 50px;
+	right: 5%;
+	margin-top: -5em;
+	background-color: inherit;
 }
-#footerButton img{
-    /*sets the background image of the button */
-    object-fit: contain;
-    
-    /* fills the button container*/
-    width: 100%;
-    height:100%;
+#footerButton img {
+	/*sets the background image of the button */
+	object-fit: contain;
+
+	/* fills the button container*/
+	width: 100%;
+	height: 100%;
 }
-#footerButton:hover{
-    background-color: var(--light-mode-card-color);
-    cursor: pointer;
+#footerButton:hover {
+	background-color: var(--light-mode-card-color);
+	cursor: pointer;
 }
 
-@media (min-width: 1200px){
-    footer, div.header, section.hero {
-        max-width: 1200px;
-        margin-inline: auto !important;
-    }
-    section section.hero{
-        /* max-width: 1200px; */ /* for larger displays */
-        padding: 8em 5% 10em 5%;
-        
-    }
-    div.heroImgWrapper{
-        min-width: 435px !important;
-        width: 435px !important;
-    }
-    img.heroSVG {
-        height: 435px !important;
-    }
-    img.heroImg{
-        height: 220px;
-    }
+@media (min-width: 1200px) {
+	footer,
+	div.header,
+	section.hero {
+		max-width: 1200px;
+		margin-inline: auto !important;
+	}
+	section section.hero {
+		/* max-width: 1200px; */ /* for larger displays */
+		padding: 8em 5% 10em 5%;
+	}
+	div.heroImgWrapper {
+		min-width: 435px !important;
+		width: 435px !important;
+		margin-left: 2em;
+	}
+	img.heroSVG {
+		height: 435px !important;
+	}
+	img.heroImg {
+		height: 220px;
+	}
 
-    #introduction section.hero h1{
-        font-size: 4.5em;
-    }
-
+	#introduction section.hero h1 {
+		font-size: 4em;
+	}
 }
-@media (min-width: 1000px){
-    section section.hero{
-        /* max-width: 1200px; */ /* for larger displays */
-        padding: 5em 5% 7em 5%;
-        
-    }
+@media (min-width: 1000px) {
+	section section.hero {
+		/* max-width: 1200px; */ /* for larger displays */
+		padding: 5em 5% 7em 5%;
+	}
 }
-
 
 /* 
 
@@ -904,253 +877,251 @@ footer ul.footerIcon img{
     
 */
 
+@media (max-width: 920px) {
+	section section.hero {
+		padding-top: 10em;
+	}
+	img.heroImg {
+		height: 25vw;
+	}
+	img.heroSVG {
+		height: 35vw;
+	}
+	div.heroImgWrapper {
+		width: 100%;
+	}
 
-@media (max-width: 920px){
-    section section.hero{
-        padding-top: 10em;
-    }
-    img.heroImg{
-        height: 25vw;
-    }
-    img.heroSVG{
-        height: 35vw;
-    }
-    div.heroImgWrapper{
-        width: 100%;
-    }
-    
-    section section.hero {
-        flex-direction: column;
-        text-align: center;
-    }
+	section section.hero {
+		flex-direction: column;
+		text-align: center;
+	}
 }
 
 @media (max-width: 730px) {
-    /* div.heroImgWrapper{
+	/* div.heroImgWrapper{
         width: 730px;
     } */
-    nav.mainNav, div.header button.contactButton, div.header label.darkModeLabel{
-        display:none;
-        /*
+	nav.mainNav,
+	div.header button.contactButton,
+	div.header label.darkModeLabel {
+		display: none;
+		/*
         hide nav for now will change it after im done with the footer*/
-    }
-    label.hamburgerNav{
-        --X-width: calc(var(--hamburger-height) * 1.414213);
-        margin-left: auto;
-        display: flex;
-        flex-direction: column;
-        gap: var(--bar-gap);
-    }
+	}
+	label.hamburgerNav {
+		--X-width: calc(var(--hamburger-height) * 1.414213);
+		margin-left: auto;
+		display: flex;
+		flex-direction: column;
+		gap: var(--bar-gap);
+	}
 
-    label.hamburgerNav::after,
-    label.hamburgerNav::before,
-    label.hamburgerNav input{
-        content: "";
+	label.hamburgerNav::after,
+	label.hamburgerNav::before,
+	label.hamburgerNav input {
+		content: "";
 
-        width: var(--bar-width);
-        height: var(--bar-height);
+		width: var(--bar-width);
+		height: var(--bar-height);
 
-        background-color: var(--secondary-color);
-        border-radius: 999px;
+		background-color: var(--secondary-color);
+		border-radius: 999px;
 
-        transform-origin: right center;
-        transition: opacity var(--animation-timing), width var(--animation-timing)
-            , rotate var(--animation-timing), translate var(--animation-timing),
-            background-color var(--animation-timing);
-    }
+		transform-origin: right center;
+		transition:
+			opacity var(--animation-timing),
+			width var(--animation-timing),
+			rotate var(--animation-timing),
+			translate var(--animation-timing),
+			background-color var(--animation-timing);
+	}
 
-    label.hamburgerNav input{
-        appearance: none;
-        margin: 0;
-        padding: 0;
-        outline: none;
-    }
-    label.hamburgerNav input:checked{
-        opacity: 0;
-        width: 0;
-    }
-    label.hamburgerNav:has(input:checked)::before{
+	label.hamburgerNav input {
+		appearance: none;
+		margin: 0;
+		padding: 0;
+		outline: none;
+	}
+	label.hamburgerNav input:checked {
+		opacity: 0;
+		width: 0;
+	}
+	label.hamburgerNav:has(input:checked)::before {
+		rotate: -45deg;
+		width: var(--X-width);
+		translate: 0 calc(var(--bar-height) / -2);
 
-        rotate: -45deg;
-        width: var(--X-width);
-        translate: 0 calc(var(--bar-height) / -2);
+		background-color: var(--accent-card-color-transparent);
+	}
+	label.hamburgerNav:has(input:checked)::after {
+		rotate: 45deg;
+		width: var(--X-width);
+		translate: 0 calc(var(--bar-height) / 2);
 
-        background-color: var(--accent-card-color-transparent);
-    }
-    label.hamburgerNav:has(input:checked)::after{
+		background-color: var(--accent-card-color-transparent);
+	}
 
-        rotate: 45deg;
-        width: var(--X-width);
-        translate: 0 calc(var(--bar-height) / 2);
+	aside.sidebar {
+		/* translate: -100%; */
 
-        background-color: var(--accent-card-color-transparent);
-    }
+		display: block;
+		height: 100%;
+		width: 75%;
+		right: 0;
 
-    aside.sidebar{
-        /* translate: -100%; */
+		position: fixed;
+		z-index: 999;
 
-        display: block;
-        height: 100%;
-        width: 75%;
-        right: 0;
+		background: var(--primary-color);
+		border-top: solid 1px white;
+		border-left: solid 1px white;
+		transition:
+			translate var(--animation-timing),
+			background 1s ease;
+		font-size: 1.75em;
+	}
+	body.lightMode aside.sidebar {
+		/* translate: -100%; */
+		background-color: white;
+		border-color: #18181b;
+	}
+	body.lightMode label.hamburgerNav:has(input:checked)::before {
+		background-color: var(--lightMode-color);
+	}
+	body.lightMode label.hamburgerNav:has(input:checked)::after {
+		background-color: var(--lightMode-color);
+	}
+	aside.sidebar.disabled {
+		translate: 110%;
+	}
+	aside.sidebar.active {
+		translate: 0%;
+	}
+	aside.sidebar ul {
+		padding: 0;
+		margin-left: 2em;
+		gap: 2em;
 
-        position:fixed;
-        z-index: 999;
-        
-        background: var(--primary-color);
-        border-top: solid 1px white;
-        border-left: solid 1px white;
-        transition: translate var(--animation-timing),  background 1s ease;;
-        font-size: 1.75em;
-    }
-    body.lightMode aside.sidebar{
-        /* translate: -100%; */
-        background-color: white;
-        border-color: #18181b;
-    }
-    body.lightMode label.hamburgerNav:has(input:checked)::before{
-        background-color: var(--lightMode-color);
-    }
-    body.lightMode label.hamburgerNav:has(input:checked)::after{
-        background-color: var(--lightMode-color);
-    }
-    aside.sidebar.disabled{
-        translate: 110%;
-    }
-    aside.sidebar.active{
-        translate: 0%;
-    }
-    aside.sidebar ul{
-        padding: 0;
-        margin-left: 2em;
-        gap: 2em;
+		display: flex;
+		flex-direction: column;
+	}
 
-        display: flex;
-        flex-direction: column;
-    }
+	aside.sidebar ul:first-child {
+		margin-top: 2em;
+	}
+	aside.sidebar ul:last-child {
+		margin-bottom: 2em;
+	}
 
-    aside.sidebar ul:first-child{
-        margin-top: 2em;
-    }
-    aside.sidebar ul:last-child{
-        margin-bottom: 2em;
-    }
+	div.contactButtonWraper {
+		margin-top: 2em;
+		margin-left: 2em;
+		font-size: 16px;
+	}
 
+	div.contactButtonWraper button {
+		margin-top: 2em;
+		padding-top: 0.5em;
+		padding-bottom: 0.5em;
+	}
 
+	label.darkModeLabel {
+		font-size: 10px;
+		margin-left: 0;
+		margin-right: auto;
+	}
 
-    div.contactButtonWraper{
-        margin-top: 2em;
-        margin-left: 2em;
-        font-size: 16px;
-    }
-
-    div.contactButtonWraper button{
-        margin-top: 2em;
-        padding-top: 0.5em;
-        padding-bottom: 0.5em;
-    }
-
-    label.darkModeLabel{
-        font-size: 10px;
-        margin-left: 0;
-        margin-right: auto;
-    }
-
-
-    div.header {
-        padding-top: 0.5em;
-        padding-bottom: 0.5em;
-    }
-    /* footer{
+	div.header {
+		padding-top: 0.5em;
+		padding-bottom: 0.5em;
+	}
+	/* footer{
         flex-direction: column-reverse;
         align-items: center;
         
         gap: 2vh;
     } */
-    footer #footerButton{
-        margin-bottom: 30vh;
-    }
+	footer #footerButton {
+		margin-bottom: 30vh;
+	}
 }
 
-
 @media (max-width: 650px) {
-    body{
-        font-size: 12px;
-    }
-    h1{
-        width: auto;
-    }
-    section.hero p{
-        width:auto;
-    }
-    
+	body {
+		font-size: 12px;
+	}
+	h1 {
+		width: auto;
+	}
+	section.hero p {
+		width: auto;
+	}
 
-    /* label.hamburgerNav:has(input:checked) */
+	/* label.hamburgerNav:has(input:checked) */
 
-    dialog.contactMeDialog{
-        width: auto;
-        margin-inline: 5%;
-        z-index: 9999;
-    }
-    dialog.contactMeDialog form{
-        gap: 0;
-        flex-direction: column !important;
-    }
+	dialog.contactMeDialog {
+		width: auto;
+		margin-inline: 5%;
+		z-index: 9999;
+	}
+	dialog.contactMeDialog form {
+		gap: 0;
+		flex-direction: column !important;
+	}
 
-    dialog.contactMeDialog form h3, 
-    dialog.contactMeDialog form h4, 
-    dialog.contactMeDialog form p{
-        display: none;
-    }
+	dialog.contactMeDialog form h3,
+	dialog.contactMeDialog form h4,
+	dialog.contactMeDialog form p {
+		display: none;
+	}
 
-    dialog.contactMeDialog form label{
-        margin-top: 1em;
-    }
-    dialog.contactMeDialog form input{
-        margin-top: 0 !important;
-    }
+	dialog.contactMeDialog form label {
+		margin-top: 1em;
+	}
+	dialog.contactMeDialog form input {
+		margin-top: 0 !important;
+	}
 
-    dialog.contactMeDialog form div.buttonWrap{
-        align-items: center;
-        justify-content: center;
-    }
-    dialog.contactMeDialog form div.buttonWrap button{
-        margin-right: 0 !important;
-    }
-    div.g-recaptcha{
-        transform: scale(0.6);
-        transform-origin:center;
-        margin-right: 0 !important;
-    }
+	dialog.contactMeDialog form div.buttonWrap {
+		align-items: center;
+		justify-content: center;
+	}
+	dialog.contactMeDialog form div.buttonWrap button {
+		margin-right: 0 !important;
+	}
+	div.g-recaptcha {
+		transform: scale(0.6);
+		transform-origin: center;
+		margin-right: 0 !important;
+	}
 }
 
 @media (max-width: 500px) {
-    img.heroImg {
-        /* Hero image centering and sizing */    
-        height: 25vh;
-    }
-    img.heroSVG{
-        height: 35vh;
-    }
-    div.heroImgWrapper{
-        
-        position: relative;
-        height: 35vh;
-        /* width: 500px; */
-    }
-    footer a.logo{
-        width: 100% !important;
-    }
-    footer a.logo img{
-        width: 100% !important;
-        height: auto !important;
-    }
-/* 
+	img.heroImg {
+		/* Hero image centering and sizing */
+		height: 25vh;
+	}
+	img.heroSVG {
+		height: 35vh;
+	}
+	div.heroImgWrapper {
+		position: relative;
+		height: 35vh;
+		/* width: 500px; */
+	}
+	footer a.logo {
+		width: 100% !important;
+	}
+	footer a.logo img {
+		width: 100% !important;
+		height: auto !important;
+	}
+	/* 
     dialog.contactMeDialog form{
         gap: 1%;
     }
 
     dialog.contactMeDialog form #contactInfo, #inputFields{
         margin-inline: 1% !important;
-    }  */ 
+    }  */
 }
