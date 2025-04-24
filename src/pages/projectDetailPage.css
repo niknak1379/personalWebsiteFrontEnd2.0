@@ -1,151 +1,171 @@
 :root {
-    --primary-card-color: rgb(76, 71, 82); /* black color */
-    --secondary-card-color: #a855f7; /* purple color */
-    --accent-card-color-transparent: rgba(255, 255, 255, 0.33); /* grey color */
-    --primary-color: #18181b; /* black color */
-    --secondary-color: #a855f7; /* purple color */
-    --accent-color: #71797E; /* grey color */
-    --light-accent-color: white; /* light grey color */
-    --lightMode-color: rgba(211, 117, 22, 0.33);
-    --light-mode-card-color: rgb(208, 190, 204);
-    --viewport-width: 0px;
-  }
-dialog.projectDetailPage{
-/*     height: 90vh; */
-    width: 90%;
-    max-width: 1100px;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    border: 2px solid white;
-    color: white;
-    border-radius: 10px;
-    background-color: var(--primary-card-color);
-    font-size: 1.5em;
+	--primary-card-color: rgb(76, 71, 82); /* black color */
+	--secondary-card-color: #a855f7; /* purple color */
+	--accent-card-color-transparent: rgba(255, 255, 255, 0.33); /* grey color */
+	--primary-color: #18181b; /* black color */
+	--secondary-color: #a855f7; /* purple color */
+	--accent-color: #71797e; /* grey color */
+	--light-accent-color: white; /* light grey color */
+	--lightMode-color: rgba(211, 117, 22, 0.33);
+	--light-mode-card-color: rgb(208, 190, 204);
+	--viewport-width: 0px;
+}
+dialog.projectDetailPage {
+	/*     height: 90vh; */
+	width: 90%;
+	max-width: 1100px;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	border: 2px solid white;
+	color: white;
+	border-radius: 10px;
+	background-color: var(--primary-card-color);
+	font-size: 1.5em;
 }
 
-dialog.projectDetailPage::backdrop{
-    backdrop-filter: blur(10px);
+dialog.projectDetailPage::backdrop {
+	backdrop-filter: blur(10px);
 }
-body.lightMode dialog.projectDetailPage{
-    border-color: black;
-    background-color: var(--light-mode-card-color);
-    color: black;
+body.lightMode dialog.projectDetailPage {
+	border-color: black;
+	background-color: var(--light-mode-card-color);
+	color: black;
 }
-div.projectButtonWrapper{
-    display: flex;
-    flex-direction: row;
-    height: 2em;
-    line-height: 2em;
-    flex-shrink: 0;
-    width: 100%;
-    border-bottom: 4px solid;
+div.projectButtonWrapper {
+	display: flex;
+	flex-direction: row;
+	height: 2em;
+	line-height: 2em;
+	flex-shrink: 0;
+	width: 100%;
+	border-bottom: 4px solid;
 }
-div.projectButtonWrapper button{
-    margin-left: auto;
-    margin-right: 1em;
-    padding-left: 1em;
-    padding-right: 0;
-    border: none;
-    border-left: 4px solid;
-    background-color: inherit;
-    font-weight: bolder;
-    font-size: large;
-    color: inherit;
-    cursor: pointer;
+div.projectButtonWrapper button {
+	margin-left: auto;
+	margin-right: 1em;
+	padding-left: 1em;
+	padding-right: 0;
+	border: none;
+	border-left: 4px solid;
+	background-color: inherit;
+	font-weight: bolder;
+	font-size: large;
+	color: inherit;
+	cursor: pointer;
 }
-div.projectButtonWrapper span{
-    margin-left: 1em;
+div.projectButtonWrapper span {
+	margin-left: 1em;
 }
-div.dialogWrapper{
-    height: calc(100% - 5em);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 1em;
-    gap:1em;
+div.dialogWrapper {
+	height: calc(100% - 5em);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 1em;
+	gap: 1em;
 }
 @media (max-width: 950px) {
-    div.dialogWrapper{
-        flex-direction: column;
-        align-items: center;
-    }
-    div.imgCarousel{
-        width: 100% !important;
-    }
-    div.textDetails{
-        min-width: calc(100% - 2em) !important;
-    }
-    div.tagAndLinkWrapper:has(> div.TagLinkInputWrapper){
-        flex-direction: column !important;
-    }
-    ul.linksList{
-        font-size: small;
-    }
-    ul.tagsList{
-        gap: 0.1em !important;
-    }
+	div.dialogWrapper {
+		flex-direction: column;
+		align-items: center;
+	}
+	div.imgCarousel {
+		width: 100% !important;
+	}
+	div.textDetails {
+		min-width: calc(100% - 2em) !important;
+	}
+	div.tagAndLinkWrapper:has(> div.TagLinkInputWrapper) {
+		flex-direction: column !important;
+	}
+	ul.linksList {
+		font-size: small;
+	}
+	ul.tagsList {
+		gap: 0.1em !important;
+	}
 }
-div.imgCarousel{
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    /* flex-basis: 50%;
+div.imgCarousel {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	/* flex-basis: 50%;
     flex-shrink: 0; */
-    min-height: 50%;
-    width: 50%;
-    border: 4px solid;
-    border-radius: 10px;
-    overflow: hidden;
+	min-height: 50%;
+	width: 50%;
+	border: 4px solid;
+	border-radius: 10px;
+	overflow: hidden;
 }
-div.imgCarousel >img:first-child{
-    position:  relative !important;
+div.imgCarousel > img:first-child {
+	position: relative !important;
 }
-div.imgCarousel > img{
-    position: absolute;
-    /* border-top-left-radius: 8px;
+div.imgCarousel > img {
+	position: absolute;
+	/* border-top-left-radius: 8px;
     border-top-right-radius: 8px; */
-    top: 0;
-    left: 0;
-    height: 80%;
-    width: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.3s;
+	top: 0;
+	left: 0;
+	height: 80%;
+	width: 100%;
+	object-fit: cover;
+	opacity: 0;
+	transition: opacity 0.3s;
 }
-img.animate{
-    border-bottom: 3px solid red;
+img.animate {
+	border-bottom: 3px solid red;
 }
-div.imgCarousel > img.visible{
-    transition: opacity 0.3s;
-    opacity: 1;
+div.imgCarousel > img.visible {
+	transition: opacity 0.3s;
+	opacity: 1;
 }
-div.imgCarousel ul.imgPreview{
-    overflow-x: scroll;
-    overflow-y:hidden;
-    display: flex;
-    flex-direction: row;
-    height: 20%;
-    width: 100%;
-    border-top: 2px solid;
-    padding-left: 0;
+div.imgCarousel ul.imgPreview {
+	overflow-x: scroll;
+	overflow-y: hidden;
+	display: flex;
+	flex-direction: row;
+	height: 20%;
+	width: 100%;
+	border-top: 2px solid;
+	padding-left: 0;
 }
-div.imgCarousel ul.imgPreview li{
-    flex: 0 0 25%;
-    border-right: 2px solid;
+div.imgCarousel ul.imgPreview li {
+	flex: 0 0 25%;
+	border-right: 2px solid;
+	position: relative;
 }
-div.imgCarousel ul.imgPreview li:last-child{
-    border-right: none;
+div.imgCarousel ul.imgPreview li:last-child {
+	border-right: none;
 }
-div.imgCarousel ul.imgPreview img{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    cursor: pointer;
+div.imgCarousel ul.imgPreview img:first-child {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	cursor: pointer;
+	animation: skeletonLoading 1s linear infinite alternate;
 }
-div.imgCarousel ul.imgPreview img:hover{
-    transition: transform 0.3s;
-    transform: scale(1.1)
+@keyframes skeletonLoading {
+	0% {
+		filter: grayscale(0%);
+	}
+	100% {
+		filter: grayscale(100%);
+	}
+}
+div.imgCarousel ul.imgPreview img:last-child {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 999;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	cursor: pointer;
+}
+div.imgCarousel ul.imgPreview img:hover {
+	transition: transform 0.3s;
+	transform: scale(1.1);
 }
 /* div.imgCarousel ul.imgPreview li:first-child img{
     border-bottom-left-radius: 8px;
@@ -155,277 +175,281 @@ div.imgCarousel ul.imgPreview li:last-child img{
 } */
 
 div.textDetails {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 50%;
-    flex-shrink: 1;
-    max-width: 60%;
-    border: 4px solid;
-    border-radius: 10px;
-    background-color: var(--light-mode-card-color);
-    color: black;
-    border-color: white;
-    min-height: 100%;
-    padding: 1em;
+	display: flex;
+	flex-direction: column;
+	flex-basis: 50%;
+	flex-shrink: 1;
+	max-width: 60%;
+	border: 4px solid;
+	border-radius: 10px;
+	background-color: var(--light-mode-card-color);
+	color: black;
+	border-color: white;
+	min-height: 100%;
+	padding: 1em;
 }
-body.lightMode div.textDetails{
-    color: white;
-    background-color: var(--primary-card-color);
-    border-color: black;
+body.lightMode div.textDetails {
+	color: white;
+	background-color: var(--primary-card-color);
+	border-color: black;
 }
-div.textDetails h1{
-    margin: 0;
+div.textDetails h1 {
+	margin: 0;
 }
 
-div.textDetails h1 label{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+div.textDetails h1 label {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
 }
-div.textDetails h1 label span{
-    display: flex;
-    align-items: center;
-    font-size: large;
+div.textDetails h1 label span {
+	display: flex;
+	align-items: center;
+	font-size: large;
 }
-div.textDetails h1 input{
-    flex-grow: 1;
-    border: 2px solid black;
-    border-radius: 10px;
-    font-size: large;
-    color: white;
-    background-color: var(--primary-card-color);
+div.textDetails h1 input {
+	flex-grow: 1;
+	border: 2px solid black;
+	border-radius: 10px;
+	font-size: large;
+	color: white;
+	background-color: var(--primary-card-color);
 }
-body.lightMode div.textDetails h1 input{
-    background-color: var(--light-mode-card-color);
-    color: black;
+body.lightMode div.textDetails h1 input {
+	background-color: var(--light-mode-card-color);
+	color: black;
 }
-div.textDetails ul{
-    display: flex;
-    padding: 0;
+div.textDetails ul {
+	display: flex;
+	padding: 0;
 }
-div.textDetails > span{
-    display: flex;
+div.textDetails > span {
+	display: flex;
 }
-div.textDetails h2:has( > ul) {
-    display: flex;
-    flex-wrap: wrap;
-    height: auto;
-    line-height: auto;
+div.textDetails h2:has(> ul) {
+	display: flex;
+	flex-wrap: wrap;
+	height: auto;
+	line-height: auto;
 }
-div.textDetails h2{
-    font-size: medium !important;
-    padding: 0.25em;
-    height: 1.25em;
-    line-height: 1.25em;
-    flex-grow: 0;
-    margin-right: auto;
-    border: 1px solid black;
-    border-radius: 10px;
-    color: white;
-    background-color: var(--secondary-color);
+div.textDetails h2 {
+	font-size: medium !important;
+	padding: 0.25em;
+	height: 1.25em;
+	line-height: 1.25em;
+	flex-grow: 0;
+	margin-right: auto;
+	border: 1px solid black;
+	border-radius: 10px;
+	color: white;
+	background-color: var(--secondary-color);
 }
-body.lightMode div.textDetails h2{
-    border-color: white !important;
+body.lightMode div.textDetails h2 {
+	border-color: white !important;
 }
-div.textDetails p{
-    font-size: 0.75em;
-    display: flex;
-    margin: 0;
-    flex-grow: 1;
+div.textDetails p {
+	font-size: 0.75em;
+	display: flex;
+	margin: 0;
+	flex-grow: 1;
 }
-div.textDetails p label{
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+div.textDetails p label {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
 }
 div.textDetails p label textarea,
-div.textDetails p label textarea:focus{
-    background-color: var(--primary-card-color);
-    resize: none;
-    border: 2px solid black;
-    border-radius: 10px;
-    color: white;
-    flex-grow: 1;
+div.textDetails p label textarea:focus {
+	background-color: var(--primary-card-color);
+	resize: none;
+	border: 2px solid black;
+	border-radius: 10px;
+	color: white;
+	flex-grow: 1;
 }
 body.lightMode div.textDetails p label textarea,
-body.lightMode div.textDetails p label textarea:focus{
-    background-color: var(--light-mode-card-color);
-    color: black;
-    border-color: black;
+body.lightMode div.textDetails p label textarea:focus {
+	background-color: var(--light-mode-card-color);
+	color: black;
+	border-color: black;
 }
-div.tagAndLinkWrapper{
-    background-color: var(--light-mode-card-color);
-    border: solid 4px white;
-    color: black;
-    border-radius: 10px;
-    padding: 1em;
-    margin: 1em;
-    display: flex;
-    flex-direction: column;
-    
-    gap: 1em;
+div.tagAndLinkWrapper {
+	background-color: var(--light-mode-card-color);
+	border: solid 4px white;
+	color: black;
+	border-radius: 10px;
+	padding: 1em;
+	margin: 1em;
+	display: flex;
+	flex-direction: column;
+
+	gap: 1em;
 }
-body.lightMode div.tagAndLinkWrapper{
-    background-color: var(--light-mode-card-color);
-    border: solid 4px black;
-    color: black;
+body.lightMode div.tagAndLinkWrapper {
+	background-color: var(--light-mode-card-color);
+	border: solid 4px black;
+	color: black;
 }
-div.tagAndLinkWrapper:not(:has(> div.TagLinkInputWrapper)){
-    align-items: flex-start;
+div.tagAndLinkWrapper:not(:has(> div.TagLinkInputWrapper)) {
+	align-items: flex-start;
 }
-div.tagAndLinkWrapper:has(> div.TagLinkInputWrapper){
-    flex-direction: row;
+div.tagAndLinkWrapper:has(> div.TagLinkInputWrapper) {
+	flex-direction: row;
 }
-div.TagLinkInputWrapper, div.fileUploadWrapper{
-    display: flex;
-    flex-direction: column;
-    flex-basis: 50%;
-    gap: 0.5em;
+div.TagLinkInputWrapper,
+div.fileUploadWrapper {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 50%;
+	gap: 0.5em;
 }
-div.TagLinkInputWrapper > label, div.fileUploadWrapper label{
-    display: flex;
-    flex-direction: column;
-    gap: 0.25em;
+div.TagLinkInputWrapper > label,
+div.fileUploadWrapper label {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25em;
 }
-dialog.projectDetailPage div.sidebarLoading{
-    height: 90vh;
-    text-align: center;
-    vertical-align:middle;
+dialog.projectDetailPage div.sidebarLoading {
+	height: 90vh;
+	text-align: center;
+	vertical-align: middle;
 }
-dialog.deleteDialog div.sidebarLoading{
-    text-align: center;
-    vertical-align:middle;
+dialog.deleteDialog div.sidebarLoading {
+	text-align: center;
+	vertical-align: middle;
 }
-div.TagLinkInputWrapper input, div.TagLinkInputWrapper textarea{
-    flex-grow: 1;
-    border: 2px solid black;
-    border-radius: 10px;
-    color: white;
-    background-color: var(--primary-card-color);
+div.TagLinkInputWrapper input,
+div.TagLinkInputWrapper textarea {
+	flex-grow: 1;
+	border: 2px solid black;
+	border-radius: 10px;
+	color: white;
+	background-color: var(--primary-card-color);
 }
-body.lightMode div.TagLinkInputWrapper input, 
-body.lightMode div.TagLinkInputWrapper textarea{
-    border: 2px solid black;
-    color: black;
-    background-color: var(--light-mode-card-color);
+body.lightMode div.TagLinkInputWrapper input,
+body.lightMode div.TagLinkInputWrapper textarea {
+	border: 2px solid black;
+	color: black;
+	background-color: var(--light-mode-card-color);
 }
-div.fileUploadWrapper{
-    justify-content: space-between;
-    flex-grow: 1;
-    
+div.fileUploadWrapper {
+	justify-content: space-between;
+	flex-grow: 1;
 }
-div.fileUploadWrapper > span{
-    font-size: small;
+div.fileUploadWrapper > span {
+	font-size: small;
 }
-div.fileUploadWrapper input::file-selector-button{
-    background-color: inherit;
-    border: 2px dashed black;
-    border-radius: 10px;
-    color: inherit;
+div.fileUploadWrapper input::file-selector-button {
+	background-color: inherit;
+	border: 2px dashed black;
+	border-radius: 10px;
+	color: inherit;
 }
-body.lightMode div.fileUploadWrapper input::file-selector-button{
-    border: 2px dashed white;
+body.lightMode div.fileUploadWrapper input::file-selector-button {
+	border: 2px dashed white;
 }
-div.fileUploadWrapper button{
-    background-color: var(--secondary-card-color);
-    cursor: pointer;
-    border: 4px solid white;
-    border-radius: 10px;
-    color: white;
-    padding: 0.25em;
-    font-size: large;
+div.fileUploadWrapper button {
+	background-color: var(--secondary-card-color);
+	cursor: pointer;
+	border: 4px solid white;
+	border-radius: 10px;
+	color: white;
+	padding: 0.25em;
+	font-size: large;
 }
-div.fileUploadWrapper button:hover{
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    opacity: 0.9;
+div.fileUploadWrapper button:hover {
+	transition:
+		background-color 0.3s,
+		color 0.3s,
+		border-color 0.3s;
+	opacity: 0.9;
 }
-body.lightMode div.tagAndLinkWrapper{
-    color: white;
-    border-color: black;
-    background-color: var(--primary-card-color);
+body.lightMode div.tagAndLinkWrapper {
+	color: white;
+	border-color: black;
+	background-color: var(--primary-card-color);
 }
-div.tagAndLinkWrapper ul{
-    padding: 0;
+div.tagAndLinkWrapper ul {
+	padding: 0;
 }
-div.tagAndLinkWrapper ul.tagsList{
-    width: auto;
-    display: flex;
-    flex-direction: row;
-    flex-grow: 0;
-    gap: 1em;
-    flex-wrap: wrap;
+div.tagAndLinkWrapper ul.tagsList {
+	width: auto;
+	display: flex;
+	flex-direction: row;
+	flex-grow: 0;
+	gap: 1em;
+	flex-wrap: wrap;
 }
-div.tagAndLinkWrapper ul.tagsList li{
-    font-size: 0.60em;
-    padding: 0.25em;
-    border: 1px solid black;
-    height: 1.25em;
-    line-height: 1.25em;
-    margin-right: auto;
-    border-radius: 10px;
-    color: white;
-    background-color: var(--secondary-color);
+div.tagAndLinkWrapper ul.tagsList li {
+	font-size: 0.6em;
+	padding: 0.25em;
+	border: 1px solid black;
+	height: 1.25em;
+	line-height: 1.25em;
+	margin-right: auto;
+	border-radius: 10px;
+	color: white;
+	background-color: var(--secondary-color);
 }
-body.lightMode div.tagAndLinkWrapper ul.tagsList li{
-    border-color: white;
+body.lightMode div.tagAndLinkWrapper ul.tagsList li {
+	border-color: white;
 }
 
-div.tagAndLinkWrapper ul.linksList{
-    background-color: var(--primary-card-color);
-    border: solid 4px black;
-    border-radius: 10px;
-    padding: 1em;
-    display: flex;
-    flex-direction: column;
-    gap:0.25em;
-    color: white;
-    font-size: large;
+div.tagAndLinkWrapper ul.linksList {
+	background-color: var(--primary-card-color);
+	border: solid 4px black;
+	border-radius: 10px;
+	padding: 1em;
+	display: flex;
+	flex-direction: column;
+	gap: 0.25em;
+	color: white;
+	font-size: large;
 }
-ul.linksList label{
-    display: flex;
-    flex-grow: 1;
+ul.linksList label {
+	display: flex;
+	flex-grow: 1;
 }
-ul.linksList input{
-    background-color: var(--light-mode-card-color);
-    color: black;
-    margin-left: auto;
-    flex-basis: 50px;
-    flex-grow: 0;
-    
+ul.linksList input {
+	background-color: var(--light-mode-card-color);
+	color: black;
+	margin-left: auto;
+	flex-basis: 50px;
+	flex-grow: 0;
 }
-body.lightMode ul.linksList input{
-    background-color: var(--primary-card-color);
-    color: white;    
+body.lightMode ul.linksList input {
+	background-color: var(--primary-card-color);
+	color: white;
 }
-body.lightMode div.tagAndLinkWrapper ul.linksList{
-    background-color: var(--light-mode-card-color);
-    border-color: black;
-    color: black;
+body.lightMode div.tagAndLinkWrapper ul.linksList {
+	background-color: var(--light-mode-card-color);
+	border-color: black;
+	color: black;
 }
-div.tagAndLinkWrapper ul.linksList li{
-    display: flex;
-    height: calc(34px + 0.4em);
-    line-height: calc(34px + 0.4em);
+div.tagAndLinkWrapper ul.linksList li {
+	display: flex;
+	height: calc(34px + 0.4em);
+	line-height: calc(34px + 0.4em);
 }
-div.tagAndLinkWrapper ul.linksList img{
-    height: 30px;
-    width: 30px;
-    background-color: var(--primary-color);
-    border: solid 2px white;
-    border-radius: 30px;
-    padding: 0.2em;
-    color: black;
+div.tagAndLinkWrapper ul.linksList img {
+	height: 30px;
+	width: 30px;
+	background-color: var(--primary-color);
+	border: solid 2px white;
+	border-radius: 30px;
+	padding: 0.2em;
+	color: black;
 }
-ul.linksList a{
-    margin-left: auto;
+ul.linksList a {
+	margin-left: auto;
 }
 
-div.dialogWrapper.placeHolder p{
-    animation: skeletonLoadingText 1s linear infinite alternate;
-    border-radius: 8px;
-    overflow: hidden;
+div.dialogWrapper.placeHolder p {
+	animation: skeletonLoadingText 1s linear infinite alternate;
+	border-radius: 8px;
+	overflow: hidden;
 }
-div.dialogWrapper.placeHolder div.imgCarousel img{
-    animation: skeletonLoading 1s linear infinite alternate;
+div.dialogWrapper.placeHolder div.imgCarousel img {
+	animation: skeletonLoading 1s linear infinite alternate;
 }

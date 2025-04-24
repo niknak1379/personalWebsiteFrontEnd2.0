@@ -187,6 +187,14 @@ export default function ProjectEditPage(props) {
 							<ul className="imgPreview">
 								<li>
 									<img
+										className="carousel"
+										alt="loading image"
+										src={
+											process.env.PUBLIC_URL +
+											"Assets/App/Cards/ProjectPics/placeholder.avif"
+										}
+									></img>
+									<img
 										onClick={() => updateCarousel(0)}
 										className="carousel"
 										alt="project image 1"
@@ -194,6 +202,14 @@ export default function ProjectEditPage(props) {
 									></img>
 								</li>
 								<li>
+									<img
+										className="carousel"
+										alt="loading image"
+										src={
+											process.env.PUBLIC_URL +
+											"Assets/App/Cards/ProjectPics/placeholder.avif"
+										}
+									></img>
 									<img
 										onClick={() => updateCarousel(1)}
 										className="carousel"
@@ -203,6 +219,14 @@ export default function ProjectEditPage(props) {
 								</li>
 								<li>
 									<img
+										className="carousel"
+										alt="loading image"
+										src={
+											process.env.PUBLIC_URL +
+											"Assets/App/Cards/ProjectPics/placeholder.avif"
+										}
+									></img>
+									<img
 										onClick={() => updateCarousel(2)}
 										className="carousel"
 										alt="project image 3"
@@ -210,6 +234,14 @@ export default function ProjectEditPage(props) {
 									></img>
 								</li>
 								<li>
+									<img
+										className="carousel"
+										alt="loading image"
+										src={
+											process.env.PUBLIC_URL +
+											"Assets/App/Cards/ProjectPics/placeholder.avif"
+										}
+									></img>
 									<img
 										onClick={() => updateCarousel(3)}
 										className="carousel"
