@@ -1,6 +1,6 @@
 import axios from "../API/axios";
 import { useContext, useLayoutEffect } from "react";
-import AuthConext from "../Context/authProvider";
+import AuthConext from "../Context/authProvider.js";
 
 export default function useInterceptorHook() {
 	const { accessToken, setToken } = useContext(AuthConext);
