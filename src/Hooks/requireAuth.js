@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import AuthConext from "../Context/authProvider.js";
+import AuthConext from "../context/authProvider.js";
 import { useLocation, Outlet, Navigate } from "react-router";
 
 export default function RequireAuth() {

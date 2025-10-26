@@ -5,7 +5,7 @@ import ProjectCard from "../UI/ProjectCard";
 import LoadingPlaceHolder from "../UI/LoadingPlaceHodler";
 import LoadingError from "../UI/LoadingError";
 import userEvent from "@testing-library/user-event";
-import AuthConext from "../Context/authProvider";
+import AuthConext from "../context/authProvider";
 import NewProjectPage from "./addNewProjectPage";
 export default function Projects() {
 	const [isLoading, setIsLoading] = useState(false); //update UI for loading components

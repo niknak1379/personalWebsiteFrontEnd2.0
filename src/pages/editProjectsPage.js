@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import LoadingPlaceHolder from "../UI/LoadingPlaceHodler";
 import LoadingError from "../UI/LoadingError";
 import { Form } from "react-router";
-import AuthConext from "../Context/authProvider";
+import AuthConext from "../context/authProvider";
 import useInterceptorHook from "../Hooks/axiosPrivateInterceptorHook";
 
 export default function ProjectEditPage(props) {

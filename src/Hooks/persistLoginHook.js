@@ -1,7 +1,7 @@
 import instance from "../API/axios";
 import { useLayoutEffect, useEffect, useContext, useState } from "react";
 import { Outlet, useNavigate, useLocation } from "react-router";
-import AuthConext from "../Context/authProvider.js";
+import AuthConext from "../context/authProvider.js";
 import LoadingPlaceHolder from "../UI/LoadingPlaceHodler";
 
 export default function PersistLogin() {

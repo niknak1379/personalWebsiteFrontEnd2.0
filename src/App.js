@@ -6,7 +6,7 @@ import { Route, Routes } from "react-router";
 import { lazy, Suspense } from "react";
 import Footer from "./UI/Footer";
 import Login from "./pages/login";
-import { AuthProvider } from "./Context/authProvider";
+import { AuthProvider } from "./context/authProvider";
 import EditPage from "./pages/editProjectsPage";
 import PersistLogin from "./Hooks/persistLoginHook";
 import RequireAuth from "./Hooks/requireAuth";
