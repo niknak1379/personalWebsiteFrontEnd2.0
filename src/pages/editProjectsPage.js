@@ -69,7 +69,8 @@ export default function ProjectEditPage(props) {
 			setLoading(true);
 			try {
 				let data = await fetch(
-					"http://localhost:8080/projectDetails/" + props.CardData.name,
+					"http://ec2-3-135-19-176.us-east-2.compute.amazonaws.com:8080/projectDetails/" +
+						props.CardData.name,
 					{ signal: Controller.abort() }
 				);
 				let readabledata = await data.json();

@@ -26,7 +26,9 @@ export default function Projects() {
 		async function fetchTags() {
 			setSideBarLoading(true);
 			try {
-				let data = await fetch("http://localhost:8080/tags");
+				let data = await fetch(
+					"http://ec2-3-135-19-176.us-east-2.compute.amazonaws.com:8080/tags"
+				);
 				let tags = await data.json();
 				setTagsArr(tags);
 				//console.log(tagsArr)
@@ -38,7 +40,9 @@ export default function Projects() {
 		}
 		async function fetchStatus() {
 			try {
-				let data = await fetch("http://localhost:8080/status");
+				let data = await fetch(
+					"http://ec2-3-135-19-176.us-east-2.compute.amazonaws.com:8080/status"
+				);
 				let status = await data.json();
 				setStatusArr(status);
 				//console.log(statusArr)
@@ -49,7 +53,9 @@ export default function Projects() {
 		async function fetchInitProjects() {
 			setIsLoading(true);
 			try {
-				let data = await fetch("http://localhost:8080/ / / /10");
+				let data = await fetch(
+					"http://ec2-3-135-19-176.us-east-2.compute.amazonaws.com:8080/ / / /10"
+				);
 				let projects = await data.json();
 				setProjArr(projects);
 			} catch (error) {
@@ -97,7 +103,8 @@ export default function Projects() {
 		setIsLoading(true);
 		try {
 			let data = new FormData(formRef.current);
-			let baseURL = "http://localhost:8080";
+			let baseURL =
+				"http://ec2-3-135-19-176.us-east-2.compute.amazonaws.com:8080";
 			let searchQuery = "";
 			let tagQuery = []; //serverside if passed empty Defaults to ALL
 			let statusQuery = []; //if empty serverside Defaults to ALL
