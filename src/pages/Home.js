@@ -164,19 +164,15 @@ export default function Home() {
 					<tbody>
 						<tr>
 							<th>Web Development</th>
-							<td>Working on it</td>
+							<td>React, Tailwind, CSS, JS</td>
 						</tr>
 						<tr>
-							<th>Web Design using figma</th>
-							<td>also working on it</td>
+							<th>Backend</th>
+							<td>Node, NextJS, TypeScript</td>
 						</tr>
 						<tr>
-							<th>Web Design using figma</th>
-							<td>also working on it</td>
-						</tr>
-						<tr>
-							<th>Web Design using figma</th>
-							<td>also working on it</td>
+							<th>DevOps</th>
+							<td>Distributed Systems Design, Kubernetes, Docker</td>
 						</tr>
 					</tbody>
 				</table>
