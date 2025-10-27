@@ -36,11 +36,11 @@ export default function Home() {
 		async function getData() {
 			try {
 				let complete_data = await fetch(
-					"http://ec2-3-135-19-176.us-east-2.compute.amazonaws.com:8080/ /Complete/ /4"
+					"https://api.nikanostovan.dev/ /Complete/ /4"
 				);
 				let comp = await complete_data.json();
 				let incomp_data = await fetch(
-					"http://ec2-3-135-19-176.us-east-2.compute.amazonaws.com:8080/ /In Progress-To Be Started/ /4"
+					"https://api.nikanostovan.dev/ /In Progress-To Be Started/ /4"
 				);
 				let incomp = await incomp_data.json();
 				setcompletedProjects(comp);

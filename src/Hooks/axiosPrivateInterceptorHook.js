@@ -29,7 +29,7 @@ export default function useInterceptorHook() {
 
 						//refrsh token if request fails
 						let newToken = await axios.post(
-							"http://ec2-3-135-19-176.us-east-2.compute.amazonaws.com:8080/refresh"
+							"https://api.nikanostovan.dev/refresh"
 						);
 						//console.log(newToken.data.accessToken, 'called from axios')
 						setToken(newToken.data.accessToken);

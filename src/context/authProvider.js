@@ -6,9 +6,7 @@ export const AuthProvider = ({ children }) => {
 	const [trust, setTrust] = useState(
 		JSON.parse(localStorage.getItem("trust")) || false
 	); //to decide wether this device is trusted or not
-	const [baseURL, setURL] = useState(
-		"http://ec2-3-135-19-176.us-east-2.compute.amazonaws.com:8080"
-	);
+	const [baseURL, setURL] = useState("https://api.nikanostovan.dev");
 
 	console.log("context being created", baseURL);
 	return (
