@@ -465,7 +465,7 @@ div.tagAndLinkWrapper ul.linksList li {
 	display: flex;
 	height: calc(34px + 0.4em);
 	line-height: calc(34px + 0.4em);
-	font-size: smaller;
+	font-size: x-small;
 }
 div.tagAndLinkWrapper ul.linksList img {
 	height: 30px;
