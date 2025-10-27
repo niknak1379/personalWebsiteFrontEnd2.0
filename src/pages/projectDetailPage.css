@@ -102,7 +102,11 @@ div.dialogWrapper {
 		height: auto !important;
 	}
 }
-
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+	a.logo img.logo {
+		width: auto;
+	}
+}
 div.imgCarousel {
 	display: flex;
 	flex-direction: column;
