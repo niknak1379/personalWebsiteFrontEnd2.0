@@ -57,7 +57,7 @@ export default function Header() {
 
 	const checkBox = useRef(null);
 	/**
-	 * opens the side bar containing the nav bar in mobile view
+	 * opens the side bar  containing the nav bar in mobile view
 	 *
 	 * @function
 	 *
