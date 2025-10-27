@@ -61,7 +61,7 @@ export default function Login() {
 					<label htmlFor="email">Email or Username</label>
 					<input id="email" name="email"></input>
 					<label htmlFor="password">Password</label>
-					<input id="password" name="password"></input>
+					<input id="password" type="password" name="password"></input>
 
 					<label htmlFor="trust">
 						<input
