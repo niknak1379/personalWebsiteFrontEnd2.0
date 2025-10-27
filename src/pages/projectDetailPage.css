@@ -107,13 +107,25 @@ div.dialogWrapper {
 		width: auto;
 	}
 }
+/* @media not all and (min-resolution: 0.001dpcm) {
+	@supports (-webkit-appearance: none) {
+		a.logo img.logo {
+			width: auto !important;
+		}
+	}
+}
+@supports (-webkit-touch-callout: none) {
+	a.logo img.logo {
+		width: auto; 
+	}
+} */
 div.imgCarousel {
 	display: flex;
 	flex-direction: column;
 	position: relative;
 	/* flex-basis: 50%;
     flex-shrink: 0; */
-	min-height: 50%;
+	/* min-height: 50%; */
 	width: 50%;
 	border: 4px solid;
 	border-radius: 10px;
