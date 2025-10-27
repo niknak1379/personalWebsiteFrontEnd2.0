@@ -69,6 +69,7 @@ export default function Header() {
 		let footer = document.querySelector("footer");
 		//console.log('initial', checkBox.current.checked, background)
 		//if hamburger menu pressed open side bar
+		console.log("sidebar being called", checkBox.current.checked);
 		if (checkBox.current.checked == true) {
 			//enable the sidebar
 			sidebar.classList.remove("disabled");
@@ -232,15 +233,36 @@ export default function Header() {
 			<aside className="sidebar disabled">
 				<nav className="mobileNav">
 					<ul className="navList">
-						<li>
+						<li
+							onClick={() => {
+								checkBox.current.checked = false;
+								openSideBar();
+							}}
+						>
 							<Link to="/">Home</Link>
 						</li>
 						<li>
-							<Link to="/Projects">Projects</Link>
+							<Link
+								to="/Projects"
+								onClick={() => {
+									checkBox.current.checked = false;
+									openSideBar();
+								}}
+							>
+								Projects
+							</Link>
 						</li>
 						{!accessToken && (
 							<li>
-								<Link to="/Login">Login</Link>
+								<Link
+									to="/Login"
+									onClick={() => {
+										checkBox.current.checked = false;
+										openSideBar();
+									}}
+								>
+									Login
+								</Link>
 							</li>
 						)}
 					</ul>
