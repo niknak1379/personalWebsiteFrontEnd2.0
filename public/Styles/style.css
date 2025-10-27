@@ -120,9 +120,14 @@ a.logo img.logo {
 a.logo img.logo:first-child {
 	position: relative;
 }
-
+body a.logo img.lightLogo {
+	opacity: 0;
+}
 body.lightMode a.logo img.darkLogo {
 	opacity: 0;
+}
+body.lightMode a.logo img.lightLogo {
+	opacity: 1;
 }
 nav.mainNav {
 	margin-right: auto;
