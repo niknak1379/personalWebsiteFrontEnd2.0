@@ -22,6 +22,7 @@ dialog.projectDetailPage {
 	border-radius: 10px;
 	background-color: var(--primary-card-color);
 	font-size: 1.5em;
+	gap: 1em;
 }
 
 dialog.projectDetailPage::backdrop {
@@ -72,6 +73,7 @@ div.dialogWrapper {
 	}
 	div.imgCarousel {
 		width: 100% !important;
+		min-height: 50%;
 	}
 	div.textDetails {
 		min-width: calc(100% - 2em) !important;
@@ -86,17 +88,29 @@ div.dialogWrapper {
 		gap: 0.1em !important;
 	}
 }
+@supports (-webkit-touch-callout: none) {
+	div.dialogWrapper {
+		height: auto !important; /* or remove height */
+	}
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+	div.dialogWrapper {
+		height: auto !important;
+	}
+}
+
 div.imgCarousel {
 	display: flex;
 	flex-direction: column;
 	position: relative;
 	/* flex-basis: 50%;
     flex-shrink: 0; */
-	min-height: 50%;
+	/* min-height: 50%; */
 	width: 50%;
 	border: 4px solid;
 	border-radius: 10px;
 	overflow: hidden;
+	height: 100%;
 }
 div.imgCarousel > img:first-child {
 	position: relative !important;
@@ -185,7 +199,7 @@ div.textDetails {
 	background-color: var(--light-mode-card-color);
 	color: black;
 	border-color: white;
-	min-height: 100%;
+	/* min-height: 100%; */
 	padding: 1em;
 }
 body.lightMode div.textDetails {
