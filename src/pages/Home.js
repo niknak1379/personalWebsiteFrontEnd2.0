@@ -15,8 +15,9 @@ import userEvent from "@testing-library/user-event";
 export default function Home() {
 	const [completedProjects, setcompletedProjects] = useState([]);
 	const [incompletedProjects, setincompletedProjects] = useState([]);
-	const [gettingProjects, setGettingProjects] = useState(false);
+	//const [gettingProjects, setGettingProjects] = useState(false);
 	const [projectError, setProjectError] = useState(false);
+	const [isLoading, setLoading] = useState(false);
 	const h1Ref = useRef(null);
 	useEffect(() => {
 		//expected data structure from the server side getProjects API
@@ -34,6 +35,7 @@ export default function Home() {
     */
 
 		async function getData() {
+			setLoading(true);
 			try {
 				let complete_data = await fetch(
 					"https://api.nikanostovan.dev/ /Complete/ /4"
@@ -47,11 +49,13 @@ export default function Home() {
 				setincompletedProjects(incomp);
 			} catch (error) {
 				setProjectError(true);
+			} finally {
+				setLoading(false);
 			}
 		}
-		setGettingProjects(true);
+
 		getData();
-		setGettingProjects(false);
+
 		animate();
 	}, []);
 
@@ -180,7 +184,7 @@ export default function Home() {
 			{/* past projects to be displayed */}
 			<section id="pastProjects">
 				<h2>Past Projects</h2>
-				{gettingProjects && (
+				{isLoading && (
 					<Gallery
 						projects={[]}
 						isLoading={true}
@@ -188,7 +192,7 @@ export default function Home() {
 						parent="past"
 					/>
 				)}
-				{!gettingProjects && (
+				{!isLoading && (
 					<Gallery
 						projects={completedProjects}
 						error={projectError}
@@ -201,19 +205,19 @@ export default function Home() {
 			{/* current projects to be displayed */}
 			<section id="currentProjects">
 				<h2>Current Projects</h2>
-				{gettingProjects && (
+				{isLoading && (
 					<Gallery
 						projects={[]}
-						isLoading={true}
+						isLoading={isLoading}
 						error={projectError}
 						parent="current"
 					/>
 				)}
-				{!gettingProjects && (
+				{!isLoading && (
 					<Gallery
 						projects={incompletedProjects}
 						error={projectError}
-						isLoading={false}
+						isLoading={isLoading}
 						parent="current"
 					/>
 				)}
