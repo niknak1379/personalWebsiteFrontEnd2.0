@@ -103,7 +103,7 @@ export default function ContactForm(props) {
 			captcha: captchaResponse,
 		});
 		//let url = 'http://localhost:8000/sendEmail'; //local url
-		let url = "https://personal-website-six-brown-33.vercel.app/sendEmai"; //vercel url
+		let url = "https://personal-website-six-brown-33.vercel.app/sendEmail"; //vercel url
 
 		abortControllerRef.current?.abort();
 		abortControllerRef.curret = new AbortController();
