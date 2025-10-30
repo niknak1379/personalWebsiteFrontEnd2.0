@@ -1,4 +1,3 @@
-import userEvent from "@testing-library/user-event";
 import { useEffect, useRef, useState } from "react";
 
 export default function ContactForm(props) {
@@ -7,24 +6,33 @@ export default function ContactForm(props) {
 	const emailRef = useRef(null);
 	const messageRef = useRef(null);
 	const formRef = useRef(null);
-	const buttonRef = useRef(null);
-	const successDialogRef = useRef(null);
-	const failureDialogRef = useRef(null);
-	const [sendingMessage, setSendingMessage] = useState(null);
-	const [errorSendingMessage, setErrorSendingMessage] = useState(false);
 	const abortControllerRef = useRef(null);
+
+	// State management
+	const [sendingMessage, setSendingMessage] = useState(false);
+	const [errorSendingMessage, setErrorSendingMessage] = useState(false);
+	const [buttonText, setButtonText] = useState("Lets Talk!");
+	const [emailIsInvalid, setEmailIsInvalid] = useState(false);
+	const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+	const [showFailureDialog, setShowFailureDialog] = useState(false);
+	const [failureMessage, setFailureMessage] = useState("");
+	const [dialogHiding, setDialogHiding] = useState({
+		success: false,
+		failure: false,
+	});
+
 	useEffect(() => {
 		console.log(props.IsOpen);
 		if (props.IsOpen) {
 			console.log("is open");
-			dialog.current.show();
+			dialog.current?.show();
 		} else {
-			dialog.current.close();
+			dialog.current?.close();
 		}
 	}, [props.IsOpen]);
 
 	/**
-	 * closes the dialog  containing the form and removes the blur from
+	 * closes the dialog containing the form and removes the blur from
 	 * the background
 	 *
 	 * @function
@@ -34,9 +42,9 @@ export default function ContactForm(props) {
 		let main = document.querySelector("header + *");
 		let header = document.querySelector("header");
 		let footer = document.querySelector("footer");
-		footer.classList.remove("blur");
-		main.classList.remove("blur");
-		// header.classList.remove('blur');
+		footer?.classList.remove("blur");
+		main?.classList.remove("blur");
+		// header?.classList.remove('blur');
 
 		//close the dialog
 		props.setisOpen(false);
@@ -50,25 +58,15 @@ export default function ContactForm(props) {
 	 */
 	function changeEmailCSS() {
 		//check the validity of the email
-		let emailField = document.getElementById("Email");
-		let emailVlaue = emailField.value;
-		let emailValidity = validateEmail(emailVlaue);
+		let emailValue = emailRef.current?.value || "";
+		let emailValidity = validateEmail(emailValue);
 
-		//if email is invalid add invalid to the class list
-		if (!emailValidity) {
-			emailField.classList.add("invalid");
-			document.getElementById("emailSpan").style.display = "block";
-		}
-
-		//if email is valid remove invalid class list
-		if (emailValidity || emailVlaue == "") {
-			//remove the class or sth
-			emailField.classList.remove("invalid");
-			document.getElementById("emailSpan").style.display = "none";
-		}
+		//update state instead of manipulating DOM
+		setEmailIsInvalid(!emailValidity && emailValue !== "");
 	}
+
 	/**
-	 * checks wether the email input string passes the regex test
+	 * checks whether the email input string passes the regex test
 	 *
 	 * @function
 	 * @param {string} [email] - takes in email inputed by the user
@@ -86,11 +84,11 @@ export default function ContactForm(props) {
 		let emailId = emailRef.current.value;
 		let message = messageRef.current.value;
 
-		if (from_name == "" || !validateEmail(emailId) || message == "") {
+		if (from_name === "" || !validateEmail(emailId) || message === "") {
 			alert("please fill all inputs, or email invalid");
 			return;
 		}
-		//grap from captcha
+		//grab from captcha
 		var formData = new FormData(formRef.current);
 		var captchaResponse = formData.get("g-recaptcha-response");
 
@@ -106,11 +104,13 @@ export default function ContactForm(props) {
 		let url = "https://personal-website-six-brown-33.vercel.app/sendEmail"; //vercel url
 
 		abortControllerRef.current?.abort();
-		abortControllerRef.curret = new AbortController();
+		abortControllerRef.current = new AbortController(); // Fixed typo: was "curret"
 
 		setSendingMessage(true);
+		setErrorSendingMessage(false);
+
 		try {
-			console.log("tyring to fetch");
+			console.log("trying to fetch");
 
 			const response = await fetch(url, {
 				method: "POST",
@@ -118,54 +118,71 @@ export default function ContactForm(props) {
 					"Content-Type": "application/json",
 				},
 				body: data,
+				signal: abortControllerRef.current.signal,
 			});
+
 			if (!response.ok) {
 				throw new Error(
-					"Connection established but unexpected answer recieved"
+					"Connection established but unexpected answer received"
 				);
 			}
+
 			setSendingMessage(false);
 			setErrorSendingMessage(false);
+			setButtonText("Message Sent!");
 			handleMessageResultDialog(1, null);
-			buttonRef.current.innerText = "Message Sent!";
 		} catch (error) {
 			if (error.name === "AbortError") {
-				console.log("too many reqeust, please wait");
+				console.log("too many requests, please wait");
 				return;
 			}
+			setSendingMessage(false);
 			setErrorSendingMessage(true);
 			handleMessageResultDialog(0, error);
-		} finally {
-			setSendingMessage(false);
 		}
 	}
+
 	/**
 	 * shows a success dialog if passed in 1 or a failure dialog
-	 * if a 0 is passsed in
+	 * if a 0 is passed in
 	 *
 	 * @function
-	 * @param {int} [status] - binary wether the message was successful or not
+	 * @param {int} [status] - binary whether the message was successful or not
+	 * @param {Error} [error] - error object if failure occurred
 	 */
 	function handleMessageResultDialog(status, error) {
-		let dialog = null;
-		//get the current dialog
-		if (status == 1) {
-			dialog = successDialogRef.current;
-		} else {
-			dialog = failureDialogRef.current;
-			dialog.querySelector("#FailureAlert").innerText = error;
-		}
+		if (status === 1) {
+			// Success
+			setShowSuccessDialog(true);
+			setDialogHiding((prev) => ({ ...prev, success: false }));
 
-		//open the dialog and close it after the animation is done
-		//through changing the class by adding hiding and removing it
-		dialog.show();
-		setTimeout(() => {
-			dialog.classList.add("hiding");
-		}, 2000);
-		setTimeout(() => {
-			dialog.classList.remove("hiding");
-			dialog.close();
-		}, 2900);
+			// Start hiding animation after 2 seconds
+			setTimeout(() => {
+				setDialogHiding((prev) => ({ ...prev, success: true }));
+			}, 2000);
+
+			// Close dialog after animation completes
+			setTimeout(() => {
+				setShowSuccessDialog(false);
+				setDialogHiding((prev) => ({ ...prev, success: false }));
+			}, 2900);
+		} else {
+			// Failure
+			setFailureMessage(error?.message || "Failed! Check logs!");
+			setShowFailureDialog(true);
+			setDialogHiding((prev) => ({ ...prev, failure: false }));
+
+			// Start hiding animation after 2 seconds
+			setTimeout(() => {
+				setDialogHiding((prev) => ({ ...prev, failure: true }));
+			}, 2000);
+
+			// Close dialog after animation completes
+			setTimeout(() => {
+				setShowFailureDialog(false);
+				setDialogHiding((prev) => ({ ...prev, failure: false }));
+			}, 2900);
+		}
 	}
 
 	return (
@@ -192,7 +209,7 @@ export default function ContactForm(props) {
 							id="Name"
 							placeholder="John Doe"
 							required
-						></input>
+						/>
 					</label>
 
 					<label htmlFor="Email">
@@ -202,10 +219,16 @@ export default function ContactForm(props) {
 							onBlur={changeEmailCSS}
 							type="email"
 							id="Email"
+							className={emailIsInvalid ? "invalid" : ""}
 							placeholder="example@gmail.com"
 							required
-						></input>
-						<span id="emailSpan">Invalid Email</span>
+						/>
+						<span
+							id="emailSpan"
+							style={{ display: emailIsInvalid ? "block" : "none" }}
+						>
+							Invalid Email
+						</span>
 					</label>
 
 					<label htmlFor="Message">
@@ -216,7 +239,7 @@ export default function ContactForm(props) {
 							id="Message"
 							required
 							placeholder="Enter your message here..."
-						></textarea>
+						/>
 					</label>
 				</div>
 
@@ -231,9 +254,8 @@ export default function ContactForm(props) {
 						<div
 							className="g-recaptcha"
 							data-sitekey="6LcsvdwpAAAAANF3dMzaR0u2rzFaK1cygq_x969E"
-						></div>
+						/>
 						<button
-							ref={buttonRef}
 							id="formButton"
 							className="contactButton"
 							onClick={(e) => {
@@ -242,7 +264,9 @@ export default function ContactForm(props) {
 							}}
 							aria-label="Submit contact info"
 						>
-							{sendingMessage == null && <span>Lets Talk!</span>}
+							{!sendingMessage && !errorSendingMessage && (
+								<span>{buttonText}</span>
+							)}
 							{sendingMessage && (
 								<div className="sidebarLoading">
 									Loading{" "}
@@ -261,38 +285,41 @@ export default function ContactForm(props) {
 											process.env.PUBLIC_URL +
 											"./Assets/App/Cards/refreshIcon.svg"
 										}
-									></img>
+									/>
 								</span>
 							)}
 						</button>
 					</div>
 				</div>
 			</form>
+
+			{/* Success Dialog */}
 			<dialog
-				ref={successDialogRef}
-				className="notification"
+				className={`notification ${dialogHiding.success ? "hiding" : ""}`}
 				id="messageSuccessDialog"
+				open={showSuccessDialog}
 				aria-live="assertive"
 				role="alertdialog"
 				aria-labelledby="SuccessAlert"
 			>
 				<div>
-					<img src="Assets/Main/Dialog/Success.png"></img>
+					<img src="Assets/Main/Dialog/Success.png" alt="Success" />
 					<h4 id="SuccessAlert">Message sent!</h4>
 				</div>
 			</dialog>
 
+			{/* Failure Dialog */}
 			<dialog
-				ref={failureDialogRef}
-				className="notification"
+				className={`notification ${dialogHiding.failure ? "hiding" : ""}`}
 				id="messageFailureDialog"
+				open={showFailureDialog}
 				aria-live="assertive"
 				role="alertdialog"
 				aria-labelledby="FailureAlert"
 			>
 				<div>
-					<img src="Assets/Main/Dialog/Failure.png"></img>
-					<h4 id="FailureAlert">Failed! Check logs!</h4>
+					<img src="Assets/Main/Dialog/Failure.png" alt="Failure" />
+					<h4 id="FailureAlert">{failureMessage}</h4>
 				</div>
 			</dialog>
 		</dialog>
