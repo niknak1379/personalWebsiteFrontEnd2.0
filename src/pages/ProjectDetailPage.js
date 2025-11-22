@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useContext } from "react";
 import "./projectDetailPage.css";
 import LoadingError from "../UI/LoadingError";
-import { toCDN } from "../utils/DNS_handler";
+import { toCDN } from "../utils/CDN_handler";
 import AuthConext from "../context/authProvider";
 export default function ProjectDetailPage(props) {
   const [isLoading, setLoading] = useState(null);
