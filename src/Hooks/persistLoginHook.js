@@ -41,7 +41,7 @@ export default function PersistLogin() {
 		<>
 			{!trust && <Outlet />}
 			{trust && !isLoading && <Outlet />}
-			{trust && isLoading && <LoadingPlaceHolder />}
+			{/* {trust && isLoading && <LoadingPlaceHolder />} */}
 		</>
 	);
 }
