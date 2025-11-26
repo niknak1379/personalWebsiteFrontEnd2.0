@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useContext } from "react";
 import "./projectDetailPage.css";
 import LoadingError from "../UI/LoadingError";
-import { toCDN } from "../utils/CDN_handler";
+import {} from "../utils/CDN_handler";
 import AuthConext from "../context/authProvider";
 export default function ProjectDetailPage(props) {
   const [isLoading, setLoading] = useState(null);
@@ -211,25 +211,25 @@ export default function ProjectDetailPage(props) {
               ref={pictureRef0}
               className="visible"
               alt="project image 1"
-              src={toCDN(projData.pictureURL)}
+              src={projData.pictureURL}
             ></img>
             <img
               ref={pictureRef1}
               className=""
               alt="project image 2"
-              src={toCDN(projData.carouselImage_1)}
+              src={projData.carouselImage_1}
             ></img>
             <img
               ref={pictureRef2}
               className=""
               alt="project image 3"
-              src={toCDN(projData.carouselImage_2)}
+              src={projData.carouselImage_2}
             ></img>
             <img
               ref={pictureRef3}
               className=""
               alt="project image 4"
-              src={toCDN(projData.carouselImage_3)}
+              src={projData.carouselImage_3}
             ></img>
             <ul className="imgPreview">
               <li>
@@ -245,7 +245,7 @@ export default function ProjectDetailPage(props) {
                   onClick={() => updateCarousel(0)}
                   className="carousel"
                   alt="project image 1"
-                  src={toCDN(projData.pictureURL)}
+                  src={projData.pictureURL}
                 ></img>
               </li>
               <li>
@@ -261,7 +261,7 @@ export default function ProjectDetailPage(props) {
                   onClick={() => updateCarousel(1)}
                   className="carousel"
                   alt="project image 2"
-                  src={toCDN(projData.carouselImage_1)}
+                  src={projData.carouselImage_1}
                 ></img>
               </li>
               <li>
@@ -277,7 +277,7 @@ export default function ProjectDetailPage(props) {
                   onClick={() => updateCarousel(2)}
                   className="carousel"
                   alt="project image 3"
-                  src={toCDN(projData.carouselImage_2)}
+                  src={projData.carouselImage_2}
                 ></img>
               </li>
               <li>
@@ -293,7 +293,7 @@ export default function ProjectDetailPage(props) {
                   onClick={() => updateCarousel(3)}
                   className="carousel"
                   alt="project image 4"
-                  src={toCDN(projData.carouselImage_3)}
+                  src={projData.carouselImage_3}
                 ></img>
               </li>
             </ul>

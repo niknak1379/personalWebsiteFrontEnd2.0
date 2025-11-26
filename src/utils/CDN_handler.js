@@ -1,8 +1,10 @@
+// this util module is now derprecated
+
 // havent set up the backend ci/cd so didnt want to add this in backend
 // i was too lazy
 // also ive already done it
 
-const S3_BUCKET_URL = "https://nikan-personal-site.s3.us-east-2.amazonaws.com";
+const S3_BUCKET_URL = "moved server side";
 const CLOUDFRONT_URL = "https://d3ljw1a117f4y8.cloudfront.net";
 
 /**

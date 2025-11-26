@@ -4,7 +4,7 @@ import AuthConext from "../context/authProvider";
 import useInterceptorHook from "../Hooks/axiosPrivateInterceptorHook";
 import LoadingError from "./LoadingError";
 import ProjectEditPage from "../pages/editProjectsPage";
-import { toCDN } from "../utils/CDN_handler";
+import {} from "../utils/CDN_handler";
 
 /**
  * Component Description: displays the details and images of the project
@@ -139,7 +139,7 @@ export default function ProjectCard(props) {
       />
       <img
         className="ProjectPic"
-        src={toCDN(props.CardData.pictureURL)}
+        src={props.CardData.pictureURL}
         alt={props.CardData.name + " screen shot"}
       />
       <div className="CardTexts">

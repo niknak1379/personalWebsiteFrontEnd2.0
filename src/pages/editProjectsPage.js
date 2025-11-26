@@ -4,7 +4,7 @@ import LoadingError from "../UI/LoadingError";
 import { Form } from "react-router";
 import AuthConext from "../context/authProvider";
 import useInterceptorHook from "../Hooks/axiosPrivateInterceptorHook";
-
+import {} from "../utils/CDN_handler";
 export default function ProjectEditPage(props) {
   const Controller = new AbortController();
   const EditDialogRef = useRef(null);
@@ -98,6 +98,7 @@ export default function ProjectEditPage(props) {
     event.preventDefault();
     let formData = new FormData(formRef.current);
     formData.append("originalName", props.CardData.name);
+
     console.log("submitting");
     try {
       setLoading(true);
@@ -112,6 +113,10 @@ export default function ProjectEditPage(props) {
       setLoading(false);
       if (error == false) {
         window.alert("project edited successfully");
+        // close to prevent a refresh in the event of project name change
+        if (props.CardData.name != formData.get("name")) {
+          props.DialogStatusFunc(false);
+        }
         setRefresh(refresh + 1);
       }
     }
@@ -164,25 +169,25 @@ export default function ProjectEditPage(props) {
                 ref={pictureRef0}
                 className="visible"
                 alt="project image 1"
-                src={toCDN(projData.pictureURL)}
+                src={projData.pictureURL}
               ></img>
               <img
                 ref={pictureRef1}
                 className=""
                 alt="project image 2"
-                src={toCDN(projData.carouselImage_1)}
+                src={projData.carouselImage_1}
               ></img>
               <img
                 ref={pictureRef2}
                 className=""
                 alt="project image 3"
-                src={toCDN(projData.carouselImage_2)}
+                src={projData.carouselImage_2}
               ></img>
               <img
                 ref={pictureRef3}
                 className=""
                 alt="project image 4"
-                src={toCDN(projData.carouselImage_3)}
+                src={projData.carouselImage_3}
               ></img>
               <ul className="imgPreview">
                 <li>
@@ -198,7 +203,7 @@ export default function ProjectEditPage(props) {
                     onClick={() => updateCarousel(0)}
                     className="carousel"
                     alt="project image 1"
-                    src={toCDN(projData.pictureURL)}
+                    src={projData.pictureURL}
                   ></img>
                 </li>
                 <li>
@@ -214,7 +219,7 @@ export default function ProjectEditPage(props) {
                     onClick={() => updateCarousel(1)}
                     className="carousel"
                     alt="project image 2"
-                    src={toCDN(projData.carouselImage_1)}
+                    src={projData.carouselImage_1}
                   ></img>
                 </li>
                 <li>
@@ -230,7 +235,7 @@ export default function ProjectEditPage(props) {
                     onClick={() => updateCarousel(2)}
                     className="carousel"
                     alt="project image 3"
-                    src={toCDN(projData.carouselImage_2)}
+                    src={projData.carouselImage_2}
                   ></img>
                 </li>
                 <li>
@@ -246,7 +251,7 @@ export default function ProjectEditPage(props) {
                     onClick={() => updateCarousel(3)}
                     className="carousel"
                     alt="project image 4"
-                    src={toCDN(projData.carouselImage_3)}
+                    src={projData.carouselImage_3}
                   ></img>
                 </li>
               </ul>
@@ -387,7 +392,7 @@ export default function ProjectEditPage(props) {
                   id="picture"
                   name="pictureURL"
                   type="file"
-                  accept="image/avif"
+                  accept="image/*"
                 ></input>
               </label>
               <label
@@ -407,7 +412,7 @@ export default function ProjectEditPage(props) {
                   id="Carousel1"
                   name="carouselImage_1"
                   type="file"
-                  accept="image/avif"
+                  accept="image/*"
                 ></input>
               </label>
               <label
@@ -427,7 +432,7 @@ export default function ProjectEditPage(props) {
                   id="Carousel2"
                   name="carouselImage_2"
                   type="file"
-                  accept="image/avif"
+                  accept="image/*"
                 ></input>
               </label>
               <label
@@ -447,7 +452,7 @@ export default function ProjectEditPage(props) {
                   id="Carousel3"
                   name="carouselImage_3"
                   type="file"
-                  accept="image/avif"
+                  accept="image/*"
                 ></input>
               </label>
               <span>
