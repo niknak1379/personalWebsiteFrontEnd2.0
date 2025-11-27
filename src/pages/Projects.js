@@ -16,6 +16,9 @@ export default function Projects() {
   const [tagsArr, setTagsArr] = useState([]);
   const [statusArr, setStatusArr] = useState([]);
   const [projectArr, setProjArr] = useState([]);
+  const [pageNumber, setPageNumber] = useState(0);
+  const [totalPageNumber, setTotalPageNumber] = useState(0);
+  const [submit, setSubmit] = useState(0);
   const [newProjectState, setNewProject] = useState(false);
   const tagsDropDownRef = useRef(null);
   const statusDropDownRef = useRef(null);
@@ -46,13 +49,72 @@ export default function Projects() {
         setError(true);
       }
     }
-    async function fetchInitProjects() {
+    async function fetchSearchQuery() {
+      //check for duplicate requests
+      abortControllerRef.current?.abort();
+      abortControllerRef.current = new AbortController();
       setIsLoading(true);
       try {
-        let data = await fetch(baseURL + "/ / / /10");
-        let projects = await data.json();
+        let data = new FormData(formRef.current);
+
+        let searchQuery = "";
+        let tagQuery = []; //serverside if passed empty Defaults to ALL
+        let statusQuery = []; //if empty serverside Defaults to ALL
+        let numberRequested = 10; //number of entries requeseted, default to 10
+
+        //process form data
+        //cant group formdata object based on fieldset
+        //so had to manually add a status- or a tag-
+        //string at the front that has to be processed out here
+        for (let x of data.entries()) {
+          if (x[0].includes("status")) {
+            statusQuery.push(x[0].replace("status-", ""));
+          } else if (x[0].includes("tag")) {
+            tagQuery.push(x[0].replace("tag-", ""));
+          } else if (x[0] === "searchBar") {
+            if (x[1] == "") {
+              searchQuery = " ";
+            } else {
+              searchQuery = x[1];
+            }
+          }
+        }
+        // place processed data in the api format
+        // app.get("/:name/:status/:tags/:numberRequested/:pageNumber")
+        if (!tagQuery.length) {
+          tagQuery = " ";
+          console.log("tag", tagQuery);
+        } else {
+          tagQuery = tagQuery.join("-");
+        }
+        if (!statusQuery.length) {
+          statusQuery = " ";
+        } else {
+          statusQuery = statusQuery.join("-");
+        }
+        console.log(tagQuery, statusQuery);
+        let url = [
+          baseURL,
+          searchQuery,
+          statusQuery,
+          tagQuery,
+          numberRequested,
+          pageNumber * 10,
+        ].join("/");
+        console.log(url);
+        let fetchData = await fetch(url, {
+          signal: abortControllerRef?.current.signal,
+        });
+        let { projects, totalHits } = await fetchData.json();
+        setTotalPageNumber(Math.ceil(totalHits / 10));
+        console.log(projects);
         setProjArr(projects);
       } catch (error) {
+        if (error.name === "AbortError") {
+          console.log("too many reqeuests at once, request aborted");
+          console.log(error);
+          return;
+        }
         setProjError(true);
       } finally {
         setIsLoading(false);
@@ -60,9 +122,78 @@ export default function Projects() {
     }
     fetchTags();
     fetchStatus();
-    fetchInitProjects();
-  }, [reTry]);
+    fetchSearchQuery();
+  }, [reTry, pageNumber, submit]);
+  async function fetchSearchQuery() {
+    //check for duplicate requests
+    abortControllerRef.current?.abort();
+    abortControllerRef.current = new AbortController();
+    setIsLoading(true);
+    try {
+      let data = new FormData(formRef.current);
 
+      let searchQuery = "";
+      let tagQuery = []; //serverside if passed empty Defaults to ALL
+      let statusQuery = []; //if empty serverside Defaults to ALL
+      let numberRequested = 10; //number of entries requeseted, default to 10
+
+      //process form data
+      //cant group formdata object based on fieldset
+      //so had to manually add a status- or a tag-
+      //string at the front that has to be processed out here
+      for (let x of data.entries()) {
+        if (x[0].includes("status")) {
+          statusQuery.push(x[0].replace("status-", ""));
+        } else if (x[0].includes("tag")) {
+          tagQuery.push(x[0].replace("tag-", ""));
+        } else if (x[0] === "searchBar") {
+          if (x[1] == "") {
+            searchQuery = " ";
+          } else {
+            searchQuery = x[1];
+          }
+        }
+      }
+      // place processed data in the api format
+      // app.get("/:name/:status/:tags/:numberRequested/:pageNumber")
+      if (!tagQuery.length) {
+        tagQuery = " ";
+        console.log("tag", tagQuery);
+      } else {
+        tagQuery = tagQuery.join("-");
+      }
+      if (!statusQuery.length) {
+        statusQuery = " ";
+      } else {
+        statusQuery = statusQuery.join("-");
+      }
+      console.log(tagQuery, statusQuery);
+      let url = [
+        baseURL,
+        searchQuery,
+        statusQuery,
+        tagQuery,
+        numberRequested,
+        pageNumber,
+      ].join("/");
+      console.log(url);
+      let fetchData = await fetch(url, {
+        signal: abortControllerRef?.current.signal,
+      });
+      let { projects } = await fetchData.json();
+      console.log(projects);
+      setProjArr(projects);
+    } catch (error) {
+      if (error.name === "AbortError") {
+        console.log("too many reqeuests at once, request aborted");
+        console.log(error);
+        return;
+      }
+      setProjError(true);
+    } finally {
+      setIsLoading(false);
+    }
+  }
   const listTags = tagsArr.map((item) => {
     return (
       <li key={item.tag}>
@@ -89,72 +220,6 @@ export default function Projects() {
       </li>
     );
   });
-
-  async function fetchSearchQuery() {
-    //check for duplicate requests
-    abortControllerRef.current?.abort();
-    abortControllerRef.current = new AbortController();
-    setIsLoading(true);
-    try {
-      let data = new FormData(formRef.current);
-
-      let searchQuery = "";
-      let tagQuery = []; //serverside if passed empty Defaults to ALL
-      let statusQuery = []; //if empty serverside Defaults to ALL
-      let numberRequested = 10; //number of entries requeseted, default to 10
-
-      //process form data
-      for (let x of data.entries()) {
-        if (x[0].includes("status")) {
-          statusQuery.push(x[0].replace("status-", ""));
-        } else if (x[0].includes("tag")) {
-          tagQuery.push(x[0].replace("tag-", ""));
-        } else if (x[0] === "searchBar") {
-          if (x[1] == "") {
-            searchQuery = " ";
-          } else {
-            searchQuery = x[1];
-          }
-        }
-      }
-      //post process data
-      if (!tagQuery.length) {
-        tagQuery = " ";
-        console.log("tag", tagQuery);
-      } else {
-        tagQuery = tagQuery.join("-");
-      }
-      if (!statusQuery.length) {
-        statusQuery = " ";
-      } else {
-        statusQuery = statusQuery.join("-");
-      }
-      console.log(tagQuery, statusQuery);
-      let url = [
-        baseURL,
-        searchQuery,
-        statusQuery,
-        tagQuery,
-        numberRequested,
-      ].join("/");
-      console.log(url);
-      let fetchData = await fetch(url, {
-        signal: abortControllerRef?.current.signal,
-      });
-      let projects = await fetchData.json();
-      console.log(projects);
-      setProjArr(projects);
-    } catch (error) {
-      if (error.name === "AbortError") {
-        console.log("too many reqeuests at once, request aborted");
-        console.log(error);
-        return;
-      }
-      setProjError(true);
-    } finally {
-      setIsLoading(false);
-    }
-  }
 
   return (
     <div className="Home1 Background">
@@ -188,7 +253,24 @@ export default function Projects() {
                 <legend>Project Tags</legend>
                 <ul>{listTags}</ul>
               </fieldset>
-
+              <label htmlFor="pageNumber">
+                <select
+                  id="pageNumber"
+                  name="pageNumber"
+                  onChange={(e) => setPageNumber(e.target.value - 1)}
+                >
+                  {Array.from({ length: totalPageNumber }, (_, i) => i + 1).map(
+                    (i) => {
+                      return <option>{i}</option>;
+                    }
+                  )}
+                  {console.log(
+                    "array",
+                    Array.from({ length: totalPageNumber }, (_, i) => i + 1),
+                    totalPageNumber
+                  )}
+                </select>
+              </label>
               <button
                 className="expandButton"
                 onClick={(e) => {
@@ -213,13 +295,7 @@ export default function Projects() {
                 <ul>{listStatus}</ul>
               </fieldset>
 
-              <button
-                type="submit"
-                onClick={(e) => {
-                  e.preventDefault();
-                  fetchSearchQuery();
-                }}
-              >
+              <button type="submit" onClick={(e) => setSubmit(submit + 1)}>
                 Continue
               </button>
             </form>

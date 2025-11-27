@@ -315,6 +315,12 @@ export default function ProjectDetailPage(props) {
               return <li key={item}>{item}</li>;
             })}
           </ul>
+          <span className="projDate">
+            Creation Date: <span>{projData.creationDate}</span>
+          </span>
+          <span className="projDate">
+            Last Modified: <span>{projData.lastModified}</span>
+          </span>
           <span>Additional Links:</span>
           <ul className="linksList">
             <li>

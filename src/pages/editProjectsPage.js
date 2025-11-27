@@ -27,27 +27,7 @@ export default function ProjectEditPage(props) {
     setVisibleCarouselImg(i);
     console.log(visibleCarouselImg, i);
   }
-  //form states:
-  {
-    /*
-            -- DB Fields:
-            -- TABLE Projects:
-                name varchar(28) NOT NULL,
-                description varchar(135) NOT NULL,
-                longDescription Text NOT NULL,
-                status varchar(255) NOT NULL,
-                pictureURL varchar(255),
-                githubURL varchar(255),
-                deploymentURL varchar(255),
-                obsidianURL varchar(255),
-                carouselImage_1 varchar(255),
-                carouselImage_2 varchar(255),
-                carouselImage_3 varchar(255),
-            -- TABLE Tags:
-                name
-                tag
-    */
-  }
+
   /*  
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
@@ -148,6 +128,8 @@ export default function ProjectEditPage(props) {
                 carouselImage_1 varchar(255),
                 carouselImage_2 varchar(255),
                 carouselImage_3 varchar(255),
+                creationDate date,
+                lastModified date
             -- TABLE Tags:
                 name 
                 tag
@@ -335,6 +317,39 @@ export default function ProjectEditPage(props) {
                   id="tags"
                   defaultValue={projData.tags.join("-")}
                 />
+              </label>
+              <label htmlFor="creationDate">
+                Creation Date:
+                <input
+                  type="date"
+                  defaultValue={projData.creationDate}
+                  name="creationDate"
+                  id="creationDate"
+                  required
+                ></input>
+              </label>
+              <label htmlFor="lastModified">
+                Last Modified:
+                <input
+                  type="date"
+                  defaultValue={() => {
+                    const today = new Date();
+                    const year = today.getFullYear();
+                    let month = today.getMonth() + 1;
+                    let day = today.getDate();
+
+                    if (month < 10) {
+                      month = "0" + month;
+                    }
+                    if (day < 10) {
+                      day = "0" + day;
+                    }
+                    return `${year}-${month}-${day}`;
+                  }}
+                  name="lastModified"
+                  id="lastModified"
+                  required
+                ></input>
               </label>
               <span>Additional Links:</span>
               <ul className="linksList">

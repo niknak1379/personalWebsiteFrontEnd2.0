@@ -39,14 +39,14 @@ export default function Home() {
     async function getData() {
       setLoading(true);
       try {
-        let complete_data = await fetch(baseURL + "/ /Complete/ /4");
+        let complete_data = await fetch(baseURL + "/ /Complete/ /4/1");
         let comp = await complete_data.json();
         let incomp_data = await fetch(
-          baseURL + "/ /In Progress-To Be Started/ /4"
+          baseURL + "/ /In Progress-To Be Started/ /4/1"
         );
         let incomp = await incomp_data.json();
-        setcompletedProjects(comp);
-        setincompletedProjects(incomp);
+        setcompletedProjects(comp.projects);
+        setincompletedProjects(incomp.projects);
       } catch (error) {
         setProjectError(true);
       } finally {
