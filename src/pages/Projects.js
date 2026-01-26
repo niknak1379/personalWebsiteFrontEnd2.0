@@ -50,7 +50,7 @@ export default function Projects() {
       setIsLoading(true);
       try {
         let data = await fetch(baseURL + "/ / / /10/0");
-        let projects = await data.json();
+        let { projects } = await data.json();
         setProjArr(projects);
       } catch (error) {
         setProjError(true);
@@ -142,7 +142,7 @@ export default function Projects() {
       let fetchData = await fetch(url, {
         signal: abortControllerRef?.current.signal,
       });
-      let projects = await fetchData.json();
+      let { projects } = await fetchData.json();
       console.log(projects);
       setProjArr(projects);
     } catch (error) {

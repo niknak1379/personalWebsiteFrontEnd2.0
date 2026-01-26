@@ -45,8 +45,8 @@ export default function Home() {
           baseURL + "/ /In Progress-To Be Started/ /4/0"
         );
         let incomp = await incomp_data.json();
-        setcompletedProjects(comp);
-        setincompletedProjects(incomp);
+        setcompletedProjects(comp.projects);
+        setincompletedProjects(incomp.projects);
       } catch (error) {
         setProjectError(true);
       } finally {
