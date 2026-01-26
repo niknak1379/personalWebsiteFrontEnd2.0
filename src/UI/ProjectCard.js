@@ -163,7 +163,7 @@ export default function ProjectCard(props) {
               <a
                 href={props.CardData.deploymentURL}
                 aria-label="website link"
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 <img
                   src={
@@ -177,7 +177,7 @@ export default function ProjectCard(props) {
               <a
                 href={props.CardData.githubURL}
                 aria-label="github link"
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 <img
                   src={

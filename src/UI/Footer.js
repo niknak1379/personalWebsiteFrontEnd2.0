@@ -50,19 +50,19 @@ export default function Footer() {
 
                 <ul className="footerIcon">
                     <li>
-                    <a href = 'https://www.linkedin.com/in/nikanostovan/' aria-label="linkedin link" target="_blank">
+                    <a href = 'https://www.linkedin.com/in/nikanostovan/' aria-label="linkedin link" target="_blank" rel="noreferrer">
                         <img src={process.env.PUBLIC_URL + '/Assets/Footer/linkedin.svg'} alt="linkedin logo" loading="lazy"/> 
                     </a>
                     </li>
 
                     <li>
-                    <a href = 'https://github.com/niknak1379/' aria-label="github link" target="_blank">
+                    <a href = 'https://github.com/niknak1379/' aria-label="github link" target="_blank" rel="noreferrer">
                         <img src={process.env.PUBLIC_URL + '/Assets/Footer/github.svg'} alt="github logo" loading="lazy"/> 
                     </a>
                     </li>
 
                     <li>
-                    <a href = 'https://www.instagram.com/1he.w4rst/' aria-label="instagram link" target="_blank">
+                    <a href = 'https://www.instagram.com/1he.w4rst/' aria-label="instagram link" target="_blank" rel="noreferrer">
                         <img src={process.env.PUBLIC_URL + '/Assets/Footer/instagram.svg'} alt="instagram logo" loading="lazy"/> 
                     </a>
                     </li>

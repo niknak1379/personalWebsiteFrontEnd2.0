@@ -319,7 +319,7 @@ export default function ProjectDetailPage(props) {
           <ul className="linksList">
             <li>
               <span>Deployment URL:</span>{" "}
-              <a target="_blank" href={props.CardData.deploymentURL}>
+              <a target="_blank" href={props.CardData.deploymentURL} rel="noreferrer">
                 <img
                   src={
                     process.env.PUBLIC_URL + "/Assets/App/Cards/Icons/link.png"
@@ -329,7 +329,7 @@ export default function ProjectDetailPage(props) {
             </li>
             <li>
               Repository:{" "}
-              <a target="_blank" href={props.CardData.githubURL}>
+              <a target="_blank" href={props.CardData.githubURL} rel="noreferrer">
                 <img
                   src={
                     process.env.PUBLIC_URL +
@@ -340,7 +340,7 @@ export default function ProjectDetailPage(props) {
             </li>
             <li>
               Notes and Documentation: &nbsp; &nbsp;{" "}
-              <a target="_blank" href={projData.obsidianURL}>
+              <a target="_blank" href={projData.obsidianURL} rel="noreferrer">
                 <img
                   src={
                     process.env.PUBLIC_URL +

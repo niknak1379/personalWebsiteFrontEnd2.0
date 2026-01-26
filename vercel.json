@@ -1,7 +1,4 @@
 {
-  "buildCommand": "next build",
-  "env": {
-    "NEXT_PUBLIC_ESLINT_BASEURL": "@next/eslint-config"
-  },
-  "ignoreCommand": "git diff --quiet $VERCEL_GIT_PRIOR_COMMIT $VERCEL_GIT_COMMIT -- ."
+  "buildCommand": "CI=false npm run build",
+  "framework": "create-react-app"
 }
