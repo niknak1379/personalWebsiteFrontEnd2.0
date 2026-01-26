@@ -49,7 +49,7 @@ export default function Projects() {
     async function fetchInitProjects() {
       setIsLoading(true);
       try {
-        let data = await fetch(baseURL + "/ / / /10");
+        let data = await fetch(baseURL + "/ / / /10/0");
         let projects = await data.json();
         setProjArr(projects);
       } catch (error) {
@@ -136,6 +136,7 @@ export default function Projects() {
         statusQuery,
         tagQuery,
         numberRequested,
+        "0" //this is page number havent added yet
       ].join("/");
       console.log(url);
       let fetchData = await fetch(url, {
