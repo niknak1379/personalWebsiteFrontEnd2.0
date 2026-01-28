@@ -3,6 +3,7 @@
 
 var ServerEndpoint
 let env = process.env.DEP_ENV
+console.log("env", env)
 if (env === "test") {
   ServerEndpoint = "https://api.nikanostovan.dev/123345"
 } else if (env === "local") {
