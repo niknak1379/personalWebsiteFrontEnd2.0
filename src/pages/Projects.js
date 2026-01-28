@@ -8,459 +8,400 @@ import userEvent from "@testing-library/user-event";
 import AuthConext from "../context/authProvider";
 import NewProjectPage from "./addNewProjectPage";
 export default function Projects() {
-  const [isLoading, setIsLoading] = useState(false); //update UI for loading components
-  const [sideBarLaoding, setSideBarLoading] = useState(false); //update UI for loading components
-  const [error, setError] = useState(false); //to catch errors from fetch from server
-  const [projError, setProjError] = useState(false);
-  const [reTry, setReTry] = useState(false); //if user presses retry server after an error
-  const [tagsArr, setTagsArr] = useState([]);
-  const [statusArr, setStatusArr] = useState([]);
-  const [projectArr, setProjArr] = useState([]);
-  const [pageNumber, setPageNumber] = useState(0);
-  const [totalPageNumber, setTotalPageNumber] = useState(0);
-  const [submit, setSubmit] = useState(0);
-  const [newProjectState, setNewProject] = useState(false);
-  const tagsDropDownRef = useRef(null);
-  const statusDropDownRef = useRef(null);
-  const formRef = useRef(null);
-  const abortControllerRef = useRef(null);
-  const { accessToken, baseURL } = useContext(AuthConext);
-  useEffect(() => {
-    async function fetchTags() {
-      setSideBarLoading(true);
-      try {
-        let data = await fetch(baseURL + "/tags");
-        let tags = await data.json();
-        setTagsArr(tags);
-        //console.log(tagsArr)
-      } catch (error) {
-        setError(true);
-      } finally {
-        setSideBarLoading(false);
-      }
-    }
-    async function fetchStatus() {
-      try {
-        let data = await fetch(baseURL + "/status");
-        let status = await data.json();
-        setStatusArr(status);
-        //console.log(statusArr)
-      } catch (error) {
-        setError(true);
-      }
-    }
-    async function fetchSearchQuery() {
-      //check for duplicate requests
-      abortControllerRef.current?.abort();
-      abortControllerRef.current = new AbortController();
-      setIsLoading(true);
-      try {
-<<<<<<< HEAD
-        let data = new FormData(formRef.current);
+	const [isLoading, setIsLoading] = useState(false); //update UI for loading components
+	const [sideBarLaoding, setSideBarLoading] = useState(false); //update UI for loading components
+	const [error, setError] = useState(false); //to catch errors from fetch from server
+	const [projError, setProjError] = useState(false);
+	const [reTry, setReTry] = useState(false); //if user presses retry server after an error
+	const [tagsArr, setTagsArr] = useState([]);
+	const [statusArr, setStatusArr] = useState([]);
+	const [projectArr, setProjArr] = useState([]);
+	const [pageNumber, setPageNumber] = useState(0);
+	const [totalPageNumber, setTotalPageNumber] = useState(0);
+	const [submit, setSubmit] = useState(0);
+	const [newProjectState, setNewProject] = useState(false);
+	const tagsDropDownRef = useRef(null);
+	const statusDropDownRef = useRef(null);
+	const formRef = useRef(null);
+	const abortControllerRef = useRef(null);
+	const { accessToken, baseURL } = useContext(AuthConext);
+	useEffect(() => {
+		async function fetchTags() {
+			setSideBarLoading(true);
+			try {
+				let data = await fetch(baseURL + "/tags");
+				let tags = await data.json();
+				setTagsArr(tags);
+				//console.log(tagsArr)
+			} catch (error) {
+				setError(true);
+			} finally {
+				setSideBarLoading(false);
+			}
+		}
+		async function fetchStatus() {
+			try {
+				let data = await fetch(baseURL + "/status");
+				let status = await data.json();
+				setStatusArr(status);
+				//console.log(statusArr)
+			} catch (error) {
+				setError(true);
+			}
+		}
+		async function fetchSearchQuery() {
+			//check for duplicate requests
+			abortControllerRef.current?.abort();
+			abortControllerRef.current = new AbortController();
+			setIsLoading(true);
+			try {
+				let data = await fetch(baseURL + "/ / / /10/0");
+				let { projects } = await data.json();
+				setProjArr(projects);
+			} catch (error) {
+				if (error.name === "AbortError") {
+					console.log("too many reqeuests at once, request aborted");
+					console.log(error);
+					return;
+				}
+				setProjError(true);
+			} finally {
+				setIsLoading(false);
+			}
+		}
+		fetchTags();
+		fetchStatus();
+		fetchSearchQuery();
+	}, [reTry, pageNumber, submit]);
+	async function fetchSearchQuery() {
+		//check for duplicate requests
+		abortControllerRef.current?.abort();
+		abortControllerRef.current = new AbortController();
+		setIsLoading(true);
+		try {
+			let data = new FormData(formRef.current);
 
-        let searchQuery = "";
-        let tagQuery = []; //serverside if passed empty Defaults to ALL
-        let statusQuery = []; //if empty serverside Defaults to ALL
-        let numberRequested = 10; //number of entries requeseted, default to 10
+			let searchQuery = "";
+			let tagQuery = []; //serverside if passed empty Defaults to ALL
+			let statusQuery = []; //if empty serverside Defaults to ALL
+			let numberRequested = 10; //number of entries requeseted, default to 10
 
-        //process form data
-        //cant group formdata object based on fieldset
-        //so had to manually add a status- or a tag-
-        //string at the front that has to be processed out here
-        for (let x of data.entries()) {
-          if (x[0].includes("status")) {
-            statusQuery.push(x[0].replace("status-", ""));
-          } else if (x[0].includes("tag")) {
-            tagQuery.push(x[0].replace("tag-", ""));
-          } else if (x[0] === "searchBar") {
-            if (x[1] == "") {
-              searchQuery = " ";
-            } else {
-              searchQuery = x[1];
-            }
-          }
-        }
-        // place processed data in the api format
-        // app.get("/:name/:status/:tags/:numberRequested/:pageNumber")
-        if (!tagQuery.length) {
-          tagQuery = " ";
-          console.log("tag", tagQuery);
-        } else {
-          tagQuery = tagQuery.join("-");
-        }
-        if (!statusQuery.length) {
-          statusQuery = " ";
-        } else {
-          statusQuery = statusQuery.join("-");
-        }
-        console.log(tagQuery, statusQuery);
-        let url = [
-          baseURL,
-          searchQuery,
-          statusQuery,
-          tagQuery,
-          numberRequested,
-          pageNumber * 10,
-        ].join("/");
-        console.log(url);
-        let fetchData = await fetch(url, {
-          signal: abortControllerRef?.current.signal,
-        });
-        let { projects, totalHits } = await fetchData.json();
-        setTotalPageNumber(Math.ceil(totalHits / 10));
-        console.log(projects);
-=======
-        let data = await fetch(baseURL + "/ / / /10/0");
-        let { projects } = await data.json();
->>>>>>> main
-        setProjArr(projects);
-      } catch (error) {
-        if (error.name === "AbortError") {
-          console.log("too many reqeuests at once, request aborted");
-          console.log(error);
-          return;
-        }
-        setProjError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    fetchTags();
-    fetchStatus();
-    fetchSearchQuery();
-  }, [reTry, pageNumber, submit]);
-  async function fetchSearchQuery() {
-    //check for duplicate requests
-    abortControllerRef.current?.abort();
-    abortControllerRef.current = new AbortController();
-    setIsLoading(true);
-    try {
-      let data = new FormData(formRef.current);
+			//process form data
+			//cant group formdata object based on fieldset
+			//so had to manually add a status- or a tag-
+			//string at the front that has to be processed out here
+			for (let x of data.entries()) {
+				if (x[0].includes("status")) {
+					statusQuery.push(x[0].replace("status-", ""));
+				} else if (x[0].includes("tag")) {
+					tagQuery.push(x[0].replace("tag-", ""));
+				} else if (x[0] === "searchBar") {
+					if (x[1] == "") {
+						searchQuery = " ";
+					} else {
+						searchQuery = x[1];
+					}
+				}
+			}
+			// place processed data in the api format
+			// app.get("/:name/:status/:tags/:numberRequested/:pageNumber")
+			if (!tagQuery.length) {
+				tagQuery = " ";
+				console.log("tag", tagQuery);
+			} else {
+				tagQuery = tagQuery.join("-");
+			}
+			if (!statusQuery.length) {
+				statusQuery = " ";
+			} else {
+				statusQuery = statusQuery.join("-");
+			}
+			console.log(tagQuery, statusQuery);
+			let url = [
+				baseURL,
+				searchQuery,
+				statusQuery,
+				tagQuery,
+				numberRequested,
+				pageNumber,
+			].join("/");
+			console.log(url);
+			let fetchData = await fetch(url, {
+				signal: abortControllerRef?.current.signal,
+			});
+			let { projects } = await fetchData.json();
+			console.log(projects);
+			setProjArr(projects);
+		} catch (error) {
+			if (error.name === "AbortError") {
+				console.log("too many reqeuests at once, request aborted");
+				console.log(error);
+				return;
+			}
+			setProjError(true);
+		} finally {
+			setIsLoading(false);
+		}
+	}
+	const listTags = tagsArr.map((item) => {
+		return (
+			<li key={item.tag}>
+				<input id={item.tag} name={"tag-" + item.tag} type="checkbox"></input>
+				<label htmlFor={item.tag}>
+					{" "}
+					{item.tag} ({item.Frequency})
+				</label>
+			</li>
+		);
+	});
+	const listStatus = statusArr.map((item) => {
+		return (
+			<li key={item.status}>
+				<input
+					id={item.status}
+					name={"status-" + item.status}
+					type="checkbox"
+				></input>
+				<label htmlFor={item.status}>
+					{" "}
+					{item.status} ({item.Frequency})
+				</label>
+			</li>
+		);
+	});
 
-      let searchQuery = "";
-      let tagQuery = []; //serverside if passed empty Defaults to ALL
-      let statusQuery = []; //if empty serverside Defaults to ALL
-      let numberRequested = 10; //number of entries requeseted, default to 10
+	async function fetchSearchQuery() {
+		//check for duplicate requests
+		abortControllerRef.current?.abort();
+		abortControllerRef.current = new AbortController();
+		setIsLoading(true);
+		try {
+			let data = new FormData(formRef.current);
 
-      //process form data
-      //cant group formdata object based on fieldset
-      //so had to manually add a status- or a tag-
-      //string at the front that has to be processed out here
-      for (let x of data.entries()) {
-        if (x[0].includes("status")) {
-          statusQuery.push(x[0].replace("status-", ""));
-        } else if (x[0].includes("tag")) {
-          tagQuery.push(x[0].replace("tag-", ""));
-        } else if (x[0] === "searchBar") {
-          if (x[1] == "") {
-            searchQuery = " ";
-          } else {
-            searchQuery = x[1];
-          }
-        }
-      }
-      // place processed data in the api format
-      // app.get("/:name/:status/:tags/:numberRequested/:pageNumber")
-      if (!tagQuery.length) {
-        tagQuery = " ";
-        console.log("tag", tagQuery);
-      } else {
-        tagQuery = tagQuery.join("-");
-      }
-      if (!statusQuery.length) {
-        statusQuery = " ";
-      } else {
-        statusQuery = statusQuery.join("-");
-      }
-      console.log(tagQuery, statusQuery);
-      let url = [
-        baseURL,
-        searchQuery,
-        statusQuery,
-        tagQuery,
-        numberRequested,
-        pageNumber,
-      ].join("/");
-      console.log(url);
-      let fetchData = await fetch(url, {
-        signal: abortControllerRef?.current.signal,
-      });
-      let { projects } = await fetchData.json();
-      console.log(projects);
-      setProjArr(projects);
-    } catch (error) {
-      if (error.name === "AbortError") {
-        console.log("too many reqeuests at once, request aborted");
-        console.log(error);
-        return;
-      }
-      setProjError(true);
-    } finally {
-      setIsLoading(false);
-    }
-  }
-  const listTags = tagsArr.map((item) => {
-    return (
-      <li key={item.tag}>
-        <input id={item.tag} name={"tag-" + item.tag} type="checkbox"></input>
-        <label htmlFor={item.tag}>
-          {" "}
-          {item.tag} ({item.Frequency})
-        </label>
-      </li>
-    );
-  });
-  const listStatus = statusArr.map((item) => {
-    return (
-      <li key={item.status}>
-        <input
-          id={item.status}
-          name={"status-" + item.status}
-          type="checkbox"
-        ></input>
-        <label htmlFor={item.status}>
-          {" "}
-          {item.status} ({item.Frequency})
-        </label>
-      </li>
-    );
-  });
+			let searchQuery = "";
+			let tagQuery = []; //serverside if passed empty Defaults to ALL
+			let statusQuery = []; //if empty serverside Defaults to ALL
+			let numberRequested = 10; //number of entries requeseted, default to 10
 
-<<<<<<< HEAD
-=======
-  async function fetchSearchQuery() {
-    //check for duplicate requests
-    abortControllerRef.current?.abort();
-    abortControllerRef.current = new AbortController();
-    setIsLoading(true);
-    try {
-      let data = new FormData(formRef.current);
+			//process form data
+			for (let x of data.entries()) {
+				if (x[0].includes("status")) {
+					statusQuery.push(x[0].replace("status-", ""));
+				} else if (x[0].includes("tag")) {
+					tagQuery.push(x[0].replace("tag-", ""));
+				} else if (x[0] === "searchBar") {
+					if (x[1] == "") {
+						searchQuery = " ";
+					} else {
+						searchQuery = x[1];
+					}
+				}
+			}
+			//post process data
+			if (!tagQuery.length) {
+				tagQuery = " ";
+				console.log("tag", tagQuery);
+			} else {
+				tagQuery = tagQuery.join("-");
+			}
+			if (!statusQuery.length) {
+				statusQuery = " ";
+			} else {
+				statusQuery = statusQuery.join("-");
+			}
+			console.log(tagQuery, statusQuery);
+			let url = [
+				baseURL,
+				searchQuery,
+				statusQuery,
+				tagQuery,
+				numberRequested,
+				"0", //this is page number havent added yet
+			].join("/");
+			console.log(url);
+			let fetchData = await fetch(url, {
+				signal: abortControllerRef?.current.signal,
+			});
+			let { projects } = await fetchData.json();
+			console.log(projects);
+			setProjArr(projects);
+		} catch (error) {
+			if (error.name === "AbortError") {
+				console.log("too many reqeuests at once, request aborted");
+				console.log(error);
+				return;
+			}
+			setProjError(true);
+		} finally {
+			setIsLoading(false);
+		}
+	}
 
-      let searchQuery = "";
-      let tagQuery = []; //serverside if passed empty Defaults to ALL
-      let statusQuery = []; //if empty serverside Defaults to ALL
-      let numberRequested = 10; //number of entries requeseted, default to 10
+	return (
+		<div className="Home1 Background">
+			{!error && (
+				<div className="projectSidebar">
+					{!sideBarLaoding && (
+						<form ref={formRef} id="searchQuery">
+							<label htmlFor="searchBar">Search:</label>
+							<input name="searchBar"></input>
+							<button
+								className="expandButton"
+								onClick={(e) => {
+									e.preventDefault();
+									if (tagsDropDownRef.current.classList.contains("hidden")) {
+										tagsDropDownRef.current.classList.remove("hidden");
+										tagsDropDownRef.current.classList.add("unhidden");
+									} else {
+										tagsDropDownRef.current.classList.add("hidden");
+										tagsDropDownRef.current.classList.remove("unhidden");
+									}
+								}}
+							>
+								Tags
+								<img
+									alt="down icon"
+									src={process.env.PUBLIC_URL + "./Assets/App/Cards/down.svg"}
+								></img>
+							</button>
 
-      //process form data
-      for (let x of data.entries()) {
-        if (x[0].includes("status")) {
-          statusQuery.push(x[0].replace("status-", ""));
-        } else if (x[0].includes("tag")) {
-          tagQuery.push(x[0].replace("tag-", ""));
-        } else if (x[0] === "searchBar") {
-          if (x[1] == "") {
-            searchQuery = " ";
-          } else {
-            searchQuery = x[1];
-          }
-        }
-      }
-      //post process data
-      if (!tagQuery.length) {
-        tagQuery = " ";
-        console.log("tag", tagQuery);
-      } else {
-        tagQuery = tagQuery.join("-");
-      }
-      if (!statusQuery.length) {
-        statusQuery = " ";
-      } else {
-        statusQuery = statusQuery.join("-");
-      }
-      console.log(tagQuery, statusQuery);
-      let url = [
-        baseURL,
-        searchQuery,
-        statusQuery,
-        tagQuery,
-        numberRequested,
-        "0" //this is page number havent added yet
-      ].join("/");
-      console.log(url);
-      let fetchData = await fetch(url, {
-        signal: abortControllerRef?.current.signal,
-      });
-      let { projects } = await fetchData.json();
-      console.log(projects);
-      setProjArr(projects);
-    } catch (error) {
-      if (error.name === "AbortError") {
-        console.log("too many reqeuests at once, request aborted");
-        console.log(error);
-        return;
-      }
-      setProjError(true);
-    } finally {
-      setIsLoading(false);
-    }
-  }
+							<fieldset ref={tagsDropDownRef} className="tags hidden">
+								<legend>Project Tags</legend>
+								<ul>{listTags}</ul>
+							</fieldset>
+							<label htmlFor="pageNumber">
+								<select
+									id="pageNumber"
+									name="pageNumber"
+									onChange={(e) => setPageNumber(e.target.value - 1)}
+								>
+									{Array.from({ length: totalPageNumber }, (_, i) => i + 1).map(
+										(i) => {
+											return <option>{i}</option>;
+										},
+									)}
+									{console.log(
+										"array",
+										Array.from({ length: totalPageNumber }, (_, i) => i + 1),
+										totalPageNumber,
+									)}
+								</select>
+							</label>
+							<button
+								className="expandButton"
+								onClick={(e) => {
+									e.preventDefault();
+									if (statusDropDownRef.current.classList.contains("hidden")) {
+										statusDropDownRef.current.classList.remove("hidden");
+										statusDropDownRef.current.classList.add("unhidden");
+									} else {
+										statusDropDownRef.current.classList.add("hidden");
+										statusDropDownRef.current.classList.remove("unhidden");
+									}
+								}}
+							>
+								Status
+								<img
+									alt="down icon"
+									src={process.env.PUBLIC_URL + "./Assets/App/Cards/down.svg"}
+								></img>
+							</button>
+							<fieldset ref={statusDropDownRef} className="status hidden">
+								<legend>Project Status</legend>
+								<ul>{listStatus}</ul>
+							</fieldset>
 
->>>>>>> main
-  return (
-    <div className="Home1 Background">
-      {!error && (
-        <div className="projectSidebar">
-          {!sideBarLaoding && (
-            <form ref={formRef} id="searchQuery">
-              <label htmlFor="searchBar">Search:</label>
-              <input name="searchBar"></input>
-              <button
-                className="expandButton"
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (tagsDropDownRef.current.classList.contains("hidden")) {
-                    tagsDropDownRef.current.classList.remove("hidden");
-                    tagsDropDownRef.current.classList.add("unhidden");
-                  } else {
-                    tagsDropDownRef.current.classList.add("hidden");
-                    tagsDropDownRef.current.classList.remove("unhidden");
-                  }
-                }}
-              >
-                Tags
-                <img
-                  alt="down icon"
-                  src={process.env.PUBLIC_URL + "./Assets/App/Cards/down.svg"}
-                ></img>
-              </button>
+							<button type="submit" onClick={(e) => setSubmit(submit + 1)}>
+								Continue
+							</button>
+						</form>
+					)}
+					{sideBarLaoding && (
+						<div className="sidebarLoading">
+							Loading{" "}
+							<span>
+								<span></span>
+							</span>
+						</div>
+					)}
+				</div>
+			)}
+			{error && (
+				<div className="projectSidebar projectSidebarError">
+					<img
+						src={process.env.PUBLIC_URL + "./Assets/App/Cards/error.avif"}
+					></img>
+					The sidebar encountered an error during a network request. Please
+					check the console logs and try again!
+					<button
+						className="refreshButton"
+						id="reloadButton"
+						onClick={() => setReTry(true)}
+					>
+						<span>Press to refresh</span>
+						<img
+							alt="refresh icon button"
+							src={
+								process.env.PUBLIC_URL + "./Assets/App/Cards/refreshIcon.svg"
+							}
+						></img>
+					</button>
+				</div>
+			)}
+			<div className="Projects">
+				<h1>Results</h1>
+				{isLoading && (
+					<ul className="projectList">
+						{[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => {
+							return <LoadingPlaceHolder key={i} />;
+						})}
+					</ul>
+				)}
+				{projError && (
+					<ul className="projectList">
+						<LoadingError />
+					</ul>
+				)}
 
-              <fieldset ref={tagsDropDownRef} className="tags hidden">
-                <legend>Project Tags</legend>
-                <ul>{listTags}</ul>
-              </fieldset>
-              <label htmlFor="pageNumber">
-                <select
-                  id="pageNumber"
-                  name="pageNumber"
-                  onChange={(e) => setPageNumber(e.target.value - 1)}
-                >
-                  {Array.from({ length: totalPageNumber }, (_, i) => i + 1).map(
-                    (i) => {
-                      return <option>{i}</option>;
-                    }
-                  )}
-                  {console.log(
-                    "array",
-                    Array.from({ length: totalPageNumber }, (_, i) => i + 1),
-                    totalPageNumber
-                  )}
-                </select>
-              </label>
-              <button
-                className="expandButton"
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (statusDropDownRef.current.classList.contains("hidden")) {
-                    statusDropDownRef.current.classList.remove("hidden");
-                    statusDropDownRef.current.classList.add("unhidden");
-                  } else {
-                    statusDropDownRef.current.classList.add("hidden");
-                    statusDropDownRef.current.classList.remove("unhidden");
-                  }
-                }}
-              >
-                Status
-                <img
-                  alt="down icon"
-                  src={process.env.PUBLIC_URL + "./Assets/App/Cards/down.svg"}
-                ></img>
-              </button>
-              <fieldset ref={statusDropDownRef} className="status hidden">
-                <legend>Project Status</legend>
-                <ul>{listStatus}</ul>
-              </fieldset>
-
-              <button type="submit" onClick={(e) => setSubmit(submit + 1)}>
-                Continue
-              </button>
-            </form>
-          )}
-          {sideBarLaoding && (
-            <div className="sidebarLoading">
-              Loading{" "}
-              <span>
-                <span></span>
-              </span>
-            </div>
-          )}
-        </div>
-      )}
-      {error && (
-        <div className="projectSidebar projectSidebarError">
-          <img
-            src={process.env.PUBLIC_URL + "./Assets/App/Cards/error.avif"}
-          ></img>
-          The sidebar encountered an error during a network request. Please
-          check the console logs and try again!
-          <button
-            className="refreshButton"
-            id="reloadButton"
-            onClick={() => setReTry(true)}
-          >
-            <span>Press to refresh</span>
-            <img
-              alt="refresh icon button"
-              src={
-                process.env.PUBLIC_URL + "./Assets/App/Cards/refreshIcon.svg"
-              }
-            ></img>
-          </button>
-        </div>
-      )}
-      <div className="Projects">
-        <h1>Results</h1>
-        {isLoading && (
-          <ul className="projectList">
-            {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => {
-              return <LoadingPlaceHolder key={i} />;
-            })}
-          </ul>
-        )}
-        {projError && (
-          <ul className="projectList">
-            <LoadingError />
-          </ul>
-        )}
-
-        {!isLoading && !projError && (
-          <ul className="projectList">
-            {projectArr.length != 0 &&
-              projectArr.map((item) => {
-                return (
-                  <ProjectCard
-                    CardData={item}
-                    key={item.name}
-                    queryFunction={fetchSearchQuery}
-                  />
-                );
-              })}
-            {projectArr.length == 0 && <span>No entries found!</span>}
-            {accessToken && (
-              <li className="Card">
-                <button
-                  className="newCardButton"
-                  onClick={() => {
-                    console.log("setting dialog to true");
-                    setNewProject(true);
-                  }}
-                >
-                  <img
-                    img="plus"
-                    src={process.env.PUBLIC_URL + "Assets/App/Cards/plus.svg"}
-                  />
-                </button>
-                {newProjectState && (
-                  <NewProjectPage
-                    DialogStatus={newProjectState}
-                    DialogStatusFunc={setNewProject}
-                    queryFunction={fetchSearchQuery}
-                  />
-                )}
-              </li>
-            )}
-          </ul>
-        )}
-      </div>
-    </div>
-  );
+				{!isLoading && !projError && (
+					<ul className="projectList">
+						{projectArr.length != 0 &&
+							projectArr.map((item) => {
+								return (
+									<ProjectCard
+										CardData={item}
+										key={item.name}
+										queryFunction={fetchSearchQuery}
+									/>
+								);
+							})}
+						{projectArr.length == 0 && <span>No entries found!</span>}
+						{accessToken && (
+							<li className="Card">
+								<button
+									className="newCardButton"
+									onClick={() => {
+										console.log("setting dialog to true");
+										setNewProject(true);
+									}}
+								>
+									<img
+										img="plus"
+										src={process.env.PUBLIC_URL + "Assets/App/Cards/plus.svg"}
+									/>
+								</button>
+								{newProjectState && (
+									<NewProjectPage
+										DialogStatus={newProjectState}
+										DialogStatusFunc={setNewProject}
+										queryFunction={fetchSearchQuery}
+									/>
+								)}
+							</li>
+						)}
+					</ul>
+				)}
+			</div>
+		</div>
+	);
 }
