@@ -55,6 +55,7 @@ export default function Projects() {
       abortControllerRef.current = new AbortController();
       setIsLoading(true);
       try {
+<<<<<<< HEAD
         let data = new FormData(formRef.current);
 
         let searchQuery = "";
@@ -108,6 +109,10 @@ export default function Projects() {
         let { projects, totalHits } = await fetchData.json();
         setTotalPageNumber(Math.ceil(totalHits / 10));
         console.log(projects);
+=======
+        let data = await fetch(baseURL + "/ / / /10/0");
+        let { projects } = await data.json();
+>>>>>>> main
         setProjArr(projects);
       } catch (error) {
         if (error.name === "AbortError") {
@@ -221,6 +226,76 @@ export default function Projects() {
     );
   });
 
+<<<<<<< HEAD
+=======
+  async function fetchSearchQuery() {
+    //check for duplicate requests
+    abortControllerRef.current?.abort();
+    abortControllerRef.current = new AbortController();
+    setIsLoading(true);
+    try {
+      let data = new FormData(formRef.current);
+
+      let searchQuery = "";
+      let tagQuery = []; //serverside if passed empty Defaults to ALL
+      let statusQuery = []; //if empty serverside Defaults to ALL
+      let numberRequested = 10; //number of entries requeseted, default to 10
+
+      //process form data
+      for (let x of data.entries()) {
+        if (x[0].includes("status")) {
+          statusQuery.push(x[0].replace("status-", ""));
+        } else if (x[0].includes("tag")) {
+          tagQuery.push(x[0].replace("tag-", ""));
+        } else if (x[0] === "searchBar") {
+          if (x[1] == "") {
+            searchQuery = " ";
+          } else {
+            searchQuery = x[1];
+          }
+        }
+      }
+      //post process data
+      if (!tagQuery.length) {
+        tagQuery = " ";
+        console.log("tag", tagQuery);
+      } else {
+        tagQuery = tagQuery.join("-");
+      }
+      if (!statusQuery.length) {
+        statusQuery = " ";
+      } else {
+        statusQuery = statusQuery.join("-");
+      }
+      console.log(tagQuery, statusQuery);
+      let url = [
+        baseURL,
+        searchQuery,
+        statusQuery,
+        tagQuery,
+        numberRequested,
+        "0" //this is page number havent added yet
+      ].join("/");
+      console.log(url);
+      let fetchData = await fetch(url, {
+        signal: abortControllerRef?.current.signal,
+      });
+      let { projects } = await fetchData.json();
+      console.log(projects);
+      setProjArr(projects);
+    } catch (error) {
+      if (error.name === "AbortError") {
+        console.log("too many reqeuests at once, request aborted");
+        console.log(error);
+        return;
+      }
+      setProjError(true);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+>>>>>>> main
   return (
     <div className="Home1 Background">
       {!error && (
