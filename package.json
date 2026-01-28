@@ -7,7 +7,6 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.8.4",
-    "dotenv": "^17.2.3",
     "lint": "^0.8.19",
     "node-fetch": "^2.0.0",
     "prettier": "^3.5.3",
@@ -18,8 +17,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "DEP_ENV=test react-scripts test",
-    "start:local": "DEP_ENV=local react-scripts start",
+    "start": "REACT_APP_DEP_ENV=test react-scripts test",
+    "start:local": "REACT_APP_DEP_ENV=local react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "lint": "eslint src --ext .ts,.tsx,.js,.jsx",
