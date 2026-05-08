@@ -32,7 +32,7 @@ export default function Projects() {
         let data = await fetch(baseURL + "/tags");
         let tags = await data.json();
         setTagsArr(tags);
-        setTotalPageNumber(1)
+        // setTotalPageNumber(1)
         //console.log(tagsArr)
       } catch (error) {
         setError(true);
@@ -270,24 +270,24 @@ export default function Projects() {
                 <legend>Project Tags</legend>
                 <ul>{listTags}</ul>
               </fieldset>
-              <label htmlFor="pageNumber">
-                <select
-                  id="pageNumber"
-                  name="pageNumber"
-                  onChange={(e) => setPageNumber(e.target.value - 1)}
-                >
-                  {Array.from({ length: totalPageNumber }, (_, i) => i + 1).map(
-                    (i) => {
-                      return <option>{i}</option>;
-                    },
-                  )}
-                  {console.log(
-                    "array",
-                    Array.from({ length: totalPageNumber }, (_, i) => i + 1),
-                    totalPageNumber,
-                  )}
-                </select>
-              </label>
+              {/* <label htmlFor="pageNumber"> */}
+              {/*   <select */}
+              {/*     id="pageNumber" */}
+              {/*     name="pageNumber" */}
+              {/*     onChange={(e) => setPageNumber(e.target.value - 1)} */}
+              {/*   > */}
+              {/*     {Array.from({ length: totalPageNumber }, (_, i) => i + 1).map( */}
+              {/*       (i) => { */}
+              {/*         return <option>{i}</option>; */}
+              {/*       }, */}
+              {/*     )} */}
+              {/*     {console.log( */}
+              {/*       "array", */}
+              {/*       Array.from({ length: totalPageNumber }, (_, i) => i + 1), */}
+              {/*       totalPageNumber, */}
+              {/*     )} */}
+              {/*   </select> */}
+              {/* </label> */}
               <button
                 className="expandButton"
                 onClick={(e) => {
